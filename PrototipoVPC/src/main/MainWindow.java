@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -90,6 +91,17 @@ public class MainWindow extends JFrame {
 	private void openActionPerformed(ActionEvent e) {
 		
 		System.out.println("Abriendo imagen...");
+		
+		FileDialog openFile = new FileDialog(this, "Abrir imagen...", FileDialog.LOAD);
+		openFile.setFilenameFilter((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png"));
+		openFile.setVisible(true);
+		
+        String filename = openFile.getFile();
+        if (filename == null)
+          System.out.println("No se ha abierto ninguna imagen");
+        else
+          System.out.println("Se ha abierto " + filename);
+		
 	}
 	
 	private void saveActionPerformed(ActionEvent e) { }
