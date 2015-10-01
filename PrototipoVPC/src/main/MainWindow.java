@@ -14,13 +14,14 @@ import javax.swing.JMenuItem;
  *	Ventana principal.
  */
 public class MainWindow extends JFrame {
-	final String TITLE = "ME - Digital Image Processor";
+	final String STR_TITLE = "ME - Digital Image Processor";
+//	final String STR_
 	final int WIDTH_DEFAULT = 500;
 	final int HEIGHT_DEFAULT = 500;
 	
 	MainWindow(){
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
-		this.setTitle(TITLE);
+		this.setTitle(STR_TITLE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		createMenu();
