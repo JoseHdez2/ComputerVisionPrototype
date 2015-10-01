@@ -1,4 +1,4 @@
-package gui;
+package gui_utils;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

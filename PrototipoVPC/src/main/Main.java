@@ -1,7 +1,7 @@
 package main;
 
 
-import gui.LookAndFeelManager;
+import gui_utils.LookAndFeelManager;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,12 @@ public class Main {
 	public static void main(String[] args) {
 		
 		LookAndFeelManager.manage();
+		try {
+		    JFrame jf = new MainWindow();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: handle exception
+        }
 		
-		JFrame jf = new MainWindow();
 	}
 }
