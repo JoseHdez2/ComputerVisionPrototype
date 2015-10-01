@@ -45,36 +45,36 @@ public class MainWindow extends JFrame {
 		JMenuItem quitAction = new JMenuItem("Salir");
 		
 		// Eventos de menú
-        openAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                openActionPerformed(e);
-            }
-        });
-        
-        saveAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                saveActionPerformed(e);
-            }
-        });
-        
-        saveAsAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                saveAsActionPerformed(e);
-            }
-        });
-        
-        closeAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                closeActionPerformed(e);
-            }
-        });
-        
-        quitAction.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                quitActionPerformed(e);
-            }
-        });        
-		
+		openAction.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        openActionPerformed(e);
+		    }
+		});
+
+		saveAction.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        saveActionPerformed(e);
+		    }
+		});
+
+		saveAsAction.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        saveAsActionPerformed(e);
+		    }
+		});
+
+		closeAction.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        closeActionPerformed(e);
+		    }
+		});
+
+		quitAction.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        quitActionPerformed(e);
+		    }
+		});
+
         
 		fileMenu.add(openAction);
 		fileMenu.addSeparator();
@@ -96,11 +96,11 @@ public class MainWindow extends JFrame {
 		openFile.setFilenameFilter((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png"));
 		openFile.setVisible(true);
 		
-        String filename = openFile.getFile();
-        if (filename == null)
-          System.out.println("No se ha abierto ninguna imagen");
-        else
-          System.out.println("Se ha abierto " + filename);
+		String filename = openFile.getFile();
+	    if (filename == null)
+	        System.out.println("No se ha abierto ninguna imagen");
+	    else
+	        System.out.println("Se ha abierto " + filename);
 		
 	}
 	
