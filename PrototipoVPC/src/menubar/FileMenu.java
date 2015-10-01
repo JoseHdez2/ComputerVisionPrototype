@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.SwingUtilities;
 
 public class FileMenu extends JMenu{
     
@@ -66,10 +67,8 @@ public class FileMenu extends JMenu{
     
     private void openActionPerformed(ActionEvent e) {
         
-        System.out.println("Abriendo imagen...");
-        
-        FileDialog openFile = new FileDialog(parentFrame, "Abrir imagen...", FileDialog.LOAD);
-        openFile.setFilenameFilter((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png"));
+        FileDialog openFile = new FileDialog(parentFrame, "Cargando", FileDialog.LOAD);
+        openFile.setDirectory(System.getProperty("user.dir"));
         openFile.setVisible(true);
         
         String filename = openFile.getFile();
@@ -77,7 +76,6 @@ public class FileMenu extends JMenu{
             System.out.println("No se ha abierto ninguna imagen");
         else
             System.out.println("Se ha abierto " + filename);
-        
     }
     
     private void saveActionPerformed(ActionEvent e) { }
