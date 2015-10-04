@@ -1,7 +1,6 @@
 package main;
 
-import java.awt.FileDialog;
-import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -18,6 +17,8 @@ public class MainWindow extends JFrame {
 	final int WIDTH_DEFAULT = 500;
 	final int HEIGHT_DEFAULT = 500;
 	
+	BufferedImage image = null;
+	
 	MainWindow(){
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.setTitle(STR_TITLE);
@@ -33,7 +34,7 @@ public class MainWindow extends JFrame {
 		
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
-        menu.add(new FileMenu(this));
+        menu.add(new FileMenu(this, image));
 		
 	}
 	
