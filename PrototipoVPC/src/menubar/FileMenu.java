@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -18,6 +19,7 @@ public class FileMenu extends JMenu{
     
     JFrame parentFrame;
     BufferedImage image;
+    JDesktopPane pane;
     
     // Acciones del menú Archivo
     JMenuItem openAction = new JMenuItem("Abrir...");
@@ -26,10 +28,11 @@ public class FileMenu extends JMenu{
     JMenuItem closeAction = new JMenuItem("Cerrar");
     JMenuItem quitAction = new JMenuItem("Salir");
     
-    public FileMenu(JFrame parentFrame, BufferedImage image){
+    public FileMenu(JFrame parentFrame, JDesktopPane pane, BufferedImage image){
         super("Archivo");
         this.parentFrame = parentFrame;
         this.image = image;
+        this.pane = pane;
     
         // Eventos de menú
         openAction.addActionListener(new ActionListener() {
