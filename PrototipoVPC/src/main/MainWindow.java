@@ -1,9 +1,9 @@
 package main;
 
-import java.awt.FileDialog;
-import java.awt.event.ActionEvent;
+import gui_utils.ImagePanel;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenuBar;
 
 import menubar.FileMenu;
@@ -27,8 +27,7 @@ public class MainWindow extends JFrame {
 		
 		this.setVisible(true);
 	}
-	
-	
+
 	private void createMenu() {
 		
 		JMenuBar menu = new JMenuBar();
@@ -37,7 +36,14 @@ public class MainWindow extends JFrame {
 		
 	}
 	
+	public void createImageWindow(String imagePath){
+	    JInternalFrame jif = new JInternalFrame("Imagen", true);
+//	    JInFrame jf = new JFrame("Imagen");
+	    ImagePanel ip = new ImagePanel(imagePath);
+	    jif.add(ip);
+	};
 	
+	public void closeMyself(){
 
-
+	}
 }
