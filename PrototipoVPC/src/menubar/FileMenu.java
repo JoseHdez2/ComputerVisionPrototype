@@ -81,31 +81,26 @@ public class FileMenu extends JMenu{
     
     private void openActionPerformed(ActionEvent e) {
         
+        
         FileDialog openFile = new FileDialog(parentFrame, "Cargando", FileDialog.LOAD);
         openFile.setDirectory(System.getProperty("user.dir"));
         openFile.setVisible(true);
-        String imagePath = openFile.getFile();
         
-        String filename = openFile.getFile();
-        parentFrame.createImageWindow(imagePath);
-
-        if (filename == null)
-            System.out.println("No se ha abierto ninguna imagen");
-        else {
-            System.out.println("Se ha abierto " + filename);
-            
-            try {
-                image = ImageIO.read(new File(openFile.getDirectory() + File.separator + filename));
-            } catch (IOException readImage) {
-                readImage.printStackTrace();
-            }
-            
-            JFrame imageWindow = new JFrame();
-            imageWindow.setSize(image.getWidth(), image.getHeight());
-            imageWindow.setTitle(filename);
-            imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
-            imageWindow.setVisible(true);
+        // Llamar
+        String completeImagePath = openFile.getDirectory() + File.separator + openFile.getFile();
+        
+        File file = new File(completeImagePath);
+        
+        try {
+            image = ImageIO.read(file);
+        } catch (IOException readImage) {
+            readImage.printStackTrace();
         }
+        
+        parentFrame.createImageFrame(image);
+
+        return;
+        
     }
     
     private void saveActionPerformed(ActionEvent e) { }
@@ -114,7 +109,9 @@ public class FileMenu extends JMenu{
     private void quitActionPerformed(ActionEvent e) { 
         
         System.exit(0);
+        
     }
+    
     void primeraParteConstructor(){
 
     }

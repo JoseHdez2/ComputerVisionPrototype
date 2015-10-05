@@ -1,12 +1,17 @@
 package main;
 
-import gui_utils.ImagePanel;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JScrollPane;
 
 import menubar.FileMenu;
 
@@ -28,9 +33,6 @@ public class MainWindow extends JFrame {
 		this.setTitle(STR_TITLE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		createFrame("Img1");
-		createFrame("Img2");
-		createFrame("Img3");
 		this.add(pane);
 	
 		createMenu();
@@ -46,11 +48,21 @@ public class MainWindow extends JFrame {
 		
 	}
 	
-	public void createImageWindow(String imagePath){
-	    JInternalFrame jif = new JInternalFrame("Imagen", true);
-//	    JInFrame jf = new JFrame("Imagen");
-	    ImagePanel ip = new ImagePanel(imagePath);
-	    jif.add(ip);
+	public void createImageWindow(String completeImagePath){
+	    
+	    File file = new File(completeImagePath);
+	    
+	    try {
+            image = ImageIO.read(file);
+        } catch (IOException readImage) {
+            readImage.printStackTrace();
+        }
+	    
+        JFrame imageWindow = new JFrame();
+        imageWindow.setSize(image.getWidth(), image.getHeight());
+        imageWindow.setTitle(completeImagePath);
+        imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
+        imageWindow.setVisible(true);
 	};
 	
 
@@ -58,17 +70,12 @@ public class MainWindow extends JFrame {
 
 	}
 
-	public void createFrame(String name) {
-	
-	    JInternalFrame frame = new JInternalFrame(name, true, true, true, true);
-	    pane.add(frame);
-	    
-	    frame.setBounds(25, 25, 200, 100);
-//	    frame.setSize(image.getWidth(), image.getHeight());
-	    frame.setVisible(true);
-	    
-	    try {
-	        frame.setSelected(true);
-	    } catch (java.beans.PropertyVetoException e) {}
+	public void createImageFrame(BufferedImage image) {
+        JInternalFrame imageWindow = new JInternalFrame("Mi ventanita", true, true, true, true);
+//        imageWindow.setBounds(25, 25, 200, 100);
+        imageWindow.setSize(image.getWidth(), image.getHeight());
+        imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
+        imageWindow.setVisible(true);
+        pane.add(imageWindow);
 	}
 }
