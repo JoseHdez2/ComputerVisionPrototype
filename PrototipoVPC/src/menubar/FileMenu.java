@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 
 import main.MainWindow;
 
@@ -102,7 +103,7 @@ public class FileMenu extends JMenu{
             JFrame imageWindow = new JFrame();
             imageWindow.setSize(image.getWidth(), image.getHeight());
             imageWindow.setTitle(filename);
-            imageWindow.add(new JLabel(new ImageIcon(image)));
+            imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
             imageWindow.setVisible(true);
         }
     }

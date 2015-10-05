@@ -42,7 +42,7 @@ public class MainWindow extends JFrame {
 		
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
-        // menu.add(new FileMenu(this, pane, image));
+        menu.add(new FileMenu(this, pane, image));
 		
 	}
 	
