@@ -16,8 +16,6 @@ import main.MainWindow;
 public class FileMenu extends JMenu{
     
     MainWindow parentFrame;
-
-    JDesktopPane pane;
     
     // Acciones del menú Archivo
     JMenuItem openAction = new JMenuItem("Abrir...");
@@ -88,22 +86,20 @@ public class FileMenu extends JMenu{
     private void openActionPerformed(ActionEvent e) {
         
         
-        FileDialog openFile = new FileDialog(parentFrame, "Cargando", FileDialog.LOAD);
-        openFile.setDirectory(System.getProperty("user.dir"));
-        openFile.setVisible(true);
+        FileDialog openFiles = new FileDialog(parentFrame, "Cargando", FileDialog.LOAD);
+        openFiles.setDirectory(System.getProperty("user.dir"));
+        openFiles.setMultipleMode(true);
+        openFiles.setVisible(true);
+         
+        File files[] = openFiles.getFiles();
         
-        String completeImagePath = openFile.getDirectory() + File.separator + openFile.getFile();
-        
-        File file = new File(completeImagePath);
-        
-        NamedImage image = NamedImageCreator.create(file);
-        
-        parentFrame.createImageFrame(image);
-        
-        setEnabledActions(true);
-
-        return;
-        
+        for (File file : files) {
+            NamedImage image = NamedImageCreator.create(file);
+            parentFrame.createImageFrame(image);
+        }
+            
+        if (files.length > 0)
+            setEnabledActions(true);
     }
     
     private void saveActionPerformed(ActionEvent e) { }
@@ -111,9 +107,12 @@ public class FileMenu extends JMenu{
     
     private void closeActionPerformed(ActionEvent e) { 
         
-        parentFrame.getPane().getSelectedFrame().dispose();
+        JDesktopPane pane = parentFrame.getPane();
+        
+        if (pane.getSelectedFrame() != null)
+            pane.getSelectedFrame().dispose();
 
-        if (parentFrame.getPane().getAllFrames().length == 0)
+        if (pane.getAllFrames().length == 0)
             setEnabledActions(false);
     }
     
