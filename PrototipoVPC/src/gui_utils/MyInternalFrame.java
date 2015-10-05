@@ -11,6 +11,7 @@ public class MyInternalFrame extends JInternalFrame{
     
     public MyInternalFrame(NamedImage namedImg){
       super(namedImg.getName(), true, true, true, true);
+      // TODO: Asegurar que no necesitamos constructores mas flexibles/vacios
       setSize(namedImg.getWidth(), namedImg.getHeight());
       add(new JScrollPane(new JLabel(new ImageIcon(namedImg))));
       setVisible(true);

@@ -45,38 +45,14 @@ public class MainWindow extends JFrame {
 	}
 
 	private void createMenu() {
-		
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
         menu.add(new FileMenu(this));
 		
 	}
-	
-	public void createImageWindow(String completeImagePath){
-	    
-	    File file = new File(completeImagePath);
-	    /*
-	    try {
-            image = ImageIO.read(file);
-        } catch (IOException readImage) {
-            readImage.printStackTrace();
-        }
-	    
-        JFrame imageWindow = new JFrame();
-        imageWindow.setSize(image.getWidth(), image.getHeight());
-        imageWindow.setTitle(completeImagePath);
-        imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
-        imageWindow.setVisible(true);
-        */
-	};
-	
-
-	public void closeMyself(){
-
-	}
 
 	public void createImageFrame(NamedImage image) {
-	    
-        //pane.add(imageWindow);
+	    MyInternalFrame frame = new MyInternalFrame(image);
+        pane.add(frame);
 	}
 }
