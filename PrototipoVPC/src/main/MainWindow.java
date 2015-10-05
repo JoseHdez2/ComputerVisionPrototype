@@ -1,21 +1,11 @@
 package main;
 
-import gui_utils.MyInternalFrame;
-import gui_utils.NamedImage;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
-import javax.swing.JScrollPane;
 
+import gui_utils.MyInternalFrame;
+import gui_utils.NamedImage;
 import menubar.FileMenu;
 
 /**
@@ -30,7 +20,7 @@ public class MainWindow extends JFrame {
 	
 //	BufferedImage image = null;
 	JDesktopPane pane = new JDesktopPane();
-	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
+//	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 	
 	MainWindow(){
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
@@ -48,11 +38,20 @@ public class MainWindow extends JFrame {
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
         menu.add(new FileMenu(this));
-		
 	}
 
 	public void createImageFrame(NamedImage image) {
 	    MyInternalFrame frame = new MyInternalFrame(image);
         pane.add(frame);
+        
+        try {
+            frame.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {}
+	}
+	
+	
+	
+	public JDesktopPane getPane() {
+	    return pane;
 	}
 }

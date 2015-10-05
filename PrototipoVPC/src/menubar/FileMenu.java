@@ -1,18 +1,16 @@
 package menubar;
 
-import gui_utils.NamedImage;
-import gui_utils.NamedImageCreator;
-
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import gui_utils.NamedImage;
+import gui_utils.NamedImageCreator;
 import main.MainWindow;
 
 public class FileMenu extends JMenu{
@@ -31,10 +29,6 @@ public class FileMenu extends JMenu{
     public FileMenu(MainWindow parentFrame){
         super("Archivo");
         this.parentFrame = parentFrame;
-        
-        saveAction.setEnabled(false);
-        saveAsAction.setEnabled(false);
-        closeAction.setEnabled(false);
     
         // Eventos de menú
         openAction.addActionListener(new ActionListener() {
@@ -74,7 +68,20 @@ public class FileMenu extends JMenu{
         this.addSeparator();        
         this.add(closeAction);
         this.add(quitAction);
+        
+        setEnabledActions(false);
     }
+    
+    
+    private void setEnabledActions(boolean cond) {
+        
+        // TODO: poner a la condicion cuando esten implementadas
+        saveAction.setEnabled(false);
+        saveAsAction.setEnabled(false);
+        closeAction.setEnabled(cond);
+    }
+    
+    
     
     // Acciones del menú Archivo
     
@@ -92,6 +99,8 @@ public class FileMenu extends JMenu{
         NamedImage image = NamedImageCreator.create(file);
         
         parentFrame.createImageFrame(image);
+        
+        setEnabledActions(true);
 
         return;
         
@@ -99,11 +108,19 @@ public class FileMenu extends JMenu{
     
     private void saveActionPerformed(ActionEvent e) { }
     private void saveAsActionPerformed(ActionEvent e) { }
-    private void closeActionPerformed(ActionEvent e) { }
+    
+    private void closeActionPerformed(ActionEvent e) { 
+        
+        parentFrame.getPane().getSelectedFrame().dispose();
+
+        if (parentFrame.getPane().getAllFrames().length == 0)
+            setEnabledActions(false);
+    }
+    
+    
     private void quitActionPerformed(ActionEvent e) { 
         
         System.exit(0);
-        
     }
     
     void primeraParteConstructor(){
