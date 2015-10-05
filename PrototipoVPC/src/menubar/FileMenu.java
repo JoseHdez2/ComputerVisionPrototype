@@ -1,27 +1,24 @@
 package menubar;
 
+import gui_utils.NamedImage;
+import gui_utils.NamedImageCreator;
+
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JScrollPane;
 
 import main.MainWindow;
 
 public class FileMenu extends JMenu{
     
     MainWindow parentFrame;
-    BufferedImage image;
+
     JDesktopPane pane;
     
     // Acciones del menú Archivo
@@ -31,11 +28,9 @@ public class FileMenu extends JMenu{
     JMenuItem closeAction = new JMenuItem("Cerrar");
     JMenuItem quitAction = new JMenuItem("Salir");
     
-    public FileMenu(MainWindow parentFrame, JDesktopPane pane, BufferedImage image){
+    public FileMenu(MainWindow parentFrame){
         super("Archivo");
         this.parentFrame = parentFrame;
-        this.image = image;
-        this.pane = pane;
     
         // Eventos de menú
         openAction.addActionListener(new ActionListener() {
@@ -86,16 +81,11 @@ public class FileMenu extends JMenu{
         openFile.setDirectory(System.getProperty("user.dir"));
         openFile.setVisible(true);
         
-        // Llamar
         String completeImagePath = openFile.getDirectory() + File.separator + openFile.getFile();
         
         File file = new File(completeImagePath);
         
-        try {
-            image = ImageIO.read(file);
-        } catch (IOException readImage) {
-            readImage.printStackTrace();
-        }
+        NamedImage image = NamedImageCreator.create(file);
         
         parentFrame.createImageFrame(image);
 

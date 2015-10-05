@@ -1,14 +1,17 @@
 package main;
 
+import gui_utils.MyInternalFrame;
+import gui_utils.NamedImage;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
@@ -25,8 +28,9 @@ public class MainWindow extends JFrame {
 	final int WIDTH_DEFAULT = 500;
 	final int HEIGHT_DEFAULT = 500;
 	
-	BufferedImage image = null;
+//	BufferedImage image = null;
 	JDesktopPane pane = new JDesktopPane();
+	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 	
 	MainWindow(){
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
@@ -44,14 +48,14 @@ public class MainWindow extends JFrame {
 		
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
-        menu.add(new FileMenu(this, pane, image));
+        menu.add(new FileMenu(this));
 		
 	}
 	
 	public void createImageWindow(String completeImagePath){
 	    
 	    File file = new File(completeImagePath);
-	    
+	    /*
 	    try {
             image = ImageIO.read(file);
         } catch (IOException readImage) {
@@ -63,6 +67,7 @@ public class MainWindow extends JFrame {
         imageWindow.setTitle(completeImagePath);
         imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
         imageWindow.setVisible(true);
+        */
 	};
 	
 
@@ -70,12 +75,8 @@ public class MainWindow extends JFrame {
 
 	}
 
-	public void createImageFrame(BufferedImage image) {
-        JInternalFrame imageWindow = new JInternalFrame("Mi ventanita", true, true, true, true);
-//        imageWindow.setBounds(25, 25, 200, 100);
-        imageWindow.setSize(image.getWidth(), image.getHeight());
-        imageWindow.add(new JScrollPane(new JLabel(new ImageIcon(image))));
-        imageWindow.setVisible(true);
-        pane.add(imageWindow);
+	public void createImageFrame(NamedImage image) {
+	    
+        //pane.add(imageWindow);
 	}
 }
