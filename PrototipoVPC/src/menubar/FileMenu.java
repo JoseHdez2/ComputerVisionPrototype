@@ -31,6 +31,10 @@ public class FileMenu extends JMenu{
     public FileMenu(MainWindow parentFrame){
         super("Archivo");
         this.parentFrame = parentFrame;
+        
+        saveAction.setEnabled(false);
+        saveAsAction.setEnabled(false);
+        closeAction.setEnabled(false);
     
         // Eventos de menú
         openAction.addActionListener(new ActionListener() {
