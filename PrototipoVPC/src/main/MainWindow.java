@@ -1,11 +1,14 @@
 package main;
 
+import java.util.ResourceBundle;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
 import gui_utils.MyInternalFrame;
 import gui_utils.NamedImage;
+import i18n.I18nManager;
 import menubar.FileMenu;
 
 /**
@@ -13,18 +16,19 @@ import menubar.FileMenu;
  *	Ventana principal.
  */
 public class MainWindow extends JFrame {
-	final String STR_TITLE = "ME - Digital Image Processor";
-//	final String STR_
+
 	final int WIDTH_DEFAULT = 500;
 	final int HEIGHT_DEFAULT = 500;
 	
 //	BufferedImage image = null;
 	JDesktopPane pane = new JDesktopPane();
+	ResourceBundle i18n = I18nManager.manage();
 //	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 	
 	MainWindow(){
+	    
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
-		this.setTitle(STR_TITLE);
+		this.setTitle(i18n.getString("MainWindow.Title"));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.add(pane);

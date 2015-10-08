@@ -4,6 +4,7 @@ import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
@@ -11,21 +12,23 @@ import javax.swing.JMenuItem;
 
 import gui_utils.NamedImage;
 import gui_utils.NamedImageCreator;
+import i18n.I18nManager;
 import main.MainWindow;
 
 public class FileMenu extends JMenu{
     
     MainWindow parentFrame;
+    ResourceBundle i18n = I18nManager.manage();
     
     // Acciones del menú Archivo
-    JMenuItem openAction = new JMenuItem("Abrir...");
-    JMenuItem saveAction = new JMenuItem("Guardar");
-    JMenuItem saveAsAction = new JMenuItem("Guardar como...");
-    JMenuItem closeAction = new JMenuItem("Cerrar");
-    JMenuItem quitAction = new JMenuItem("Salir");
+    JMenuItem openAction = new JMenuItem(i18n.getString("FileMenu.OpenAction"));
+    JMenuItem saveAction = new JMenuItem(i18n.getString("FileMenu.SaveAction"));
+    JMenuItem saveAsAction = new JMenuItem(i18n.getString("FileMenu.SaveAsAction"));
+    JMenuItem closeAction = new JMenuItem(i18n.getString("FileMenu.CloseAction"));
+    JMenuItem quitAction = new JMenuItem(i18n.getString("FileMenu.QuitAction"));
     
     public FileMenu(MainWindow parentFrame){
-        super("Archivo");
+        super(I18nManager.manage().getString("FileMenu"));
         this.parentFrame = parentFrame;
     
         // Eventos de menú
@@ -86,7 +89,7 @@ public class FileMenu extends JMenu{
     private void openActionPerformed(ActionEvent e) {
         
         
-        FileDialog openFiles = new FileDialog(parentFrame, "Cargando", FileDialog.LOAD);
+        FileDialog openFiles = new FileDialog(parentFrame, i18n.getString("FileDialog.Open"), FileDialog.LOAD);
         openFiles.setDirectory(System.getProperty("user.dir"));
         openFiles.setMultipleMode(true);
         openFiles.setVisible(true);
