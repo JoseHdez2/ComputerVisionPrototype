@@ -4,6 +4,7 @@ import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
@@ -76,9 +77,8 @@ public class FileMenu extends JMenu{
     
     private void setEnabledActions(boolean cond) {
         
-        // TODO: poner a la condicion cuando esten implementadas
-        saveAction.setEnabled(false);
-        saveAsAction.setEnabled(false);
+        saveAction.setEnabled(cond);
+        saveAsAction.setEnabled(cond);
         closeAction.setEnabled(cond);
     }
     
@@ -90,6 +90,12 @@ public class FileMenu extends JMenu{
         
         
         FileDialog openFiles = new FileDialog(parentFrame, i18n.getString("FileDialog.Open"), FileDialog.LOAD);
+        openFiles.setFilenameFilter(new FilenameFilter(){
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png");
+            }
+        });
         openFiles.setDirectory(System.getProperty("user.dir"));
         openFiles.setMultipleMode(true);
         openFiles.setVisible(true);
@@ -105,8 +111,20 @@ public class FileMenu extends JMenu{
             setEnabledActions(true);
     }
     
-    private void saveActionPerformed(ActionEvent e) { }
-    private void saveAsActionPerformed(ActionEvent e) { }
+    private void saveActionPerformed(ActionEvent e) { 
+        
+        JDesktopPane pane = parentFrame.getPane();
+        
+        if (pane.getSelectedFrame() != null) {
+            
+        }
+        
+    }
+    private void saveAsActionPerformed(ActionEvent e) { 
+        
+        FileDialog saveFile = new FileDialog(parentFrame, i18n.getString("FileDialog.Save"), FileDialog.SAVE);
+        
+    }
     
     private void closeActionPerformed(ActionEvent e) { 
         
@@ -123,9 +141,5 @@ public class FileMenu extends JMenu{
     private void quitActionPerformed(ActionEvent e) { 
         
         System.exit(0);
-    }
-    
-    void primeraParteConstructor(){
-
     }
 }

@@ -18,4 +18,8 @@ public class NamedImage extends BufferedImage {
     public String getName(){
         return file.getName();
     }
+    
+    public File getFile() {
+        return file;
+    }
 }
