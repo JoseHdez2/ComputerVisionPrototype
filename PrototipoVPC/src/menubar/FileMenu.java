@@ -20,7 +20,8 @@ public class FileMenu extends AbstractMenu {
     
     final static GUIStr[] ACTION_NAMES =
         {
-        GUIStr.FILE_MENU_OPEN_ACTION, 
+        GUIStr.FILE_MENU_OPEN_ACTION,
+        GUIStr.SEPARATOR,
         GUIStr.SEPARATOR,
         GUIStr.FILE_MENU_SAVE_ACTION,
         GUIStr.FILE_MENU_SAVE_AS_ACTION,
@@ -37,20 +38,33 @@ public class FileMenu extends AbstractMenu {
     protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
         // TODO Auto-generated method stub
         switch(actionName){
-        
+        case FILE_MENU_OPEN_ACTION:
+            openActionPerformed(e);
+            break;
+        case FILE_MENU_SAVE_ACTION:
+            saveActionPerformed(e);
+            break;
+        case FILE_MENU_SAVE_AS_ACTION:
+            saveAsActionPerformed(e);
+            break;
+        case FILE_MENU_CLOSE_ACTION:
+            closeActionPerformed(e);
+            break;
+        case FILE_MENU_QUIT_ACTION:
+            quitActionPerformed(e);
+            break;
         }
     }
     
    
     
     private void setEnabledActions(boolean cond) {
-        for (JMenuItem menuItem: actions){
-            String name = menuItem.getName();
+        for (MyMenuItem menuItem: actions){
             
-            // TODO: De verdad que no se puede con un case?
-            if( name.equals(I18n.getString(GUIStr.FILE_MENU_SAVE_ACTION)) ||
-                name.equals(I18n.getString(GUIStr.FILE_MENU_SAVE_AS_ACTION)) ||
-                name.equals(I18n.getString(GUIStr.FILE_MENU_CLOSE_ACTION))){
+            // TODO: Seria mejor con un case?
+            if( menuItem.getStringId().equals(GUIStr.FILE_MENU_SAVE_ACTION) ||
+                menuItem.getStringId().equals(GUIStr.FILE_MENU_SAVE_AS_ACTION) ||
+                menuItem.getStringId().equals(GUIStr.FILE_MENU_CLOSE_ACTION)){
                 
                 menuItem.setEnabled(cond);
             }

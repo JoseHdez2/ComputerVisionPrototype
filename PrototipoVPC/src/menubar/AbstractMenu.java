@@ -16,8 +16,10 @@ import main.MainWindow;
 
 public abstract class AbstractMenu extends JMenu{
     
+    // TODO: Incluir funcionalidad setEnabled??
+    
     MainWindow parentFrame;
-    ArrayList<JMenuItem> actions = new ArrayList<JMenuItem>();
+    ArrayList<MyMenuItem> actions = new ArrayList<MyMenuItem>();
     
     public static final String SEPARATOR_STRING = "-";
     
@@ -28,12 +30,13 @@ public abstract class AbstractMenu extends JMenu{
         // Eventos de menú
         for (GUIStr actName : actionNames){
             if (actName != GUIStr.SEPARATOR){
-                JMenuItem action = new JMenuItem(I18n.getString(actName));
+                MyMenuItem action = new MyMenuItem(actName);
                 action.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
                         actionPerformedHandler(actName, e);
                     }
                 });
+                this.add(action);
             } else {
                 this.addSeparator();
             }
@@ -42,5 +45,5 @@ public abstract class AbstractMenu extends JMenu{
     
     protected abstract void actionPerformedHandler(GUIStr actionName, ActionEvent e);
     
-    // TODO: Incluir funcionalidad setEnabled??
+    
 }
