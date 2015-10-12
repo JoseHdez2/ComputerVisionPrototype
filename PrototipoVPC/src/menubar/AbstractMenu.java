@@ -19,7 +19,6 @@ public abstract class AbstractMenu extends JMenu{
     // TODO: Incluir funcionalidad setEnabled??
     
     MainWindow parentFrame;
-    ArrayList<MyMenuItem> actions = new ArrayList<MyMenuItem>();
     
     public static final String SEPARATOR_STRING = "-";
     
@@ -42,8 +41,34 @@ public abstract class AbstractMenu extends JMenu{
             }
         }
     }
-    
+
     protected abstract void actionPerformedHandler(GUIStr actionName, ActionEvent e);
     
-    
+    // TODO: Problema: Hacer un iterador que solo itere por los 
+    /*
+    public Iterator<MyMenuItem> myMenuItemIterator(){
+        Iterator<MyMenuItem> it = new Iterator<MyMenuItem>() {
+
+            private int currentIndex = 0;
+
+            public Iterator<MyMenuItem>(){
+                
+            }
+            
+            public boolean hasNext() {
+                return currentIndex < getComponentCount()
+                return currentIndex < currentSize && arrayList[currentIndex] != null;
+            }
+
+            public MyMenuItem next() {
+                return arrayList[currentIndex++];
+            }
+
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
+    }
+    */
 }

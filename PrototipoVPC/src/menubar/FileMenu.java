@@ -5,6 +5,7 @@ import gui_utils.NamedImageCreator;
 import i18n.GUIStr;
 import i18n.I18n;
 
+import java.awt.Component;
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -36,7 +37,7 @@ public class FileMenu extends AbstractMenu {
 
     @Override
     protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
-        // TODO Auto-generated method stub
+
         switch(actionName){
         case FILE_MENU_OPEN_ACTION:
             openActionPerformed(e);
@@ -59,7 +60,14 @@ public class FileMenu extends AbstractMenu {
    
     
     private void setEnabledActions(boolean cond) {
-        for (MyMenuItem menuItem: actions){
+        
+        // TODO: Forma de iterar de forma directa sobre los menuItems.
+        for (Component comp : this.getComponents()){
+            
+            if (comp.getClass().getName().equals(MyMenuItem.class))
+                continue;
+            
+            MyMenuItem menuItem = (MyMenuItem)comp;
             
             // TODO: Seria mejor con un case?
             if( menuItem.getStringId().equals(GUIStr.FILE_MENU_SAVE_ACTION) ||
@@ -70,13 +78,10 @@ public class FileMenu extends AbstractMenu {
             }
         }
     }
-    
-    
-    
+
     // Acciones del menú Archivo
     
     private void openActionPerformed(ActionEvent e) {
-        
         
         FileDialog openFiles = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_OPEN), FileDialog.LOAD);
         openFiles.setFilenameFilter(new FilenameFilter(){
@@ -109,6 +114,7 @@ public class FileMenu extends AbstractMenu {
         }
         
     }
+
     private void saveAsActionPerformed(ActionEvent e) { 
         
         FileDialog saveFile = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_SAVE_AS), FileDialog.SAVE);
