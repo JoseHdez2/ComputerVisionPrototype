@@ -5,10 +5,8 @@ import java.util.ResourceBundle;
 
 public abstract class I18n {
     
-    // TODO: Usar esto como punto global de traduccion de strings GUI a enums???
-    
-    // TODO: Ahora mismo TIENE que coincidir las Strings de en.properties con
-    // las constantes String en cada una de las clases (ej. FileMenu, ...).
+    // TODO: Comprobar para un archivo .properties dado, que tiene todos los
+    // strings especificados en GUIStrHash.
     
     private static ResourceBundle manage(){
         // TODO: Restrictivo para el que quiera un idioma distinto al de su OS.
