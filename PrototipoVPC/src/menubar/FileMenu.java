@@ -59,7 +59,7 @@ public class FileMenu extends AbstractMenu {
    
     
     private void setEnabledActions(boolean cond) {
-        
+        // TODO: No funciona.
         // TODO: Forma de iterar de forma directa sobre los menuItems.
         for (Component comp : this.getComponents()){
             
@@ -127,12 +127,13 @@ public class FileMenu extends AbstractMenu {
         
         if (pane.getSelectedFrame() != null){
             pane.getSelectedFrame().dispose();
-        } else {
-            setEnabledActions(false);
-        }
-
-//        if (pane.getAllFrames().length == 0)
+        } 
+//        else {
 //            setEnabledActions(false);
+//        }
+
+        if (pane.getAllFrames().length == 0)
+            setEnabledActions(false);
     }
     
     
