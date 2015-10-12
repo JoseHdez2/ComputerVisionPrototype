@@ -1,15 +1,17 @@
 package main;
 
+import gui_utils.MyInternalFrame;
+import gui_utils.NamedImage;
+import i18n.GUIStr;
+import i18n.I18n;
+
 import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
-import gui_utils.MyInternalFrame;
-import gui_utils.NamedImage;
-import i18n.I18nManager;
-import menubar.FileMenu;
+import menubar.FileMenuOld;
 
 /**
  * @author jose
@@ -22,13 +24,12 @@ public class MainWindow extends JFrame {
 	
 //	BufferedImage image = null;
 	JDesktopPane pane = new JDesktopPane();
-	ResourceBundle i18n = I18nManager.manage();
 //	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 	
 	MainWindow(){
 	    
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
-		this.setTitle(i18n.getString("MainWindow.Title"));
+		this.setTitle(I18n.getString(GUIStr.MAIN_WINDOW_TITLE));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.add(pane);
@@ -41,7 +42,8 @@ public class MainWindow extends JFrame {
 	private void createMenu() {
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
-        menu.add(new FileMenu(this));
+        menu.add(new FileMenuOld(this));
+        
 	}
 
 	public void createImageFrame(NamedImage image) {
@@ -53,9 +55,29 @@ public class MainWindow extends JFrame {
         } catch (java.beans.PropertyVetoException e) {}
 	}
 	
+	/**
+	 * Returns the NamedImage of the currently focused MyInternalFrame.
+	 * Will return 'null' if no MyInternalFrame is selected.
+	 * @return Either a NamedImage or null.
+	 */
+	public NamedImage getFocusedImage(){
+	    
+       MyInternalFrame myIntFrame = null;
+       
+       if (pane.getSelectedFrame() != null) {
+           myIntFrame = (MyInternalFrame)pane.getSelectedFrame();
+           return myIntFrame.getNamedImage();
+       } else {
+           return null;
+       }
+       
+	}
 	
+	/*
+	 * Getters and setters.
+	 */
 	
 	public JDesktopPane getPane() {
 	    return pane;
-	}
+    }
 }

@@ -1,0 +1,17 @@
+package i18n;
+
+import java.util.HashMap;
+
+public enum GUIStr {
+    SEPARATOR,  // Caso especial
+    MAIN_WINDOW_TITLE,
+    FILE_MENU,
+    FILE_MENU_OPEN_ACTION,
+    FILE_MENU_SAVE_ACTION,
+    FILE_MENU_SAVE_AS_ACTION,
+    FILE_MENU_CLOSE_ACTION,
+    FILE_MENU_QUIT_ACTION,
+    FILE_DIALOG_OPEN,
+    FILE_DIALOG_SAVE_AS
+}
+
