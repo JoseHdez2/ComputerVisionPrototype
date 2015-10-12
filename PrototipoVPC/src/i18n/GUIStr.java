@@ -1,6 +1,5 @@
 package i18n;
 
-import java.util.HashMap;
 
 public enum GUIStr {
     SEPARATOR,  // Caso especial

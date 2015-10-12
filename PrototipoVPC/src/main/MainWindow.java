@@ -5,13 +5,11 @@ import gui_utils.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 
-import java.util.ResourceBundle;
-
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
-import menubar.FileMenuOld;
+import menubar.FileMenu;
 
 /**
  * @author jose
@@ -42,7 +40,7 @@ public class MainWindow extends JFrame {
 	private void createMenu() {
 		JMenuBar menu = new JMenuBar();
 		this.setJMenuBar(menu);
-        menu.add(new FileMenuOld(this));
+        menu.add(new FileMenu(this));
         
 	}
 

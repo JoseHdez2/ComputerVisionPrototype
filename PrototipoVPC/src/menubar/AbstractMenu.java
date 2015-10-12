@@ -2,12 +2,10 @@ package menubar;
 
 import i18n.GUIStr;
 import i18n.I18n;
-import i18n.I18n;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;

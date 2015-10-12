@@ -1,20 +1,20 @@
 package menubar;
 
+import gui_utils.NamedImage;
+import gui_utils.NamedImageCreator;
+import i18n.GUIStr;
+import i18n.I18n;
+
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ResourceBundle;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import gui_utils.NamedImage;
-import gui_utils.NamedImageCreator;
-import i18n.GUIStr;
-import i18n.I18n;
 import main.MainWindow;
 
 public class FileMenuOld extends JMenu{
