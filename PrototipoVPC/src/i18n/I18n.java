@@ -1,6 +1,5 @@
 package i18n;
 
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public abstract class I18n {

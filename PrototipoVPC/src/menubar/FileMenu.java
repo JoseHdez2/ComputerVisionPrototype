@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JMenuItem;
 
 import main.MainWindow;
 
@@ -64,7 +63,7 @@ public class FileMenu extends AbstractMenu {
         // TODO: Forma de iterar de forma directa sobre los menuItems.
         for (Component comp : this.getComponents()){
             
-            if (comp.getClass().getName().equals(MyMenuItem.class))
+            if (!comp.getClass().getName().equals(MyMenuItem.class))
                 continue;
             
             MyMenuItem menuItem = (MyMenuItem)comp;
