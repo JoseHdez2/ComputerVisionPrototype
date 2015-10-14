@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class NamedImage extends BufferedImage {
     private File file;
     private HashMap<Color, Integer> pixelColorCount = null;
-    private Boolean needColorRecount;
+    private Boolean validColorCount = false;    // So we only count pixels if needed.
     
     public NamedImage(BufferedImage bi, File file){
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);
@@ -16,7 +16,10 @@ public class NamedImage extends BufferedImage {
     }
     
     /**
-     * Count pixels for each color in the image. Store the result in the internal pixelColorCount hash. 
+     * Count number of pixels for each color in the image.
+     * Store the result in the internal pixelColorCount hash.
+     * This costly operation is only called when the pixelColorCount is needed,
+     * simulating lazy evaluation.
      */
     public void countPixels(){
         
@@ -39,6 +42,19 @@ public class NamedImage extends BufferedImage {
                 }
             }
         }
+        
+        validColorCount = true;
+    }
+    
+    // TODO: Find the right word I wanted to use here. Not synonym, not pseudonym...
+    /**
+     * Returns the number of pixels this image has. 
+     * (this.getWidth() * this.getHeight() synonym)
+     * @return  Number of pixels this image has.
+     */
+    public int getPixelCount(){
+        // TODO seguro que getWidth() y getHeight() devuelven numero de pixeles nativos?? o de display?
+        return this.getWidth() * this.getHeight();
     }
     
     /*
@@ -51,5 +67,16 @@ public class NamedImage extends BufferedImage {
     
     public File getFile() {
         return file;
+    }
+
+    /**
+     * Provides lazy evaluation simulation.
+     * @return Number of pixels for each color in the image.
+     */
+    public HashMap<Color, Integer> getPixelColorCount() {
+        if(!validColorCount){
+            countPixels();
+        }
+        return pixelColorCount;
     }
 }
