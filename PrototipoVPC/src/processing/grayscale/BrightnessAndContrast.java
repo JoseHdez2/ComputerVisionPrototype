@@ -1,4 +1,4 @@
-package processing;
+package processing.grayscale;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -10,6 +10,7 @@ public class BrightnessAndContrast {
         float ro;
     }
     
+ // TODO: Mirar y corregir todo; solo son apuntes!!
     // TODO: Only works for grayscale images.
     public void setBrightness(BufferedImage img, int newBrightness, int newContrast){
         int oldBrightness = 0;
@@ -27,9 +28,11 @@ public class BrightnessAndContrast {
             // Handle out-of-range values.
             if (vOut < 0){
                 vOut = 0;
+                // TODO: register biggest value that gets this, if any.
             }
             if (vOut > 255){
                 vOut = 255;
+                // TODO: register biggest value that gets this, if any.  
             }
             // TODO: When there are out-of-range vOut values, we are giving a false result.
             

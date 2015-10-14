@@ -1,4 +1,4 @@
-package processing;
+package processing.grayscale;
 
 
 public class ImageAnalysis {
