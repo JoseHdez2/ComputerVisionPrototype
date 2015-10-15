@@ -12,14 +12,14 @@ public class HistogramEqualization extends AbstractImageTransformation{
     int M;
     
     @Override
-    public void transform(NamedImage img){
+    public TransformationTable transform(NamedImage img){
 
         // TODO: Calculate bitsUsedToCodifyImage correctly.
         bitsUsedToCodifyImage = 8;
         size = img.getPixelCount();
         M = (int) Math.pow(2, bitsUsedToCodifyImage);
         
-        super.transform(img);
+        return super.transform(img);
     }
     
     // TODO: Mirar y corregir todo; solo son apuntes!!

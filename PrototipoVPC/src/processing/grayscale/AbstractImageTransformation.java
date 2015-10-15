@@ -1,8 +1,8 @@
 package processing.grayscale;
 
-import gui_utils.NamedImage;
+import java.awt.Color;
 
-import java.util.HashMap;
+import gui_utils.NamedImage;
 
 public abstract class AbstractImageTransformation {
     
@@ -11,9 +11,9 @@ public abstract class AbstractImageTransformation {
      * A wrapper for a call to either transformLazy() or transformExtensive().
      * @param img Image to be transformed.
      */
-    public void transform(NamedImage img){
-//        transformLazy(img);
-        transformExtensive(img);
+    public TransformationTable transform(NamedImage img){
+//        return transformLazy(img);
+        return transformExtensive(img);
     }
     
     /**
@@ -21,8 +21,21 @@ public abstract class AbstractImageTransformation {
      * More efficient and scalable than transformExtensive().
      * @param img
      */
-    protected void transformLazy(NamedImage img){
+    protected TransformationTable transformLazy(NamedImage img){
         
+        TransformationTable transTable = new TransformationTable();
+        
+        // Repeat for each of the colors.
+        for (int vIn = 0; vIn < 255; vIn++){
+            
+            // For this color value, calculate the corresponding new color value.
+            // This method will vary depending on the implementing class (Strategy design pattern).
+            int vOut = getVOut(vIn, img);
+            
+            transTable.put(new Color(vIn, vIn, vIn), new Color(vOut, vOut, vOut));
+        }
+        
+        return transTable;
     }
     
     // TODO: 'Only viable'-- correct phrasing?
@@ -32,9 +45,9 @@ public abstract class AbstractImageTransformation {
      * Less efficient or scalable than transformLazy().
      * @param img
      */
-    protected void transformExtensive(NamedImage img){
+    protected TransformationTable transformExtensive(NamedImage img){
 
-        HashMap<Integer, Integer> tabla = new HashMap<Integer, Integer>();
+        TransformationTable transTable = new TransformationTable();
         
         // Repeat for each of the colors.
         for (int vIn = 0; vIn < 255; vIn++){
@@ -43,8 +56,10 @@ public abstract class AbstractImageTransformation {
             // This method will vary depending on the implementing class (Strategy design pattern).
             int vOut = getVOut(vIn, img);
             
-            tabla.put(vIn, vOut);
+            transTable.put(new Color(vIn, vIn, vIn), new Color(vOut, vOut, vOut));
         }
+        
+        return transTable;
     }
     
     /**

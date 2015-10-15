@@ -1,15 +1,13 @@
 package main;
 
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+
 import gui_utils.MyInternalFrame;
 import gui_utils.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
-
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-
-import menubar.FileMenu;
+import menubar.TheMenuBar;
 
 /**
  * @author jose
@@ -20,9 +18,8 @@ public class MainWindow extends JFrame {
 	final int WIDTH_DEFAULT = 500;
 	final int HEIGHT_DEFAULT = 500;
 	
-//	BufferedImage image = null;
 	JDesktopPane pane = new JDesktopPane();
-//	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
+	TheMenuBar menubar = new TheMenuBar(this);
 	
 	MainWindow(){
 	    
@@ -32,16 +29,7 @@ public class MainWindow extends JFrame {
 
 		this.add(pane);
 	
-		createMenu();
-	
 		this.setVisible(true);
-	}
-
-	private void createMenu() {
-		JMenuBar menu = new JMenuBar();
-		this.setJMenuBar(menu);
-        menu.add(new FileMenu(this));
-        
 	}
 
 	public void createImageFrame(NamedImage image) {

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class NamedImage extends BufferedImage {
     private File file;
     private HashMap<Color, Integer> pixelColorCount = null;
-    private Boolean validColorCount = false;    // So we only count pixels if needed.
+    private Boolean validColorCount = false;    // So that we only count pixels if needed.
     
     public NamedImage(BufferedImage bi, File file){
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);
