@@ -1,8 +1,8 @@
-package menubar;
+package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
-import gui_utils.NamedImage;
+import gui.utils.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
 import processing.grayscale.HistogramEqualization;
@@ -17,7 +17,7 @@ public class TransformMenu extends AbstractMenu {
         };
     
     public TransformMenu(MainWindow parentFrame){
-        super(parentFrame, GUIStr.FILE_MENU, ACTION_NAMES);
+        super(parentFrame, GUIStr.TRANSFORM_MENU, ACTION_NAMES);
     }
 
     @Override

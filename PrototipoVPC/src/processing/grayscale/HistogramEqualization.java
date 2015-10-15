@@ -1,8 +1,8 @@
 package processing.grayscale;
 
-import gui_utils.NamedImage;
-
 import java.awt.image.BufferedImage;
+
+import gui.utils.NamedImage;
 
 
 public class HistogramEqualization extends AbstractImageTransformation{
@@ -31,8 +31,10 @@ public class HistogramEqualization extends AbstractImageTransformation{
         int vOut = 0;
         
         int covin = 0;
+        System.out.println("For vIn = " + vIn);
         for (int i = 0; i < vIn; i++){
-           covin += img.getPixelColorCount().get(i);
+            System.out.println("For i = " + i);
+            covin += img.getPixelColorCount().get(i);
         }
         
         vOut = Math.round(((M / size) * covin)) - 1;

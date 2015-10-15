@@ -1,4 +1,4 @@
-package gui_utils;
+package gui.utils;
 
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;

@@ -1,4 +1,4 @@
-package gui_utils;
+package gui.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

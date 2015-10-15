@@ -1,4 +1,4 @@
-package gui_utils;
+package gui.utils;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -57,8 +57,7 @@ public class NamedImage extends BufferedImage {
     private void countPixelsByColor(){
         
         // TODO: Asegurarnos que BufferedImage nunca presenta informacion de conteo de colores falsa.
-        if (pixelColorCount == null) return;
-        
+
         pixelColorCount.clear();
         
         int imageWidth = this.getWidth();
