@@ -18,13 +18,12 @@ import javafx.scene.chart.XYChart;
 public class Histogram {
     
     private NamedImage image = null;
-    private HashMap<Color, Integer> pixelsCount = null;
-    private HashMap<Integer, Integer> sortedPixels = new HashMap<Integer,Integer>();
+    private HashMap<Integer, Integer> pixelIntegerCount = null;
     
     public Histogram(NamedImage image) {
      
         this.image = image; //Recuperar nombre y pixeles
-        this.pixelsCount = image.getPixelColorCount();
+        this.pixelIntegerCount = pixelColorToInteger(image.getPixelColorCount());
         
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -34,12 +33,16 @@ public class Histogram {
         });
     }
     
+    /**
+     * Crea la nueva ventana donde se mostrará el histograma
+     * y invoca el hilo de ejecución de JavaFX
+     */    
     private void initAndShowFrame() {
         
         JFrame frame = new JFrame("Histograma");
         JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
-        frame.setSize(400, 400);
+        frame.setSize(600, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Provisional
 
@@ -51,12 +54,18 @@ public class Histogram {
        });        
     }
     
+    /**
+     * Crea la escena y componentes de JavaFX
+     */
     private void initFX(JFXPanel fxPanel) {
-        // This method is invoked on the JavaFX thread
         Scene scene = createChart();
         fxPanel.setScene(scene);
     }
     
+    /**
+     * Devuelve la escena que contiene el histograma de color
+     * @return  el gráfico del histograma
+     */
     private Scene createChart() {
 
         // Elementos
@@ -69,18 +78,12 @@ public class Histogram {
         x.setLabel("Color");
         y.setLabel("Número de píxeles");
         
-        // Ordenar píxeles por color
-        sortPixelsCount();
-        
         // Introducir datos
         XYChart.Series serie = new XYChart.Series();
-        
-        // Ordenar píxeles por color
-        
-        
+
         for (int i=0; i<=255; i++) {
             
-            Integer pixel = sortedPixels.get(i);
+            Integer pixel = pixelIntegerCount.get(i);
             
             if (pixel != null)
                 serie.getData().add(new XYChart.Data(String.valueOf(i), pixel));
@@ -88,23 +91,30 @@ public class Histogram {
                 serie.getData().add(new XYChart.Data(String.valueOf(i), 0));
         }
         
-//        System.out.println(pixelsCount.size());
- 
-        
-        Scene scene = new Scene(chart,400,400);
+        // Añadir a la escena
+        Scene scene = new Scene(chart,600,400);
         chart.getData().addAll(serie);
 
         return scene;
     }    
     
-    private void sortPixelsCount() {
+    /**
+     * La cuenta de píxeles está ordenada por colores desordenados,
+     * es necesario pasarlos a enteros (0..255) para mostrarlos ordenados
+     * @return  Número de píxeles entre 0 y 255
+     */    
+    private HashMap<Integer, Integer> pixelColorToInteger(HashMap<Color, Integer> pixelsCount) {
         // TODO: provisional para imágenes en blanco y negro
+        
+        HashMap<Integer, Integer> pixelIntegerCount = new HashMap<Integer,Integer>();
         
         for (Entry<Color, Integer> entry : pixelsCount.entrySet()) {
             Color key = entry.getKey();
             Integer value = entry.getValue();
             
-            sortedPixels.put(key.getBlue(), value);  
+            pixelIntegerCount.put(key.getBlue(), value);  
         }
+        
+        return pixelIntegerCount;
     }
 }
