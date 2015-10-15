@@ -1,13 +1,9 @@
 package main;
 
 
-import java.io.File;
+import javax.swing.JFrame;
 
 import gui.utils.LookAndFeelManager;
-import gui.utils.NamedImage;
-import gui.utils.NamedImageCreator;
-import gui.utils.histogram.AbsoluteHistogram;
-import gui.utils.histogram.AcumulativeHistogram;
 
 public class Main {
 	public static void main(String[] args) {

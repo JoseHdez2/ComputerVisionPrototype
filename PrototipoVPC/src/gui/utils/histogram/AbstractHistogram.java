@@ -51,7 +51,7 @@ public abstract class AbstractHistogram {
      */    
     private void initAndShowFrame() {
         
-        JFrame frame = new JFrame(title);
+        JFrame frame = new JFrame(title + "(" + name + ")");
         JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
         frame.setSize(600, 400);
