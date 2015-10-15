@@ -17,7 +17,7 @@ public class TransformMenu extends AbstractMenu {
         };
     
     public TransformMenu(MainWindow parentFrame){
-        super(parentFrame, GUIStr.FILE_MENU, ACTION_NAMES);
+        super(parentFrame, GUIStr.TRANSFORM_MENU, ACTION_NAMES);
     }
 
     @Override

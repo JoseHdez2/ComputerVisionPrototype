@@ -18,6 +18,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.FILE_MENU_QUIT_ACTION, "FileMenu.QuitAction");
         hash.put(GUIStr.FILE_DIALOG_OPEN, "FileDialog.Open");
         hash.put(GUIStr.FILE_DIALOG_SAVE_AS, "FileDialog.SaveAs");
+        hash.put(GUIStr.TRANSFORM_MENU, "TransformMenu");
         hash.put(GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION, "TransformMenu.EqualizeAction");
     }
     
