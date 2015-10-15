@@ -11,6 +11,7 @@ import main.MainWindow;
 
 // TODO: Usar enums a nivel global del proyecto en vez de constantes String
 
+@SuppressWarnings("serial")
 public abstract class AbstractMenu extends JMenu{
     
     // TODO: Incluir funcionalidad setEnabled??

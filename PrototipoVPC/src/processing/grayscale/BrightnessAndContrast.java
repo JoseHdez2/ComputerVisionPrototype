@@ -6,8 +6,9 @@ import java.util.HashMap;
 public class BrightnessAndContrast {
     
     public void getBrightness(BufferedImage img){
-        float sigma;
-        float ro;
+//        float sigma;
+//        float ro;
+        // TODO: getBrightness
     }
     
  // TODO: Mirar y corregir todo; solo son apuntes!!

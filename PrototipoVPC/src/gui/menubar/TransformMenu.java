@@ -9,6 +9,7 @@ import processing.grayscale.HistogramEqualization;
 import processing.grayscale.ImageTransformer;
 
 
+@SuppressWarnings("serial")
 public class TransformMenu extends AbstractMenu {
     
     final static GUIStr[] ACTION_NAMES =

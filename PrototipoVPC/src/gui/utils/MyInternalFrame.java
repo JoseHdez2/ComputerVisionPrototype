@@ -5,6 +5,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
+@SuppressWarnings("serial")
 public class MyInternalFrame extends JInternalFrame{
 
     NamedImage namedImg = null;

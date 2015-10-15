@@ -1,7 +1,5 @@
 package processing.grayscale;
 
-import java.awt.image.BufferedImage;
-
 import gui.utils.NamedImage;
 
 

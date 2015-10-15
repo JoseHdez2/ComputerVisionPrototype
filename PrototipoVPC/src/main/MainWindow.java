@@ -13,6 +13,7 @@ import i18n.I18n;
  * @author jose
  *	Ventana principal.
  */
+@SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
 	final int WIDTH_DEFAULT = 500;

@@ -9,6 +9,7 @@ import i18n.I18n;
  *  Clase wrapper necesaria para permitir la identificacion univoca de los JMenuItem,
  *  sin importar la String que usen para mostrarse al mundo. 
  */
+@SuppressWarnings("serial")
 public class MyMenuItem extends JMenuItem {
     GUIStr stringId;
     

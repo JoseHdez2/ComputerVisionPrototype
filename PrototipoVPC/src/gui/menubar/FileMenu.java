@@ -15,6 +15,7 @@ import i18n.I18n;
 import main.MainWindow;
 
 
+@SuppressWarnings("serial")
 public class FileMenu extends AbstractMenu {
     
     final static GUIStr[] ACTION_NAMES =
@@ -33,6 +34,7 @@ public class FileMenu extends AbstractMenu {
         super(parentFrame, GUIStr.FILE_MENU, ACTION_NAMES);
     }
 
+    @SuppressWarnings("incomplete-switch")
     @Override
     protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
 
@@ -118,7 +120,7 @@ public class FileMenu extends AbstractMenu {
     private void saveAsActionPerformed(ActionEvent e) { 
         
         FileDialog saveFile = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_SAVE_AS), FileDialog.SAVE);
-        
+        // TODO Terminar esto
     }
     
     private void closeActionPerformed(ActionEvent e) { 

@@ -4,6 +4,7 @@ import javax.swing.JMenuBar;
 
 import main.MainWindow;
 
+@SuppressWarnings("serial")
 public class TheMenuBar extends JMenuBar {
     
     public TheMenuBar(MainWindow mainWindow){
