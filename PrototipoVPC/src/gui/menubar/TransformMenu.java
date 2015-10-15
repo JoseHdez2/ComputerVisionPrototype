@@ -1,9 +1,9 @@
-package menubar;
+package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
-import gui_utils.NamedImage;
-import i18n.GUIStr;
+import gui.i18n.GUIStr;
+import gui.utils.NamedImage;
 import main.MainWindow;
 import processing.grayscale.HistogramEqualization;
 import processing.grayscale.ImageTransformer;

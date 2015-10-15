@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 
-import gui_utils.NamedImage;
+import gui.utils.NamedImage;
 
 public class ImageTransformer {
     // TODO: Consider putting functionality into AbstractImageTransformation.

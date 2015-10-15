@@ -2,7 +2,7 @@ package processing.grayscale;
 
 import java.awt.Color;
 
-import gui_utils.NamedImage;
+import gui.utils.NamedImage;
 
 public abstract class AbstractImageTransformation {
     

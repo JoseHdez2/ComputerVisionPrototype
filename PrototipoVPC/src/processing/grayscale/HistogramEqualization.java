@@ -1,8 +1,8 @@
 package processing.grayscale;
 
-import gui_utils.NamedImage;
-
 import java.awt.image.BufferedImage;
+
+import gui.utils.NamedImage;
 
 
 public class HistogramEqualization extends AbstractImageTransformation{

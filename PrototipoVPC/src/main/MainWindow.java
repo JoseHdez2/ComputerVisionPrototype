@@ -3,11 +3,11 @@ package main;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
-import gui_utils.MyInternalFrame;
-import gui_utils.NamedImage;
-import i18n.GUIStr;
-import i18n.I18n;
-import menubar.TheMenuBar;
+import gui.i18n.GUIStr;
+import gui.i18n.I18n;
+import gui.menubar.TheMenuBar;
+import gui.utils.MyInternalFrame;
+import gui.utils.NamedImage;
 
 /**
  * @author jose

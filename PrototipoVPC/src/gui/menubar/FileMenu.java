@@ -1,9 +1,4 @@
-package menubar;
-
-import gui_utils.NamedImage;
-import gui_utils.NamedImageCreator;
-import i18n.GUIStr;
-import i18n.I18n;
+package gui.menubar;
 
 import java.awt.Component;
 import java.awt.FileDialog;
@@ -13,6 +8,10 @@ import java.io.FilenameFilter;
 
 import javax.swing.JDesktopPane;
 
+import gui.i18n.GUIStr;
+import gui.i18n.I18n;
+import gui.utils.NamedImage;
+import gui.utils.NamedImageCreator;
 import main.MainWindow;
 
 
