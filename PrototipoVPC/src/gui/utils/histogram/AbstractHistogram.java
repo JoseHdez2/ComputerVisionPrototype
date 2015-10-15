@@ -1,6 +1,7 @@
-package gui.utils;
+package gui.utils.histogram;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -15,22 +16,33 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
-public class Histogram {
+public abstract class AbstractHistogram {
     
-    private NamedImage image = null;
-    private HashMap<Integer, Integer> pixelIntegerCount = null;
+    private String title = null;
+    private String name = null;
+    private ArrayList pixelArray = null;
     
-    public Histogram(NamedImage image) {
-     
-        this.image = image; //Recuperar nombre y pixeles
-        this.pixelIntegerCount = pixelColorToInteger(image.getPixelColorCount());
+    public AbstractHistogram(String title, String name) {
+        
+        this.title = title;
+        this.name = name;
+    }
+    
+    /**
+     * Muestra el histograma con los datos ya calculados
+     * y ordenados correctamente
+     */        
+    public void showHistogram(ArrayList pixelArray) {
+        
+        this.pixelArray = pixelArray;
         
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 initAndShowFrame();
             }
-        });
+        });        
+        
     }
     
     /**
@@ -39,7 +51,7 @@ public class Histogram {
      */    
     private void initAndShowFrame() {
         
-        JFrame frame = new JFrame("Histograma");
+        JFrame frame = new JFrame(title);
         JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
         frame.setSize(600, 400);
@@ -74,22 +86,15 @@ public class Histogram {
         BarChart<String, Number> chart = new BarChart<>(x,y);
         
         // Nombres
-        chart.setTitle("Histograma de color");
+        chart.setTitle(title);
         x.setLabel("Color");
         y.setLabel("Número de píxeles");
         
         // Introducir datos
         XYChart.Series serie = new XYChart.Series();
 
-        for (int i=0; i<=255; i++) {
-            
-            Integer pixel = pixelIntegerCount.get(i);
-            
-            if (pixel != null)
-                serie.getData().add(new XYChart.Data(String.valueOf(i), pixel));
-            else
-                serie.getData().add(new XYChart.Data(String.valueOf(i), 0));
-        }
+        for (int i=0; i<=255; i++)
+            serie.getData().add(new XYChart.Data(String.valueOf(i), pixelArray.get(i)));
         
         // Añadir a la escena
         Scene scene = new Scene(chart,600,400);
@@ -103,7 +108,7 @@ public class Histogram {
      * es necesario pasarlos a enteros (0..255) para mostrarlos ordenados
      * @return  Número de píxeles entre 0 y 255
      */    
-    private HashMap<Integer, Integer> pixelColorToInteger(HashMap<Color, Integer> pixelsCount) {
+    public HashMap<Integer, Integer> getColorToInteger(HashMap<Color, Integer> pixelsCount) {
         // TODO: provisional para imágenes en blanco y negro
         
         HashMap<Integer, Integer> pixelIntegerCount = new HashMap<Integer,Integer>();
@@ -117,4 +122,5 @@ public class Histogram {
         
         return pixelIntegerCount;
     }
+
 }

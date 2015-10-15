@@ -1,9 +1,13 @@
 package main;
 
 
-import javax.swing.JFrame;
+import java.io.File;
 
 import gui.utils.LookAndFeelManager;
+import gui.utils.NamedImage;
+import gui.utils.NamedImageCreator;
+import gui.utils.histogram.AbsoluteHistogram;
+import gui.utils.histogram.AcumulativeHistogram;
 
 public class Main {
 	public static void main(String[] args) {
@@ -18,7 +22,8 @@ public class Main {
 		    // Test histogram
 //		    File file = new File("/home/migue/Escritorio/peppers.png");
 //            NamedImage image = NamedImageCreator.create(file);
-//            Histogram h = new Histogram(image);
+//            AbsoluteHistogram h = new AbsoluteHistogram(image);
+//            AcumulativeHistogram h = new AcumulativeHistogram(image);
 		    
         } catch (Exception e) {
             e.printStackTrace();
