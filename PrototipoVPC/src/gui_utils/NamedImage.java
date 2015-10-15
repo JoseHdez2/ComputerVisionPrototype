@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class NamedImage extends BufferedImage {
     private File file;
-    private HashMap<Color, Integer> pixelColorCount = null;
+    private HashMap<Color, Integer> pixelColorCount = new HashMap<Color, Integer>();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
     
     public NamedImage(BufferedImage bi, File file){
@@ -16,39 +16,7 @@ public class NamedImage extends BufferedImage {
     }
     
     /**
-     * Count number of pixels for each color in the image.
-     * Store the result in the internal pixelColorCount hash.
-     * This costly operation is only called when the pixelColorCount is needed,
-     * simulating lazy evaluation.
-     */
-    public void countPixels(){
-        
-        // TODO: Asegurarnos que BufferedImage nunca presenta informacion de conteo de colores falsa.
-        if (pixelColorCount != null) return;
-        
-        pixelColorCount.clear();
-        
-        int imageWidth = this.getWidth();
-        int imageHeight = this.getHeight();
-        
-        for (int i = 0; i < imageWidth; i++){
-            for (int j = 0; j < imageHeight; j++){
-                // TODO: Demasiado ineficiente crear un Color cada vez?
-                Color pixelColor = new Color(this.getRGB(i, j));
-                if(!pixelColorCount.containsKey(pixelColor)){
-                    pixelColorCount.put(pixelColor, 1);
-                } else {
-                    pixelColorCount.put(pixelColor, pixelColorCount.get(pixelColor) + 1);
-                }
-            }
-        }
-        
-        validColorCount = true;
-    }
-    
-    // TODO: Find the right word I wanted to use here. Not synonym, not pseudonym...
-    /**
-     * Returns the number of pixels this image has. 
+     * Returns the total number of pixels this image has. 
      * (this.getWidth() * this.getHeight() synonym)
      * @return  Number of pixels this image has.
      */
@@ -75,8 +43,39 @@ public class NamedImage extends BufferedImage {
      */
     public HashMap<Color, Integer> getPixelColorCount() {
         if(!validColorCount){
-            countPixels();
+            countPixelsByColor();
         }
         return pixelColorCount;
+    }
+    
+    /**
+     * Count number of pixels for each color in the image.
+     * Store the result in the internal pixelColorCount hash.
+     * This costly operation is only called from getPixelColorCount(),
+     * (when the pixelColorCount is needed) simulating lazy evaluation.
+     */
+    private void countPixelsByColor(){
+        
+        // TODO: Asegurarnos que BufferedImage nunca presenta informacion de conteo de colores falsa.
+        if (pixelColorCount != null) return;
+        
+        pixelColorCount.clear();
+        
+        int imageWidth = this.getWidth();
+        int imageHeight = this.getHeight();
+        
+        for (int i = 0; i < imageWidth; i++){
+            for (int j = 0; j < imageHeight; j++){
+                // TODO: Demasiado ineficiente crear un Color cada vez?
+                Color pixelColor = new Color(this.getRGB(i, j));
+                if(!pixelColorCount.containsKey(pixelColor)){
+                    pixelColorCount.put(pixelColor, 1);
+                } else {
+                    pixelColorCount.put(pixelColor, pixelColorCount.get(pixelColor) + 1);
+                }
+            }
+        }
+        
+        validColorCount = true;
     }
 }
