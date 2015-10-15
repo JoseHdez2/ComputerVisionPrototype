@@ -78,7 +78,9 @@ public class FileMenu extends AbstractMenu {
         }
     }
 
-    // Acciones del menú Archivo
+    /*
+     * Menu actions
+     */
     
     private void openActionPerformed(ActionEvent e) {
         

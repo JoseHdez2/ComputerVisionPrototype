@@ -10,5 +10,6 @@ public class TheMenuBar extends JMenuBar {
         super();
         mainWindow.setJMenuBar(this);
         this.add(new FileMenu(mainWindow));
+        this.add(new TransformMenu(mainWindow));
     }
 }

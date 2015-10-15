@@ -18,7 +18,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.FILE_MENU_QUIT_ACTION, "FileMenu.QuitAction");
         hash.put(GUIStr.FILE_DIALOG_OPEN, "FileDialog.Open");
         hash.put(GUIStr.FILE_DIALOG_SAVE_AS, "FileDialog.SaveAs");
-        hash.put(GUIStr.TRANSFORM_DIALOG_EQUALIZE, "TransformDialog.Equalize");
+        hash.put(GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION, "TransformMenu.EqualizeAction");
     }
     
     public static String get(GUIStr stringId){

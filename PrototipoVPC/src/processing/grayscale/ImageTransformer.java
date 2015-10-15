@@ -11,9 +11,14 @@ public class ImageTransformer {
     // TODO: Consider putting functionality into AbstractImageTransformation.
     // Have AbstractImageTransformation give us the transformation table.
     
-    public NamedImage getTransformedImage(NamedImage img){
+    AbstractImageTransformation transformation;
+    
+    public ImageTransformer(AbstractImageTransformation transformation){
         
-        AbstractImageTransformation transformation = new HistogramEqualization();
+        this.transformation = transformation;
+    }
+    
+    public NamedImage getTransformedImage(NamedImage img){
         
         TransformationTable transTable = transformation.transform(img);
         
