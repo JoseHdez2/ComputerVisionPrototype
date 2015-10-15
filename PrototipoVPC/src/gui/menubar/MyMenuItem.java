@@ -2,8 +2,8 @@ package gui.menubar;
 
 import javax.swing.JMenuItem;
 
-import gui.i18n.GUIStr;
-import gui.i18n.I18n;
+import i18n.GUIStr;
+import i18n.I18n;
 
 /**
  *  Clase wrapper necesaria para permitir la identificacion univoca de los JMenuItem,

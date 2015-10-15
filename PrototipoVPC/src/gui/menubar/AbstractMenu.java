@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 
-import gui.i18n.GUIStr;
-import gui.i18n.I18n;
+import i18n.GUIStr;
+import i18n.I18n;
 import main.MainWindow;
 
 // TODO: Usar enums a nivel global del proyecto en vez de constantes String

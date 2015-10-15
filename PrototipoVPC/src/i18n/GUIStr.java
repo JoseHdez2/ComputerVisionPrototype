@@ -1,4 +1,4 @@
-package gui.i18n;
+package i18n;
 
 
 public enum GUIStr {

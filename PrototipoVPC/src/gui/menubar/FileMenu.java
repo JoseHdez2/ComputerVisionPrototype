@@ -8,10 +8,10 @@ import java.io.FilenameFilter;
 
 import javax.swing.JDesktopPane;
 
-import gui.i18n.GUIStr;
-import gui.i18n.I18n;
 import gui.utils.NamedImage;
 import gui.utils.NamedImageCreator;
+import i18n.GUIStr;
+import i18n.I18n;
 import main.MainWindow;
 
 

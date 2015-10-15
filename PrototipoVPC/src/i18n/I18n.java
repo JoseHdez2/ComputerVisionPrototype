@@ -1,4 +1,4 @@
-package gui.i18n;
+package i18n;
 
 import java.util.ResourceBundle;
 
