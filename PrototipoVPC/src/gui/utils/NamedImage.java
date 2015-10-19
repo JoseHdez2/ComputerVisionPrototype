@@ -57,7 +57,7 @@ public class NamedImage extends BufferedImage {
     private void countPixelsByColor(){
         
         // TODO: Asegurarnos que BufferedImage nunca presenta informacion de conteo de colores falsa.
-        
+
         pixelColorCount.clear();
         
         int imageWidth = this.getWidth();

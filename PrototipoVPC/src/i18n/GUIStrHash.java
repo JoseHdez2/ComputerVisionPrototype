@@ -20,6 +20,9 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.FILE_DIALOG_SAVE_AS, "FileDialog.SaveAs");
         hash.put(GUIStr.TRANSFORM_MENU, "TransformMenu");
         hash.put(GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION, "TransformMenu.EqualizeAction");
+        hash.put(GUIStr.ANALYZE_MENU, "AnalyzeMenu");
+        hash.put(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM, "AnalyzeMenu.AbsoluteHistogram");
+        hash.put(GUIStr.ANALYZE_MENU_ACUMULATIVE_HISTOGRAM, "AnalyzeMenu.AcumulativeHistogram");
     }
     
     public static String get(GUIStr stringId){
