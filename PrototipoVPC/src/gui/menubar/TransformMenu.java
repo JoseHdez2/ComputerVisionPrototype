@@ -6,6 +6,7 @@ import gui.utils.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform.HistogramEqualization;
+import transform.Negative;
 
 
 @SuppressWarnings("serial")
@@ -13,7 +14,8 @@ public class TransformMenu extends AbstractMenu {
     
     final static GUIStr[] ACTION_NAMES =
         {
-        GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION
+        GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION,
+        GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION
         };
     
     public TransformMenu(MainWindow parentFrame){
@@ -27,6 +29,9 @@ public class TransformMenu extends AbstractMenu {
         case TRANSFORM_MENU_EQUALIZE_ACTION:
             equalizeActionPerformed(e);
             break;
+        case TRANSFORM_MENU_NEGATIVE_ACTION:
+            negativeActionPerformed(e);
+            break;
         }
     }
     
@@ -38,9 +43,17 @@ public class TransformMenu extends AbstractMenu {
         
         NamedImage image1 = parentFrame.getFocusedImage();
         
-//        ImageTransformer equalizer = new ImageTransformer(new HistogramEqualization());
-//        NamedImage image2 = equalizer.getTransformedImage(image1);
-//        parentFrame.createImageFrame(image2);
+        NamedImage image2 = HistogramEqualization.getTransformedImage(image1);
+        parentFrame.createImageFrame(image2);
+           
+    }
+    
+    private void negativeActionPerformed(ActionEvent e) {
+        
+        NamedImage image1 = parentFrame.getFocusedImage();
+        
+        NamedImage image2 = Negative.getTransformedImage(image1);
+        parentFrame.createImageFrame(image2);
            
     }
 }

@@ -9,22 +9,19 @@ public abstract class HistogramEqualization extends AbstractImageTransformation{
     int size;   // Number of pixels in image
     int M;
     
-    @Override
-    public LUT createLUT(NamedImage img){
-
-        // TODO: Calculate bitsUsedToCodifyImage correctly.
-        bitsUsedToCodifyImage = 8;
-        size = img.getPixelCount();
-        M = (int) Math.pow(2, bitsUsedToCodifyImage);
-        
-        return super.createLUT(img);
-    }
-    
     // TODO: Mirar y corregir todo; solo son apuntes!!
     // The resulting image's histogram will be 'flat'.
     // The transformation for this is non-linear.
     
-    public int getVOut(int vIn, NamedImage img){
+    public static int getVOut(int vIn, NamedImage img){
+        
+        // TODO: Esto permite que la clase sea estatica...
+        // pero crear estas variables cada vez que se llama a getVOut
+        // parece muy ineficiente.
+        
+        int bitsUsedToCodifyImage = 8;
+        int size = img.getPixelCount();
+        int M = (int) Math.pow(2, bitsUsedToCodifyImage);
         
         int vOut = 0;
         

@@ -11,7 +11,7 @@ public abstract class AbstractImageTransformation {
      * @param img1 Input image.
      * @return Output (transformed) image.
      */
-    public NamedImage getTransformedImage(NamedImage img1){
+    public static NamedImage getTransformedImage(NamedImage img1){
         
         return createTransformedImage(img1, createLUT(img1));
     }
@@ -22,7 +22,7 @@ public abstract class AbstractImageTransformation {
      * @param lut   Look-up table.
      * @return  Output (transformed) image.
      */
-    protected NamedImage createTransformedImage(NamedImage img1, LUT lut){
+    protected static NamedImage createTransformedImage(NamedImage img1, LUT lut){
         
         NamedImage img2 = img1.deepishCopy();
         
@@ -49,7 +49,7 @@ public abstract class AbstractImageTransformation {
      * More efficient and scalable than transformExtensive().
      * @param img
      */
-    protected LUT createLUT(NamedImage img){
+    protected static LUT createLUT(NamedImage img){
         
         LUT transTable = new LUT();
         
@@ -74,5 +74,8 @@ public abstract class AbstractImageTransformation {
      * @param img   Complete image data, needed for some transformations.
      * @return New color value that corresponds to the given one.
      */
-    protected abstract int getVOut(int vIn, NamedImage img);
+    protected static int getVOut(int vIn, NamedImage img) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }
