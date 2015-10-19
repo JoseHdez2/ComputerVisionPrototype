@@ -2,6 +2,8 @@ package gui.utils;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.util.HashMap;
 
@@ -76,5 +78,19 @@ public class NamedImage extends BufferedImage {
         }
         
         validColorCount = true;
+    }
+    
+    // TODO Recordar por que es deepish y no es deep.
+    public NamedImage deepishCopy() {
+        
+        ColorModel cm = this.getColorModel();
+        
+        boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
+        
+        WritableRaster raster = this.copyData(null);
+        
+        BufferedImage bi = new BufferedImage(cm, raster, isAlphaPremultiplied, null);
+        
+        return new NamedImage(bi, this.getFile());
     }
 }

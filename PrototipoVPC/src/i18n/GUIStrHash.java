@@ -22,7 +22,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION, "TransformMenu.EqualizeAction");
         hash.put(GUIStr.ANALYZE_MENU, "AnalyzeMenu");
         hash.put(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM, "AnalyzeMenu.AbsoluteHistogram");
-        hash.put(GUIStr.ANALYZE_MENU_ACUMULATIVE_HISTOGRAM, "AnalyzeMenu.AcumulativeHistogram");
+        hash.put(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM, "AnalyzeMenu.AccumulativeHistogram");
     }
     
     public static String get(GUIStr stringId){

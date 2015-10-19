@@ -1,4 +1,4 @@
-package processing.grayscale;
+package transform;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;

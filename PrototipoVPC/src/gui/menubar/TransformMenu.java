@@ -5,8 +5,7 @@ import java.awt.event.ActionEvent;
 import gui.utils.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
-import processing.grayscale.HistogramEqualization;
-import processing.grayscale.ImageTransformer;
+import transform.HistogramEqualization;
 
 
 @SuppressWarnings("serial")
@@ -39,9 +38,9 @@ public class TransformMenu extends AbstractMenu {
         
         NamedImage image1 = parentFrame.getFocusedImage();
         
-        ImageTransformer equalizer = new ImageTransformer(new HistogramEqualization());
-        NamedImage image2 = equalizer.getTransformedImage(image1);
-        parentFrame.createImageFrame(image2);
+//        ImageTransformer equalizer = new ImageTransformer(new HistogramEqualization());
+//        NamedImage image2 = equalizer.getTransformedImage(image1);
+//        parentFrame.createImageFrame(image2);
            
     }
 }

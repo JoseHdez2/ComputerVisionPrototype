@@ -7,10 +7,10 @@ import gui.utils.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 
-public class AcumulativeHistogram extends AbstractHistogram {
+public class AccumulativeHistogram extends AbstractHistogram {
 
-    public AcumulativeHistogram(NamedImage image) {
-        super(I18n.getString(GUIStr.ANALYZE_MENU_ACUMULATIVE_HISTOGRAM), image.getName());
+    public AccumulativeHistogram(NamedImage image) {
+        super(I18n.getString(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM), image.getName());
         
         ArrayList pixelArray = getPixelArray(image);
         this.showHistogram(pixelArray);

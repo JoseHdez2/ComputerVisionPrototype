@@ -1,23 +1,23 @@
-package processing.grayscale;
+package transform;
 
 import gui.utils.NamedImage;
 
 
-public class HistogramEqualization extends AbstractImageTransformation{
+public abstract class HistogramEqualization extends AbstractImageTransformation{
    
     int bitsUsedToCodifyImage;
     int size;   // Number of pixels in image
     int M;
     
     @Override
-    public TransformationTable transform(NamedImage img){
+    public LUT createLUT(NamedImage img){
 
         // TODO: Calculate bitsUsedToCodifyImage correctly.
         bitsUsedToCodifyImage = 8;
         size = img.getPixelCount();
         M = (int) Math.pow(2, bitsUsedToCodifyImage);
         
-        return super.transform(img);
+        return super.createLUT(img);
     }
     
     // TODO: Mirar y corregir todo; solo son apuntes!!
