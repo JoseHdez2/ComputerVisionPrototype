@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import gui.utils.NamedImage;
 import gui.utils.histogram.AbsoluteHistogram;
-import gui.utils.histogram.AcumulativeHistogram;
+import gui.utils.histogram.AccumulativeHistogram;
 import i18n.GUIStr;
 import main.MainWindow;
 
@@ -14,7 +14,7 @@ public class AnalyzeMenu extends AbstractMenu{
     final static GUIStr[] ACTION_NAMES =
         {
         GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM,
-        GUIStr.ANALYZE_MENU_ACUMULATIVE_HISTOGRAM
+        GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM
 
         };
     
@@ -31,7 +31,7 @@ public class AnalyzeMenu extends AbstractMenu{
         case ANALYZE_MENU_ABSOLUTE_HISTOGRAM:
             absoluteHistogramActionPerformed(e);
             break;
-        case ANALYZE_MENU_ACUMULATIVE_HISTOGRAM:
+        case ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM:
             accumulativeHistogramActionPerformed(e);
             break;
         }
@@ -53,7 +53,7 @@ public class AnalyzeMenu extends AbstractMenu{
         NamedImage image = parentFrame.getFocusedImage();
         
         if (image != null) {
-            new AcumulativeHistogram(image);
+            new AccumulativeHistogram(image);
         }
     }
 }
