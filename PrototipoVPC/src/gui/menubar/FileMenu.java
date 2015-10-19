@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 
+import javax.imageio.ImageIO;
 import javax.swing.JDesktopPane;
 
 import gui.utils.NamedImage;
@@ -109,10 +110,15 @@ public class FileMenu extends AbstractMenu {
     
     private void saveActionPerformed(ActionEvent e) { 
         
-        JDesktopPane pane = parentFrame.getPane();
+        NamedImage image = parentFrame.getFocusedImage();
         
-        if (pane.getSelectedFrame() != null) {
-            // TODO: Implementar el guardado
+        if (image != null) {
+            try {
+                ImageIO.write(image, image.getExtension(), image.getFile());
+            }
+            catch (Exception save) {
+                save.printStackTrace();
+            }            
         }
         
     }
