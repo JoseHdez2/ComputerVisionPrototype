@@ -35,6 +35,12 @@ public class NamedImage extends BufferedImage {
         return file.getName();
     }
     
+    public String getExtension() {
+        
+        int i = getName().lastIndexOf('.');
+        return getName().substring(i+1);   
+    }
+    
     public File getFile() {
         return file;
     }

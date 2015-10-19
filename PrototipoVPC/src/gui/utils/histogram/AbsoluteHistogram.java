@@ -12,7 +12,7 @@ public class AbsoluteHistogram extends AbstractHistogram {
     public AbsoluteHistogram(NamedImage image) {
         super(I18n.getString(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM), image.getName());
         
-        ArrayList pixelArray = getPixelArray(image);
+        ArrayList<Integer> pixelArray = getPixelArray(image);
         this.showHistogram(pixelArray);
     }
     
@@ -21,9 +21,9 @@ public class AbsoluteHistogram extends AbstractHistogram {
      * del conteo de pixeles de colores de la imagen
      * @return  el vector ordenado del nº pixeles/color
      */ 
-    private ArrayList getPixelArray(NamedImage image) {
+    private ArrayList<Integer> getPixelArray(NamedImage image) {
         
-        ArrayList pixelArray = new ArrayList();
+        ArrayList<Integer> pixelArray = new ArrayList<Integer>();
         HashMap<Integer, Integer> pixelIntegerCount = this.getColorToInteger(image.getPixelColorCount());
         
         for (int i=0; i<=255; i++) {

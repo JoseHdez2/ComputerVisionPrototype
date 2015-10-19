@@ -43,7 +43,7 @@ public class AnalyzeMenu extends AbstractMenu{
         NamedImage image = parentFrame.getFocusedImage();
         
         if (image != null) {
-            new AbsoluteHistogram(image);
+            AbsoluteHistogram h = new AbsoluteHistogram(image);
         }
     }
     
@@ -53,7 +53,7 @@ public class AnalyzeMenu extends AbstractMenu{
         NamedImage image = parentFrame.getFocusedImage();
         
         if (image != null) {
-            new AccumulativeHistogram(image);
+            AccumulativeHistogram h = new AccumulativeHistogram(image);
         }
     }
 }

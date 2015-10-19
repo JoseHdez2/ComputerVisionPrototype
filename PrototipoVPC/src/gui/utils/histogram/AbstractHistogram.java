@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import i18n.GUIStr;
+import i18n.I18n;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ public abstract class AbstractHistogram {
     
     private String title = null;
     private String name = null;
-    private ArrayList pixelArray = null;
+    private ArrayList<Integer> pixelArray = null;
     
     public AbstractHistogram(String title, String name) {
         
@@ -32,7 +34,7 @@ public abstract class AbstractHistogram {
      * Muestra el histograma con los datos ya calculados
      * y ordenados correctamente
      */        
-    public void showHistogram(ArrayList pixelArray) {
+    public void showHistogram(ArrayList<Integer> pixelArray) {
         
         this.pixelArray = pixelArray;
         
@@ -87,8 +89,8 @@ public abstract class AbstractHistogram {
         
         // Nombres
         chart.setTitle(title);
-        x.setLabel("Color");
-        y.setLabel("Número de píxeles");
+        x.setLabel(I18n.getString(GUIStr.HISTOGRAM_LABEL_COLOR));
+        y.setLabel(I18n.getString(GUIStr.HISTOGRAM_LABEL_PIXELS));
         
         // Introducir datos
         XYChart.Series serie = new XYChart.Series();
