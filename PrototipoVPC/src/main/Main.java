@@ -15,12 +15,6 @@ public class Main {
 		    // Opciones de ventana (centrar, etc.)
 		    jf.setLocationRelativeTo(null);
 		    
-		    // Test histogram
-//		    File file = new File("/home/migue/Escritorio/peppers.png");
-//            NamedImage image = NamedImageCreator.create(file);
-//            AbsoluteHistogram h = new AbsoluteHistogram(image);
-//            AcumulativeHistogram h = new AcumulativeHistogram(image);
-		    
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception

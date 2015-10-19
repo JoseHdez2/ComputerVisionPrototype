@@ -56,7 +56,7 @@ public abstract class AbstractHistogram {
         frame.add(fxPanel);
         frame.setSize(600, 400);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Provisional
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Provisional
 
         Platform.runLater(new Runnable() {
             @Override
