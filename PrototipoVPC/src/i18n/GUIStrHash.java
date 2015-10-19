@@ -23,6 +23,8 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.ANALYZE_MENU, "AnalyzeMenu");
         hash.put(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM, "AnalyzeMenu.AbsoluteHistogram");
         hash.put(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM, "AnalyzeMenu.AccumulativeHistogram");
+        hash.put(GUIStr.HISTOGRAM_LABEL_COLOR, "Histogram.LabelColor");
+        hash.put(GUIStr.HISTOGRAM_LABEL_PIXELS, "Histogram.LabelPixels");
     }
     
     public static String get(GUIStr stringId){
