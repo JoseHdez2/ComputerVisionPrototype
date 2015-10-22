@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import gui.utils.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
+import transform.AbstractImageTransformation;
 import transform.HistogramEqualization;
 import transform.Negative;
 
@@ -39,21 +40,29 @@ public class TransformMenu extends AbstractMenu {
      * Menu actions
      */
     
-    private void equalizeActionPerformed(ActionEvent e) {
-        
+    // If false, create new image in new frame.
+    boolean OVERWRITE = false;
+    
+    private void transform(AbstractImageTransformation trans){
         NamedImage image1 = parentFrame.getFocusedImage();
         
-        NamedImage image2 = HistogramEqualization.getTransformedImage(image1);
-        parentFrame.createImageFrame(image2);
-           
+        NamedImage image2 = trans.getTransformedImage(image1);
+        
+        if (OVERWRITE){
+            // TODO: overwrite focused image.
+//            parentFrame.getFocusedImage()
+        } else {
+            parentFrame.createImageFrame(image2);
+        }
+    }
+    
+    private void equalizeActionPerformed(ActionEvent e) {
+        
+        transform(new HistogramEqualization(parentFrame.getFocusedImage()));
     }
     
     private void negativeActionPerformed(ActionEvent e) {
         
-        NamedImage image1 = parentFrame.getFocusedImage();
-        
-        NamedImage image2 = Negative.getTransformedImage(image1);
-        parentFrame.createImageFrame(image2);
-           
+        transform(new Negative());   
     }
 }

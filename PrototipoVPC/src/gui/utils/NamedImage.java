@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class NamedImage extends BufferedImage {
     private File file;
-    private HashMap<Color, Integer> pixelColorCount = new HashMap<Color, Integer>();
+    private ColorHistogram pixelColorCount = new ColorHistogram();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
     
     public NamedImage(BufferedImage bi, File file){
@@ -49,7 +49,7 @@ public class NamedImage extends BufferedImage {
      * Provides lazy evaluation simulation.
      * @return Number of pixels for each color in the image.
      */
-    public HashMap<Color, Integer> getPixelColorCount() {
+    public ColorHistogram getPixelColorCount() {
         if(!validColorCount){
             countPixelsByColor();
         }

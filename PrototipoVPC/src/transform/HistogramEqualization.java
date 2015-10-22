@@ -3,15 +3,32 @@ package transform;
 import gui.utils.NamedImage;
 
 
-public abstract class HistogramEqualization extends AbstractImageTransformation{
+public class HistogramEqualization extends AbstractImageTransformation{
    
+    // Caso particular de especificacion de histograma
+    // En cuyo caso queremos que el histograma se asemeje a un histograma plano.
+    // TODO: Cargarnos esto? Que la ecualizacion sea una llamada parametrizada a especificacion.
+    
     int bitsUsedToCodifyImage;
     int size;   // Number of pixels in image
     int M;
     
+    public HistogramEqualization(NamedImage img) {
+        bitsUsedToCodifyImage = 8;
+        size = img.getPixelCount();
+        M = (int) Math.pow(2, bitsUsedToCodifyImage);
+        // TODO Auto-generated constructor stub
+    }
+    
     // TODO: Mirar y corregir todo; solo son apuntes!!
     // The resulting image's histogram will be 'flat'.
     // The transformation for this is non-linear.
+    
+    @Override
+    protected int getVOut(int vIn) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
     
     public static int getVOut(int vIn, NamedImage img){
         
@@ -19,9 +36,7 @@ public abstract class HistogramEqualization extends AbstractImageTransformation{
         // pero crear estas variables cada vez que se llama a getVOut
         // parece muy ineficiente.
         
-        int bitsUsedToCodifyImage = 8;
-        int size = img.getPixelCount();
-        int M = (int) Math.pow(2, bitsUsedToCodifyImage);
+
         
         int vOut = 0;
         
@@ -45,6 +60,8 @@ public abstract class HistogramEqualization extends AbstractImageTransformation{
         // Siempre sin excederse del limite total (rango de colores)
         // Mejora del contraste inteligente. Esta es la gran utilidad del ecualizado.
         // En TEORIA da un histograma plano... lo conseguiria si el color fuese una variable discreta.
+
+
         
         // Como TODOS los de un color seran a otro COLOR.. 
         // si hay picos que sobrepasan el nivel de ecualizado, yo no puedo cambiar

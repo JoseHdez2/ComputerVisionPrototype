@@ -104,25 +104,5 @@ public abstract class AbstractHistogram {
 
         return scene;
     }    
-    
-    /**
-     * La cuenta de píxeles está ordenada por colores desordenados,
-     * es necesario pasarlos a enteros (0..255) para mostrarlos ordenados
-     * @return  Número de píxeles entre 0 y 255
-     */    
-    public HashMap<Integer, Integer> getColorToInteger(HashMap<Color, Integer> pixelsCount) {
-        // TODO: provisional para imágenes en blanco y negro
-        
-        HashMap<Integer, Integer> pixelIntegerCount = new HashMap<Integer,Integer>();
-        
-        for (Entry<Color, Integer> entry : pixelsCount.entrySet()) {
-            Color key = entry.getKey();
-            Integer value = entry.getValue();
-            
-            pixelIntegerCount.put(key.getBlue(), value);  
-        }
-        
-        return pixelIntegerCount;
-    }
 
 }

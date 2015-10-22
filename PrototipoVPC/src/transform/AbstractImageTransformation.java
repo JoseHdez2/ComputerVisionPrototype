@@ -11,9 +11,9 @@ public abstract class AbstractImageTransformation {
      * @param img1 Input image.
      * @return Output (transformed) image.
      */
-    public static NamedImage getTransformedImage(NamedImage img1){
+    public NamedImage getTransformedImage(NamedImage img1){
         
-        return createTransformedImage(img1, createLUT(img1));
+        return createTransformedImage(img1, createLUT());
     }
     
     /**
@@ -22,7 +22,7 @@ public abstract class AbstractImageTransformation {
      * @param lut   Look-up table.
      * @return  Output (transformed) image.
      */
-    protected static NamedImage createTransformedImage(NamedImage img1, LUT lut){
+    protected NamedImage createTransformedImage(NamedImage img1, LUT lut){
         
         NamedImage img2 = img1.deepishCopy();
         
@@ -49,7 +49,7 @@ public abstract class AbstractImageTransformation {
      * More efficient and scalable than transformExtensive().
      * @param img
      */
-    protected static LUT createLUT(NamedImage img){
+    protected LUT createLUT(){
         
         LUT transTable = new LUT();
         
@@ -58,7 +58,7 @@ public abstract class AbstractImageTransformation {
             
             // For this color value, calculate the corresponding new color value.
             // This method will vary depending on the implementing class (Strategy design pattern).
-            int vOut = getVOut(vIn, img);
+            int vOut = getVOut(vIn);
             
             transTable.put(new Color(vIn, vIn, vIn), new Color(vOut, vOut, vOut));
         }
@@ -70,12 +70,10 @@ public abstract class AbstractImageTransformation {
      * Given a color value, return its corresponding new value.
      * This method will be implemented differently by extending classes,
      * leading to the different types of image transformations.
+     * NOTE: Other needed parameters will be implicit and provided in
+     * the Transformation's constructor.
      * @param vIn   Given color value
-     * @param img   Complete image data, needed for some transformations.
      * @return New color value that corresponds to the given one.
      */
-    protected static int getVOut(int vIn, NamedImage img) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+    protected abstract int getVOut(int vIn);
 }

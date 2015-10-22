@@ -24,7 +24,7 @@ public class AbsoluteHistogram extends AbstractHistogram {
     private ArrayList<Integer> getPixelArray(NamedImage image) {
         
         ArrayList<Integer> pixelArray = new ArrayList<Integer>();
-        HashMap<Integer, Integer> pixelIntegerCount = this.getColorToInteger(image.getPixelColorCount());
+        HashMap<Integer, Integer> pixelIntegerCount = image.getPixelColorCount().getColorToInteger();
         
         for (int i=0; i<=255; i++) {
             
