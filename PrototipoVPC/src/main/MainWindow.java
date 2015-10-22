@@ -33,6 +33,9 @@ public class MainWindow extends JFrame {
 		this.setVisible(true);
 	}
 
+	 /**
+     * Create new InternalFrame for image's transforms
+     */
 	public void createImageFrame(NamedImage image) {
 	    MyInternalFrame frame = new MyInternalFrame(image);
         pane.add(frame);

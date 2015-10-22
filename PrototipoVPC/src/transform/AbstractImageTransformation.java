@@ -54,7 +54,7 @@ public abstract class AbstractImageTransformation {
         LUT transTable = new LUT();
         
         // Repeat for each of the colors.
-        for (int vIn = 0; vIn < 255; vIn++){
+        for (int vIn = 0; vIn <= 255; vIn++){
             
             // For this color value, calculate the corresponding new color value.
             // This method will vary depending on the implementing class (Strategy design pattern).
