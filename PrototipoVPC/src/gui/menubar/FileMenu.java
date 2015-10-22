@@ -23,7 +23,6 @@ public class FileMenu extends AbstractMenu {
         {
         GUIStr.FILE_MENU_OPEN_ACTION,
         GUIStr.SEPARATOR,
-        GUIStr.SEPARATOR,
         GUIStr.FILE_MENU_SAVE_ACTION,
         GUIStr.FILE_MENU_SAVE_AS_ACTION,
         GUIStr.SEPARATOR,
