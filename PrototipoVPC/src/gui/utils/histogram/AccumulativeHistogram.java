@@ -3,6 +3,7 @@ package gui.utils.histogram;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import gui.utils.ColorHistogram;
 import gui.utils.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
@@ -24,23 +25,13 @@ public class AccumulativeHistogram extends AbstractHistogram {
     private ArrayList<Integer> getPixelArray(NamedImage image) {
         
         ArrayList<Integer> pixelArray= new ArrayList<Integer>();
-        HashMap<Integer, Integer> pixelIntegerCount = image.getPixelColorCount().getColorToInteger();
-        int total = 0;
-        
+        ColorHistogram accHistogram = image.getPixelColorCount().getAccumulative();
+        HashMap<Integer, Integer> pixelIntegerCount = accHistogram.getColorToInteger();
+
         for (int i=0; i<=255; i++) {
-            
-            Integer pixel = pixelIntegerCount.get(i);
-            
-            if (pixel != null) {
-                pixelArray.add(pixel + total);
-                total += pixel;                
-            }
-            else {
-                pixelArray.add(0);
-            }
+            pixelArray.add(pixelIntegerCount.get(i));
         }
         
         return pixelArray;
     }
-
 }

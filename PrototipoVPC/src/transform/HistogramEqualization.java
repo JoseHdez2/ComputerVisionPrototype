@@ -47,7 +47,7 @@ public class HistogramEqualization extends AbstractImageTransformation{
             covin += img.getPixelColorCount().get(i);
         }
         
-        vOut = Math.round(((M / size) * covin)) - 1;
+//        vOut = Math.round(((M / size) * covin)) - 1;
         
         if (vOut < 0) vOut = 0;
         

@@ -1,9 +1,6 @@
 package gui.utils.histogram;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -44,7 +41,6 @@ public abstract class AbstractHistogram {
                 initAndShowFrame();
             }
         });        
-        
     }
     
     /**
@@ -58,7 +54,6 @@ public abstract class AbstractHistogram {
         frame.add(fxPanel);
         frame.setSize(600, 400);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Provisional
 
         Platform.runLater(new Runnable() {
             @Override
