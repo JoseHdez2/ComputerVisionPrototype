@@ -124,8 +124,25 @@ public class FileMenu extends AbstractMenu {
 
     private void saveAsActionPerformed(ActionEvent e) { 
         
+        NamedImage image = parentFrame.getFocusedImage();
+        
         FileDialog saveFile = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_SAVE_AS), FileDialog.SAVE);
-        // TODO Terminar esto
+        if (image != null) {
+            saveFile.setDirectory(image.getDirectory());
+        }
+        saveFile.setVisible(true);
+        
+        String filePath = saveFile.getDirectory() + saveFile.getFile();
+        File file = new File(filePath);
+        
+        if ((image != null) && (file != null)) {
+            try {
+                ImageIO.write(image, image.getExtension(), file);
+            }
+            catch (Exception save) {
+                save.printStackTrace();
+            }
+        }
     }
     
     private void closeActionPerformed(ActionEvent e) { 

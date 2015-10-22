@@ -41,6 +41,10 @@ public class NamedImage extends BufferedImage {
         return getName().substring(i+1);   
     }
     
+    public String getDirectory() {
+        return file.getAbsoluteFile().getParentFile().getAbsolutePath();
+    }
+    
     public File getFile() {
         return file;
     }
