@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Toolkit;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
@@ -16,8 +18,8 @@ import i18n.I18n;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
-	final int WIDTH_DEFAULT = 500;
-	final int HEIGHT_DEFAULT = 500;
+	final int WIDTH_DEFAULT = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2;
+	final int HEIGHT_DEFAULT = (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()/1.5);
 	
 	JDesktopPane pane = new JDesktopPane();
 	TheMenuBar menubar = new TheMenuBar(this);

@@ -53,6 +53,7 @@ public abstract class AbstractHistogram {
         JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
         frame.setSize(600, 400);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         Platform.runLater(new Runnable() {
@@ -88,10 +89,10 @@ public abstract class AbstractHistogram {
         y.setLabel(I18n.getString(GUIStr.HISTOGRAM_LABEL_PIXELS));
         
         // Introducir datos
-        XYChart.Series serie = new XYChart.Series();
+        XYChart.Series<String, Number> serie = new XYChart.Series<String, Number>();
 
         for (int i=0; i<=255; i++)
-            serie.getData().add(new XYChart.Data(String.valueOf(i), pixelArray.get(i)));
+            serie.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), pixelArray.get(i)));
         
         // Añadir a la escena
         Scene scene = new Scene(chart,600,400);
