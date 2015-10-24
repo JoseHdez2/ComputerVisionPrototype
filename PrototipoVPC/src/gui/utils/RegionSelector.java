@@ -91,6 +91,8 @@ public class RegionSelector extends MouseAdapter {
      */
     public void mouseClicked(MouseEvent e) {
         current = getPoint(e);
+        origin = null;
+        end = null;
         label.updateSelection(null,null);
     }
     

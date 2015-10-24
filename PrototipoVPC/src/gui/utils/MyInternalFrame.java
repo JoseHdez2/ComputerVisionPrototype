@@ -31,7 +31,7 @@ public class MyInternalFrame extends JInternalFrame{
         return namedImg;
     }
     
-    public RegionSelector getSelection() {
+    public RegionSelector getSelector() {
         return regionSelector;
     }
     

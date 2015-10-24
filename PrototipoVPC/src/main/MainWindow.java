@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
 import gui.utils.NamedImage;
+import gui.utils.RegionSelector;
 import i18n.GUIStr;
 import i18n.I18n;
 
@@ -48,21 +49,47 @@ public class MainWindow extends JFrame {
 	}
 	
 	/**
-	 * Returns the NamedImage of the currently focused MyInternalFrame.
+	 * Returns focused MyInternalFrame
 	 * Will return 'null' if no MyInternalFrame is selected.
+	 * @return Either a MyInternalFrame or null.
+	 */
+	private MyInternalFrame getFocusedFrame() {
+	    	       
+	    if (pane.getSelectedFrame() != null) {
+	        return (MyInternalFrame)pane.getSelectedFrame();
+	    } else {
+	        return null;
+	    }    	    
+	}
+	
+	/**
+	 * Returns the NamedImage of the currently focused MyInternalFrame.
 	 * @return Either a NamedImage or null.
 	 */
 	public NamedImage getFocusedImage(){
 	    
-       MyInternalFrame myIntFrame = null;
+	    MyInternalFrame myIntFrame = getFocusedFrame();
        
-       if (pane.getSelectedFrame() != null) {
-           myIntFrame = (MyInternalFrame)pane.getSelectedFrame();
-           return myIntFrame.getNamedImage();
-       } else {
-           return null;
-       }
+	    if (myIntFrame != null) {
+	        return myIntFrame.getNamedImage();
+	    } else {
+	        return null;
+	    }
+	}
+	
+	/**
+	 *  Returns RegionSelectorevents of focused MyInternalFrame
+	 * @return Either a RegionSelector or null.
+	 */
+	public RegionSelector getFocusedSelector() {
+	    
+	    MyInternalFrame myIntFrame = getFocusedFrame();
        
+	    if (myIntFrame != null) {
+	        return myIntFrame.getSelector();
+	    } else {
+	        return null;
+	    }
 	}
 	
 	/*
