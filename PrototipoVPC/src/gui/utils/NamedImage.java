@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.io.File;
-import java.util.HashMap;
 
 public class NamedImage extends BufferedImage {
     private File file;

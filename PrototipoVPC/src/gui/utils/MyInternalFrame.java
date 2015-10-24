@@ -9,14 +9,19 @@ import javax.swing.JScrollPane;
 public class MyInternalFrame extends JInternalFrame{
 
     NamedImage namedImg = null;
+    JLabel imgLabel = null;
     
     public MyInternalFrame(NamedImage namedImg){
       super(namedImg.getName(), true, true, true, true);
+      
       // TODO: Asegurar que no necesitamos constructores mas flexibles/vacios
       this.namedImg = namedImg;
+      this.imgLabel = new JLabel(new ImageIcon(namedImg));
+      
       setSize(namedImg.getWidth(), namedImg.getHeight());
-      add(new JScrollPane(new JLabel(new ImageIcon(namedImg))));
-      setVisible(true);
+      new RegionSelector(imgLabel);
+      add(new JScrollPane(imgLabel));
+      setVisible(true);     
     }
     
     public void addNamedImage(NamedImage namedImg){
@@ -26,4 +31,9 @@ public class MyInternalFrame extends JInternalFrame{
     public NamedImage getNamedImage() {
         return namedImg;
     }
+    
+    public JLabel getImageLabel() {
+        return imgLabel;
+    }
+    
 }
