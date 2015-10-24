@@ -2,25 +2,24 @@ package gui.utils;
 
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class MyInternalFrame extends JInternalFrame{
 
     NamedImage namedImg = null;
-    JLabel imgLabel = null;
+    RegionSelector regionSelector = null;
     
     public MyInternalFrame(NamedImage namedImg){
       super(namedImg.getName(), true, true, true, true);
       
       // TODO: Asegurar que no necesitamos constructores mas flexibles/vacios
       this.namedImg = namedImg;
-      this.imgLabel = new JLabel(new ImageIcon(namedImg));
+      MyLabel imgLabel = new MyLabel(new ImageIcon(namedImg));
+      this.regionSelector = new RegionSelector(imgLabel);
+      add(new JScrollPane(imgLabel));
       
       setSize(namedImg.getWidth(), namedImg.getHeight());
-      new RegionSelector(imgLabel);
-      add(new JScrollPane(imgLabel));
       setVisible(true);     
     }
     
@@ -32,8 +31,8 @@ public class MyInternalFrame extends JInternalFrame{
         return namedImg;
     }
     
-    public JLabel getImageLabel() {
-        return imgLabel;
+    public RegionSelector getSelection() {
+        return regionSelector;
     }
     
 }

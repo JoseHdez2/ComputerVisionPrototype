@@ -4,16 +4,14 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JLabel;
-
 public class RegionSelector extends MouseAdapter {
     
-    final JLabel label;
+    final MyLabel label;
     Point origin = null;
     Point end = null;
     Point current = null;
 
-    public RegionSelector(JLabel label) {
+    public RegionSelector(MyLabel label) {
         this.label = label;
         label.addMouseListener(this);
     }
@@ -79,17 +77,21 @@ public class RegionSelector extends MouseAdapter {
     }
     
     /**
-     * Mouse event when the mouse button has been released
+     * Mouse event when the mouse button has been released 
+     * and paint selection
      */
     public void mouseReleased(MouseEvent e) { 
         end = getPoint(e);
+        label.updateSelection(origin,end);
     }
     
     /**
      * Mouse event when the mouse button has been clicked (pressed and released)
+     * and clear any selection
      */
     public void mouseClicked(MouseEvent e) {
         current = getPoint(e);
+        label.updateSelection(null,null);
     }
     
     
