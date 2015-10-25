@@ -3,6 +3,7 @@ package gui.utils;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
+import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
 
@@ -71,13 +72,14 @@ public class NamedImage extends BufferedImage {
 
         pixelColorCount.clear();
         
+        Raster raster = this.getRaster();
         int imageWidth = this.getWidth();
         int imageHeight = this.getHeight();
         
         for (int i = 0; i < imageWidth; i++){
             for (int j = 0; j < imageHeight; j++){
                 // TODO: Demasiado ineficiente crear un Color cada vez?
-                Color pixelColor = new Color(this.getRGB(i, j));
+                Color pixelColor = new Color(raster.getSample(i,j,0));
                 if(!pixelColorCount.containsKey(pixelColor)){
                     pixelColorCount.put(pixelColor, 1);
                 } else {

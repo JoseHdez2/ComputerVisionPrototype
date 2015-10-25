@@ -17,7 +17,7 @@ public class ColorHistogram extends HashMap<Color, Integer> {
         
         Integer pixelsBelowOrEqualToThisColor = 0;
         for (int i = 0; i <= 255; i++){
-            Color color = new Color(i,i,i);
+            Color color = new Color(0,0,i);
             if (get(color) != null) {
                 pixelsBelowOrEqualToThisColor += get(color);
             }    
@@ -68,7 +68,7 @@ public class ColorHistogram extends HashMap<Color, Integer> {
             Color key = entry.getKey();
             Integer value = entry.getValue();
             
-            pixelIntegerCount.put(key.getRed(), value);  
+            pixelIntegerCount.put(key.getBlue(), value);  // Importante valor B al utilizar Raster!!!  
         }
         
         return pixelIntegerCount;
