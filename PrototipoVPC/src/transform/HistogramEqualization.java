@@ -3,7 +3,7 @@ package transform;
 import gui.utils.NamedImage;
 
 
-public class HistogramEqualization extends AbstractImageTransformation{
+public class HistogramEqualization extends AbstractImagePointTransformation{
    
     // Caso particular de especificacion de histograma
     // En cuyo caso queremos que el histograma se asemeje a un histograma plano.

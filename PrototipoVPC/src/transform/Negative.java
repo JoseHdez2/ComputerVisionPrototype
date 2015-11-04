@@ -1,6 +1,6 @@
 package transform;
 
-public class Negative extends AbstractImageTransformation{
+public class Negative extends AbstractImagePointTransformation{
 
     @Override
     protected int getVOut(int vIn) {

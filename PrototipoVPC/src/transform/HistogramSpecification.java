@@ -3,7 +3,7 @@ package transform;
 import java.awt.Color;
 import java.util.HashMap;
 
-public class HistogramSpecification extends AbstractImageTransformation{
+public class HistogramSpecification extends AbstractImagePointTransformation{
     
     HashMap<Color,Integer> desiredHistogram;
     
@@ -25,7 +25,7 @@ public class HistogramSpecification extends AbstractImageTransformation{
 //        
 //
 //        int nearestMatch = 0;
-//        int nearestMatchValue = PRACTICALLY_INFINITY;
+//        int nearestMatchValue = Integer.MAX_VALUE;
 //        for (int i = 0; i < 255; i++){
 //            for (int j = 0; j < 255; j++){
 //                int thisMatchValue = Math.abs(accumulativeDesiredHistogram.get(i) - oldHistogram.get(i));

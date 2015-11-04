@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import gui.utils.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
-import transform.AbstractImageTransformation;
+import transform.AbstractImagePointTransformation;
 import transform.HistogramEqualization;
 import transform.Negative;
 
@@ -43,7 +43,7 @@ public class TransformMenu extends AbstractMenu {
     // If false, create new image in new frame.
     boolean OVERWRITE = false;
     
-    private void transform(AbstractImageTransformation trans){
+    private void transform(AbstractImagePointTransformation trans){
         NamedImage image1 = parentFrame.getFocusedImage();
         
         NamedImage image2 = trans.getTransformedImage(image1);

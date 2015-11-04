@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import gui.utils.NamedImage;
 
-public abstract class AbstractImageTransformation {
+public abstract class AbstractImagePointTransformation {
     
     /**
      * Take an input image and output the transformed image.
