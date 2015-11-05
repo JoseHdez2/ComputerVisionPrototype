@@ -1,10 +1,12 @@
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
+import gui.menubar.StatusBar;
 import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
 import gui.utils.NamedImage;
@@ -24,14 +26,17 @@ public class MainWindow extends JFrame {
 	
 	JDesktopPane pane = new JDesktopPane();
 	TheMenuBar menubar = new TheMenuBar(this);
+	StatusBar statusbar = new StatusBar();
 	
 	MainWindow(){
 	    
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
+		this.setLayout(new BorderLayout());
 		this.setTitle(I18n.getString(GUIStr.MAIN_WINDOW_TITLE));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.add(pane);
+		this.add(statusbar, BorderLayout.SOUTH);
 	
 		this.setVisible(true);
 	}
@@ -40,7 +45,7 @@ public class MainWindow extends JFrame {
      * Create new InternalFrame for image's transforms
      */
 	public void createImageFrame(NamedImage image) {
-	    MyInternalFrame frame = new MyInternalFrame(image);
+	    MyInternalFrame frame = new MyInternalFrame(image, statusbar);
         pane.add(frame);
         
         try {

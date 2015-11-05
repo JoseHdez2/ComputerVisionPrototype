@@ -27,6 +27,17 @@ public class NamedImage extends BufferedImage {
         return this.getWidth() * this.getHeight();
     }
     
+    /**
+     * Returns the color for pixel in x and y coordinates
+     * @return Color if exists pixel
+     */
+    public Color getPixelColor(int x, int y) {
+        if (validPixel(x,y))
+            return new Color(this.getRaster().getSample(x,y,0));
+        else
+            return null;
+    }
+    
     /*
      * Interfaces con el File.
      */
@@ -47,6 +58,17 @@ public class NamedImage extends BufferedImage {
     
     public File getFile() {
         return file;
+    }
+    
+    /**
+     * Validate x and y coordinates for image
+     * @return boolean
+     */
+    private boolean validPixel(int x, int y) {
+        if (x < this.getWidth() && y < this.getHeight())
+            return true;
+        else
+            return false;
     }
 
     /**

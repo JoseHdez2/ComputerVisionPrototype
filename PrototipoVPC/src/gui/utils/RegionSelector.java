@@ -1,19 +1,27 @@
 package gui.utils;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import gui.menubar.StatusBar;
+
 public class RegionSelector extends MouseAdapter {
     
     final MyLabel label;
+    final StatusBar status;
+    final NamedImage image;
     Point origin = null;
     Point end = null;
     Point current = null;
 
-    public RegionSelector(MyLabel label) {
+    public RegionSelector(NamedImage img, MyLabel label, StatusBar status) {
+        this.image = img;
+        this.status = status;
         this.label = label;
         label.addMouseListener(this);
+        label.addMouseMotionListener(this);
     }
     
     /**
@@ -74,6 +82,7 @@ public class RegionSelector extends MouseAdapter {
      */
     public void mousePressed(MouseEvent e) { 
         origin = getPoint(e);
+        status.setPositionLabel(current);
     }
     
     /**
@@ -96,6 +105,40 @@ public class RegionSelector extends MouseAdapter {
         label.updateSelection(null,null);
     }
     
+    /**
+     * Mouse event when the mouse exits InternalFrame
+     * and clear status bar
+     */
+    public void mouseExited(MouseEvent e) {
+        status.setPositionLabel(null);
+        status.setColorLabel(null);
+    }
+    
+    /**
+     * Mouse event when mouse cursor has been moved onto InternalFrame
+     * and update status bar
+     */
+    public void mouseMoved(MouseEvent e) {
+        current = getPoint(e);
+        status.setPositionLabel(current);
+        if (current != null)
+            status.setColorLabel(image.getPixelColor((int)current.getX(),(int)current.getY()));
+        else
+            status.setColorLabel(null);
+    }
+    
+    /**
+     * Mouse event when a mouse button is pressed and then dragged (pressed+released+moved)
+     * and update status bar
+     */
+    public void mouseDragged(MouseEvent e) {
+        current = getPoint(e);
+        status.setPositionLabel(current);
+        if (current != null)
+            status.setColorLabel(image.getPixelColor((int)current.getX(),(int)current.getY()));
+        else
+            status.setColorLabel(null);
+    }
     
     /**
      * Getters and Setters

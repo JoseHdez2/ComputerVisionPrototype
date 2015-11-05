@@ -4,19 +4,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 
+import gui.menubar.StatusBar;
+
 @SuppressWarnings("serial")
 public class MyInternalFrame extends JInternalFrame{
 
     NamedImage namedImg = null;
     RegionSelector regionSelector = null;
     
-    public MyInternalFrame(NamedImage namedImg){
+    public MyInternalFrame(NamedImage namedImg, StatusBar statusbar){
       super(namedImg.getName(), true, true, true, true);
       
       // TODO: Asegurar que no necesitamos constructores mas flexibles/vacios
       this.namedImg = namedImg;
       MyLabel imgLabel = new MyLabel(new ImageIcon(namedImg));
-      this.regionSelector = new RegionSelector(imgLabel);
+      this.regionSelector = new RegionSelector(namedImg, imgLabel, statusbar);
       add(new JScrollPane(imgLabel));
       
       setSize(namedImg.getWidth(), namedImg.getHeight());
