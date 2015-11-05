@@ -6,15 +6,23 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import transform.BrightnessAndContrast;
 
 public class NamedImage extends BufferedImage {
     private File file;
     private ColorHistogram pixelColorCount = new ColorHistogram();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
+    float brightness;
+    float contrast;
     
     public NamedImage(BufferedImage bi, File file){
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);
         this.file = file;
+        brightness = BrightnessAndContrast.Brightness(this);
+        contrast = BrightnessAndContrast.Contrast(this);
     }
     
     /**
@@ -36,6 +44,14 @@ public class NamedImage extends BufferedImage {
             return new Color(this.getRaster().getSample(x,y,0));
         else
             return null;
+    }
+    
+    public float getBrigthness() {
+        return brightness;
+    }
+    
+    public float getContrast() {
+        return contrast;
     }
     
     /*
