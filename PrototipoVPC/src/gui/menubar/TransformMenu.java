@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
-import transform.HistogramEqualization;
 import transform.Negative;
 import transform.base.AbstractImagePointTransformation;
+import transform.point.HistogramEqualization;
 
 
 @SuppressWarnings("serial")

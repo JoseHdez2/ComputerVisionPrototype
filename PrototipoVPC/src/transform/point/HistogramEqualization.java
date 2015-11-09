@@ -1,4 +1,4 @@
-package transform;
+package transform.point;
 
 import gui.utils.image.NamedImage;
 import transform.base.AbstractImagePointTransformation;

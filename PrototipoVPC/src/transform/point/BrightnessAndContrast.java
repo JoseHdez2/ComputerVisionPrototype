@@ -1,4 +1,4 @@
-package transform;
+package transform.point;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
