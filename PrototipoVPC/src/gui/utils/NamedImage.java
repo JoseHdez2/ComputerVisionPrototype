@@ -15,6 +15,7 @@ public class NamedImage extends BufferedImage {
     private File file;
     private ColorHistogram pixelColorCount = new ColorHistogram();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
+    private Boolean grayscale;  // Whether this image is grayscale
     float brightness;
     float contrast;
     
@@ -23,6 +24,13 @@ public class NamedImage extends BufferedImage {
         this.file = file;
         brightness = BrightnessAndContrast.Brightness(this);
         contrast = BrightnessAndContrast.Contrast(this);
+        // TODO: seria posible que carguemos una imagen que no tenga ni
+        // Asumimos que si no tiene 1 banda, tendra 3.
+        if(this.getRaster().getNumBands() == 1){
+            grayscale = true;
+        } else {
+            grayscale = false;
+        }
     }
     
     /**
@@ -40,44 +48,22 @@ public class NamedImage extends BufferedImage {
      * @return Color if exists pixel
      */
     public Color getPixelColor(int x, int y) {
-        if (validPixel(x,y))
+        if (validPixel(x,y)){
             // TODO: Cuidado. Comprobar que esas bandas son asi. 
+            if (isGrayscale()){
+                return new Color(
+                        this.getRaster().getSample(x,y,0),
+                        this.getRaster().getSample(x,y,0),
+                        this.getRaster().getSample(x,y,0));
+            } else {
             return new Color(
                     this.getRaster().getSample(x,y,0),
                     this.getRaster().getSample(x,y,1),
                     this.getRaster().getSample(x,y,2));
+            }
+        }
         else
             return null;
-    }
-    
-    public float getBrigthness() {
-        return brightness;
-    }
-    
-    public float getContrast() {
-        return contrast;
-    }
-    
-    /*
-     * Interfaces con el File.
-     */
-    
-    public String getName(){
-        return file.getName();
-    }
-    
-    public String getExtension() {
-        
-        int i = getName().lastIndexOf('.');
-        return getName().substring(i+1);   
-    }
-    
-    public String getDirectory() {
-        return file.getAbsoluteFile().getParentFile().getAbsolutePath();
-    }
-    
-    public File getFile() {
-        return file;
     }
     
     /**
@@ -145,5 +131,43 @@ public class NamedImage extends BufferedImage {
         BufferedImage bi = new BufferedImage(cm, raster, isAlphaPremultiplied, null);
         
         return new NamedImage(bi, this.getFile());
+    }
+    
+    /*
+     * Interfaces con el File.
+     */
+    
+    public String getName(){
+        return file.getName();
+    }
+    
+    public String getExtension() {
+        
+        int i = getName().lastIndexOf('.');
+        return getName().substring(i+1);   
+    }
+    
+    public String getDirectory() {
+        return file.getAbsoluteFile().getParentFile().getAbsolutePath();
+    }
+    
+    public File getFile() {
+        return file;
+    }
+    
+    /*
+     * Setters and getters.
+     */
+
+    public Boolean isGrayscale() {
+        return grayscale;
+    }
+    
+    public float getBrigthness() {
+        return brightness;
+    }
+    
+    public float getContrast() {
+        return contrast;
     }
 }
