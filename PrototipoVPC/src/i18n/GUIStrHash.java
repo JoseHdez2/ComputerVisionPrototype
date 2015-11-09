@@ -28,6 +28,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.HISTOGRAM_LABEL_PIXELS, "Histogram.LabelPixels");
         hash.put(GUIStr.IMAGE_MENU, "ImageMenu");
         hash.put(GUIStr.IMAGE_MENU_CROP_SELECTION, "ImageMenu.CropSelection");
+        hash.put(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST, "ImageMenu.BrightnessContrast");
     }
     
     public static String get(GUIStr stringId){

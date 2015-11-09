@@ -4,8 +4,9 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.utils.image.NamedImage;
+import gui.dialogs.BrightnessContrastDialog;
 import gui.utils.RegionSelector;
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
 
@@ -14,7 +15,8 @@ public class ImageMenu extends AbstractMenu{
     
     final static GUIStr[] ACTION_NAMES =
         {
-        GUIStr.IMAGE_MENU_CROP_SELECTION
+        GUIStr.IMAGE_MENU_CROP_SELECTION,
+        GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST
         };
     
     public ImageMenu(MainWindow parentFrame) {
@@ -30,9 +32,11 @@ public class ImageMenu extends AbstractMenu{
         case IMAGE_MENU_CROP_SELECTION:
             cropSelectionActionPerformed(e);
             break;
+        case IMAGE_MENU_BRIGHTNESS_CONTRAST:
+            brightnessAndContrastActionPerformed(e);
+            break;
         }
-    }    
-    
+    }
     
     private void cropSelectionActionPerformed(ActionEvent e) {
     
@@ -56,4 +60,11 @@ public class ImageMenu extends AbstractMenu{
             parentFrame.createImageFrame(image2);
         }
     }
+    
+    private void  brightnessAndContrastActionPerformed(ActionEvent e) {
+    
+        BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame);
+    
+    }
+        
 }
