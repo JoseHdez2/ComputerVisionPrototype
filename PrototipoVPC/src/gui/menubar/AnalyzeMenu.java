@@ -2,9 +2,9 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
-import gui.utils.NamedImage;
 import gui.utils.histogram.AbsoluteHistogram;
 import gui.utils.histogram.AccumulativeHistogram;
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
 

@@ -1,4 +1,4 @@
-package gui.utils;
+package gui.utils.image;
 
 import java.awt.Color;
 import java.util.HashMap;

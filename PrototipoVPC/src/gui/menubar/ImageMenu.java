@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 import gui.utils.RegionSelector;
 import i18n.GUIStr;
 import main.MainWindow;

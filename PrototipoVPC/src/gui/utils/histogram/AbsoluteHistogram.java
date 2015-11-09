@@ -3,7 +3,7 @@ package gui.utils.histogram;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 

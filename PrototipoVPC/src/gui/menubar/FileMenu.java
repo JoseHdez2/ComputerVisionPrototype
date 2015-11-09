@@ -9,8 +9,8 @@ import java.io.FilenameFilter;
 import javax.imageio.ImageIO;
 import javax.swing.JDesktopPane;
 
-import gui.utils.NamedImage;
-import gui.utils.NamedImageCreator;
+import gui.utils.image.NamedImage;
+import gui.utils.image.NamedImageCreator;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;

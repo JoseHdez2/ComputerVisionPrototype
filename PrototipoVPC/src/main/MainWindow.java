@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import gui.menubar.StatusBar;
 import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
-import gui.utils.NamedImage;
 import gui.utils.RegionSelector;
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 

@@ -1,7 +1,9 @@
-package transform;
+package transform.base;
 
 import java.awt.Color;
 import java.util.HashMap;
+
+// NOTE: Just a typedef.
 
 /**
  * LUT - Lookup Table, or transformation table.

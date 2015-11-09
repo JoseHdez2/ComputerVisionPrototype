@@ -3,6 +3,8 @@ package transform;
 import java.awt.Color;
 import java.util.HashMap;
 
+import transform.base.AbstractImagePointTransformation;
+
 public class HistogramSpecification extends AbstractImagePointTransformation{
     
     HashMap<Color,Integer> desiredHistogram;

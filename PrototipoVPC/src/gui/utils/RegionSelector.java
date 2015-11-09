@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import gui.menubar.StatusBar;
+import gui.utils.image.NamedImage;
 
 public class RegionSelector extends MouseAdapter {
     

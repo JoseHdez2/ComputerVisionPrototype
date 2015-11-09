@@ -1,6 +1,7 @@
 package transform;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
+import transform.base.AbstractImagePointTransformation;
 
 
 public class HistogramEqualization extends AbstractImagePointTransformation{

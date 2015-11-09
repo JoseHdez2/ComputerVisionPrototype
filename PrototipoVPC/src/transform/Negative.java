@@ -1,5 +1,7 @@
 package transform;
 
+import transform.base.AbstractImagePointTransformation;
+
 public class Negative extends AbstractImagePointTransformation{
 
     @Override

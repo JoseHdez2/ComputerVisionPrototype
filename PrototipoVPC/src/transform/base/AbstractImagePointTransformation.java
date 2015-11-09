@@ -1,8 +1,8 @@
-package transform;
+package transform.base;
 
 import java.awt.Color;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 
 public abstract class AbstractImagePointTransformation {
     

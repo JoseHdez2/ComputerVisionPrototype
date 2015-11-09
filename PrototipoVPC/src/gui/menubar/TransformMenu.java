@@ -2,12 +2,12 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
-import transform.AbstractImagePointTransformation;
 import transform.HistogramEqualization;
 import transform.Negative;
+import transform.base.AbstractImagePointTransformation;
 
 
 @SuppressWarnings("serial")

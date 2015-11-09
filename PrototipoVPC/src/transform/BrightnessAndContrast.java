@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 
 public abstract class BrightnessAndContrast {
     

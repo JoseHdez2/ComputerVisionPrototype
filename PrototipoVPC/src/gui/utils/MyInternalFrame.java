@@ -5,6 +5,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 
 import gui.menubar.StatusBar;
+import gui.utils.image.NamedImage;
 
 @SuppressWarnings("serial")
 public class MyInternalFrame extends JInternalFrame{

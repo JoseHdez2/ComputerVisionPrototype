@@ -3,7 +3,7 @@ package transform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import gui.utils.NamedImage;
+import gui.utils.image.NamedImage;
 
 public class ImageDifference {
 
