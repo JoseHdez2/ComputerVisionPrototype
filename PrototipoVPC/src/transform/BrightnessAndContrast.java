@@ -32,8 +32,8 @@ public abstract class BrightnessAndContrast {
             sum += entry.getValue() * Math.pow(entry.getKey() - brightness, 2);
         }
         
-        float sumatory = (float)(sum/img.getPixelCount());
-        return (float)(Math.sqrt(sumatory/256));
+        float sum2 = (float)(sum/img.getPixelCount());
+        return (float)(Math.sqrt(sum2/256));
     }    
     
  // TODO: Mirar y corregir todo; solo son apuntes!!
