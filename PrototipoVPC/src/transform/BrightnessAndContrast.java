@@ -2,40 +2,9 @@ package transform;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
-import java.util.Map.Entry;
-
-import gui.utils.image.NamedImage;
 
 public abstract class BrightnessAndContrast {
-    
-    static public float Brightness(NamedImage img) {
-        
-        HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
-        int sum = 0;
-        
-        for(Entry<Integer,Integer> entry : h.entrySet()) {
-            sum += entry.getValue() * entry.getKey();
-        }
-//        System.out.println((int)Math.round(a));   Output format like rounded int
-        return (float)(sum/img.getPixelCount());
-    }
-    
-    static public float Contrast(NamedImage img) {
-        
-        // TODO: no devuelve el valor correcto! corregir...
-        
-        HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
-        int sum = 0;
-        float brightness = img.getBrigthness(); 
-        
-        for(Entry<Integer,Integer> entry : h.entrySet()) {
-            sum += entry.getValue() * Math.pow(entry.getKey() - brightness, 2);
-        }
-        
-        float sum2 = (float)(sum/img.getPixelCount());
-//      return (float)(Math.sqrt(sum2/256)); TODO: en la formula se utiliza 1/N
-        return (float)(Math.sqrt(sum2));
-    }    
+
     
  // TODO: Mirar y corregir todo; solo son apuntes!!
     // TODO: Only works for grayscale images.

@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 
 public class ColorHistogram extends HashMap<Color, Integer> {
     
-    
     /**
      * @return Accumulative histogram version of itself.
      */
@@ -17,7 +16,9 @@ public class ColorHistogram extends HashMap<Color, Integer> {
         
         Integer pixelsBelowOrEqualToThisColor = 0;
         for (int i = 0; i <= 255; i++){
-            Color color = new Color(0,0,i);
+            // TODO: i,i,i mas bien
+//            Color color = new Color(0,0,i);
+            Color color = new Color(i,i,i);
             if (get(color) != null) {
                 pixelsBelowOrEqualToThisColor += get(color);
             }    

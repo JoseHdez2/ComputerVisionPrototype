@@ -6,24 +6,19 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
-import transform.BrightnessAndContrast;
 
 public class NamedImage extends BufferedImage {
     private File file;
     private ColorHistogram pixelColorCount = new ColorHistogram();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
     private Boolean grayscale;  // Whether this image is grayscale
-    float brightness;
-    float contrast;
+    private BrightnessAndContrast brightnessAndContrast;
     
     public NamedImage(BufferedImage bi, File file){
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);
         this.file = file;
-        brightness = BrightnessAndContrast.Brightness(this);
-        contrast = BrightnessAndContrast.Contrast(this);
+
         // TODO: seria posible que carguemos una imagen que no tenga ni
         // Asumimos que si no tiene 1 banda, tendra 3.
         if(this.getRaster().getNumBands() == 1){
@@ -164,10 +159,10 @@ public class NamedImage extends BufferedImage {
     }
     
     public float getBrigthness() {
-        return brightness;
+        return brightnessAndContrast.getBrightness(this);
     }
     
     public float getContrast() {
-        return contrast;
+        return brightnessAndContrast.getContrast(this);
     }
 }
