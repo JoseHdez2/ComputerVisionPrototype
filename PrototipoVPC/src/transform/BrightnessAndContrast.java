@@ -33,7 +33,8 @@ public abstract class BrightnessAndContrast {
         }
         
         float sum2 = (float)(sum/img.getPixelCount());
-        return (float)(Math.sqrt(sum2/256));
+//      return (float)(Math.sqrt(sum2/256)); TODO: en la formula se utiliza 1/N
+        return (float)(Math.sqrt(sum2));
     }    
     
  // TODO: Mirar y corregir todo; solo son apuntes!!
