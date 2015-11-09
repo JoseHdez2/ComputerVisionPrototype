@@ -10,7 +10,7 @@ import gui.menubar.StatusBar;
 public class RegionSelector extends MouseAdapter {
     
     final MyLabel label;
-    final StatusBar status;
+    final StatusBar status; // TODO: posible mal diseño.
     final NamedImage image;
     Point origin = null;
     Point end = null;

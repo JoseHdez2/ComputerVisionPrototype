@@ -41,7 +41,11 @@ public class NamedImage extends BufferedImage {
      */
     public Color getPixelColor(int x, int y) {
         if (validPixel(x,y))
-            return new Color(this.getRaster().getSample(x,y,0));
+            // TODO: Cuidado. Comprobar que esas bandas son asi. 
+            return new Color(
+                    this.getRaster().getSample(x,y,0),
+                    this.getRaster().getSample(x,y,1),
+                    this.getRaster().getSample(x,y,2));
         else
             return null;
     }
