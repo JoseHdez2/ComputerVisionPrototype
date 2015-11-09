@@ -1,5 +1,8 @@
 package transform;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 import gui.utils.NamedImage;
 
 public class ImageDifference {
@@ -8,7 +11,8 @@ public class ImageDifference {
     
     public NamedImage getDiff(NamedImage img1, NamedImage img2){
         // diferencia (valor absoluto)
-        return NamedImage();
+        // TODO: esa linea peta
+        return new NamedImage(new BufferedImage(0,0,0), new File("buf cuidado"));
     }
     
 }
