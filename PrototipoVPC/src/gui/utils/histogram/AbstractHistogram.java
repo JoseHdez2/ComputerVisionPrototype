@@ -10,7 +10,7 @@ import i18n.I18n;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -81,7 +81,7 @@ public abstract class AbstractHistogram {
         // Elementos
         CategoryAxis x = new CategoryAxis();
         NumberAxis y = new NumberAxis();
-        BarChart<String, Number> chart = new BarChart<>(x,y);
+        AreaChart<String, Number> chart = new AreaChart<>(x,y);
         
         // Nombres
         chart.setTitle(title);

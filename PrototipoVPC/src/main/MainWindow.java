@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JDesktopPane;
@@ -34,6 +35,7 @@ public class MainWindow extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.setTitle(I18n.getString(GUIStr.MAIN_WINDOW_TITLE));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setBackground(Color.LIGHT_GRAY);
 
 		this.add(pane);
 		this.add(statusbar, BorderLayout.SOUTH);
