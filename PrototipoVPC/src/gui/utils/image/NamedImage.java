@@ -13,7 +13,7 @@ public class NamedImage extends BufferedImage {
     private ColorHistogram pixelColorCount = new ColorHistogram();
     private Boolean validColorCount = false;    // So that we only count pixels if needed.
     private Boolean grayscale;  // Whether this image is grayscale
-    private BrightnessAndContrast brightnessAndContrast;
+    private BrightnessAndContrast brightnessAndContrast = new BrightnessAndContrast();
     
     public NamedImage(BufferedImage bi, File file){
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);

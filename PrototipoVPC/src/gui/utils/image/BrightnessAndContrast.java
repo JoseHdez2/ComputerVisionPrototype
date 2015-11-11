@@ -11,22 +11,28 @@ public class BrightnessAndContrast {
     float brightness;
     float contrast;
     
+    public BrightnessAndContrast() {
+        outdatedBrightness = true;
+        outdatedContrast = true;
+    }
+    
     public float getBrightness(NamedImage img){
         if (outdatedBrightness){
-            calculateBrightness(img);
+            brightness = calculateBrightness(img);
         }
         return brightness;
     }
     
     public float getContrast(NamedImage img){
         if (outdatedContrast){
-            calculateContrast(img);
+            contrast = calculateContrast(img);
         }
         return contrast;
     }
     
     private float calculateBrightness(NamedImage img) {
         
+        outdatedBrightness = false;
         HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
         int sum = 0;
         
@@ -39,8 +45,7 @@ public class BrightnessAndContrast {
     
     private float calculateContrast(NamedImage img) {
         
-        // TODO: no devuelve el valor correcto! corregir...
-        
+        outdatedContrast = false;
         HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
         int sum = 0;
         float brightness = img.getBrigthness(); 
