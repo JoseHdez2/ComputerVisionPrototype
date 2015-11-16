@@ -1,4 +1,4 @@
-package transform;
+package transform.point;
 
 import transform.point.base.AbstractImagePointTransformation;
 

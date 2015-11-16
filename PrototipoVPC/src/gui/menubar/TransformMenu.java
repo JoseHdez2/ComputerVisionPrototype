@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
-import transform.Negative;
 import transform.point.HistogramEqualization;
+import transform.point.Negative;
 import transform.point.base.AbstractImagePointTransformation;
 
 
