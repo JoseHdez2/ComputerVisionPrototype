@@ -29,6 +29,9 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.IMAGE_MENU, "ImageMenu");
         hash.put(GUIStr.IMAGE_MENU_CROP_SELECTION, "ImageMenu.CropSelection");
         hash.put(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST, "ImageMenu.BrightnessContrast");
+        hash.put(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, "BrightnessDialog.Brightness");
+        hash.put(GUIStr.BRIGHTNESS_DIALOG_CONTRAST, "BrightnessDialog.Contrast");
+        hash.put(GUIStr.GENERAL_ACCEPT, "General.Accept");
     }
     
     public static String get(GUIStr stringId){

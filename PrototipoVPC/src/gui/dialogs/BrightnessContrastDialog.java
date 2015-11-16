@@ -1,12 +1,16 @@
 package gui.dialogs;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.JDialog;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -17,7 +21,7 @@ import i18n.I18n;
 import main.MainWindow;
 
 @SuppressWarnings("serial")
-public class BrightnessContrastDialog extends JDialog {
+public class BrightnessContrastDialog extends JFrame {
     
     JSlider[] brightnessSlider = new JSlider[3]; //RGB [0,1,2]
     JSlider[] contrastSlider = new JSlider[3];
@@ -28,77 +32,111 @@ public class BrightnessContrastDialog extends JDialog {
     
     public BrightnessContrastDialog(MainWindow parent, NamedImage image) {
         
-        super(parent);
+        super();
         this.image = image;
         
-        this.setSize(650,220);
+        this.setSize(650,240);
         this.setTitle(I18n.getString(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setLayout(new GridLayout(0,2));
         
-        createElements();   
+        this.setLayout(new BorderLayout(0,1));
+        
+        JPanel elementsPanel = createElements();
+        JPanel acceptPanel = new JPanel();
+        JButton acceptButton = new JButton(I18n.getString(GUIStr.GENERAL_ACCEPT));
+        acceptPanel.add(acceptButton);
+
+        this.add(elementsPanel,BorderLayout.CENTER);
+        this.add(acceptPanel,BorderLayout.SOUTH);
     
         this.setVisible(true);
     }
     
-    private void createElements() {
+    /**
+     * Create sliders and spinners for each color cap
+     */
+    private JPanel createElements() {
         
+        JPanel gridPanel = new JPanel(new GridLayout(0,2));
         JPanel panel = null;
         String[] rgb = new String[] {"R:", "G:", "B:"};
         
-//        TODO: En imágenes a clor cada capa tiene su brillo y contraste!
+//        TODO: En imágenes a color cada capa tiene su brillo y contraste!
         
         int brightness = (int)image.getBrigthness();
         int contrast = (int)image.getContrast();
         
-        this.add(new JLabel("Brillo",SwingConstants.CENTER));
-        this.add(new JLabel("Contraste",SwingConstants.CENTER));
+        gridPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS),SwingConstants.CENTER));
+        gridPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_CONTRAST),SwingConstants.CENTER));
         
         for (int i=0; i<=2; i++) {
+            final int innerI = i;
             
+            // Sliders
             brightnessSlider[i] = new JSlider(JSlider.HORIZONTAL,0,255,brightness);
             brightnessSlider[i].addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                   updateBrightnessSlider(((JSlider)e.getSource()).getValue());
+                   updateBrightness(brightnessSlider[innerI].getValue());
                 }
              });
             
             contrastSlider[i] = new JSlider(JSlider.HORIZONTAL,0,255,contrast);
             contrastSlider[i].addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e) {
-                   updateContrastSlider(((JSlider)e.getSource()).getValue());
+                   updateContrast(contrastSlider[innerI].getValue());
                 }
              });
             
-            brightnessSpinner[i] = new JSpinner();
-            contrastSpinner[i] = new JSpinner();
+            // Spinner Boxes
+            brightnessSpinner[i] = new JSpinner(new SpinnerNumberModel(brightness,0,255,1));
+            brightnessSpinner[i].addChangeListener(new ChangeListener() {
+                public void stateChanged(ChangeEvent e) {
+                   updateBrightness((int)brightnessSpinner[innerI].getValue());
+                }
+             });
             
+            contrastSpinner[i] = new JSpinner(new SpinnerNumberModel(contrast,0,255,1));
+            contrastSpinner[i].addChangeListener(new ChangeListener() {
+                public void stateChanged(ChangeEvent e) {
+                   updateContrast((int)contrastSpinner[innerI].getValue());
+                }
+             });
+            
+            // Añadir al panel
             panel = new JPanel();      
             panel.add(new JLabel(rgb[i]));
             panel.add(brightnessSlider[i]);
             panel.add(brightnessSpinner[i]);
-            this.add(panel);
+            gridPanel.add(panel);
             
             panel = new JPanel();      
             panel.add(new JLabel(rgb[i]));
             panel.add(contrastSlider[i]);
             panel.add(contrastSpinner[i]);
-            this.add(panel);
+            gridPanel.add(panel);
         }
         
-//        this.add(new JButton("Aplicar"),BorderLayout.EAST));
+        return gridPanel;
     }
     
-    private void updateBrightnessSlider(int value) {
+    /**
+     * Update brightness value for sliders and spinners
+     */
+    private void updateBrightness(int value) {
         for (int i=0; i<=2; i++) {
             brightnessSlider[i].setValue(value);
+            brightnessSpinner[i].setValue(value);
         }
     }
     
-    private void updateContrastSlider(int value) {
+    /**
+     * Update contrast value for sliders and spinners
+     */
+    private void updateContrast(int value) {
         for (int i=0; i<=2; i++) {
             contrastSlider[i].setValue(value);
+            contrastSpinner[i].setValue(value);
         }
     }
     
