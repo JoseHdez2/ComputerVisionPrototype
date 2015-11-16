@@ -64,7 +64,7 @@ public class BrightnessContrastDialog extends JFrame {
         
 //        TODO: En imágenes a color cada capa tiene su brillo y contraste!
         
-        int brightness = (int)image.getBrigthness();
+        int brightness = (int)image.getBrightness();
         int contrast = (int)image.getContrast();
         
         gridPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS),SwingConstants.CENTER));

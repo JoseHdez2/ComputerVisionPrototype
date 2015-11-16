@@ -1,41 +1,39 @@
 package transform.point;
 
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
+import gui.utils.image.NamedImage;
+import transform.point.base.AbstractImagePointTransformation;
 
-public abstract class BrightnessAndContrast {
 
+
+// TODO: Only works for grayscale images.
+
+/**
+ *  Set the brightness and contrast of an image.
+ */
+public class BrightnessAndContrast extends AbstractImagePointTransformation{
+
+    private float A, B;
     
- // TODO: Mirar y corregir todo; solo son apuntes!!
-    // TODO: Only works for grayscale images.
-    public void setBrightness(BufferedImage img, int newBrightness, int newContrast){
-        int oldBrightness = 0;
-        int oldContrast = 0;
+    public BrightnessAndContrast(NamedImage img, int newBrightness, int newContrast){
+        float oldBrightness = img.getBrightness();
+        float oldContrast = img.getContrast();
         
-        float A = newBrightness / oldBrightness;
-        float B = newContrast - A * oldContrast;
+        A = newContrast / oldContrast;
+        B = newBrightness - A * oldBrightness;
+    }
+
+    @Override
+    protected int getVOut(int vIn) {
+        int vOut = (int)(A * vIn + B);
         
-        HashMap<Integer, Integer> tabla = new HashMap<Integer, Integer>();
-        
-        for (int vIn = 0; vIn < 255; vIn++){
-            
-            int vOut = (int)(A * vIn + B);
-            
-            // Handle out-of-range values.
-            if (vOut < 0){
-                vOut = 0;
-                // TODO: register biggest value that gets this, if any.
-            }
-            if (vOut > 255){
-                vOut = 255;
-                // TODO: register biggest value that gets this, if any.  
-            }
-            // TODO: When there are out-of-range vOut values, we are giving a false result.
-            
-            tabla.put(vIn, vOut);
+        // Handle out-of-range values.
+        // TODO: When there are out-of-range vOut values, we are giving a false result.
+        if (vOut < 0){
+            vOut = 0;   // TODO: register biggest value that gets this, if any.
         }
-        
-        // Cuantos valores distintos da la tabla
-        // Siempre seran igual o menos
+        if (vOut > 255){
+            vOut = 255; // TODO: register biggest value that gets this, if any.  
+        }
+        return vOut;
     }
 }

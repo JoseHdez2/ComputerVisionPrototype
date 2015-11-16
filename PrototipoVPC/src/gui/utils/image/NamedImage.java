@@ -158,7 +158,7 @@ public class NamedImage extends BufferedImage {
         return grayscale;
     }
     
-    public float getBrigthness() {
+    public float getBrightness() {
         return brightnessAndContrast.getBrightness(this);
     }
     

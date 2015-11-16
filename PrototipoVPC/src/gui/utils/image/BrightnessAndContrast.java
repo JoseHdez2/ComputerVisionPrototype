@@ -48,7 +48,7 @@ public class BrightnessAndContrast {
         outdatedContrast = false;
         HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
         int sum = 0;
-        float brightness = img.getBrigthness(); 
+        float brightness = img.getBrightness(); 
         
         for(Entry<Integer,Integer> entry : h.entrySet()) {
             sum += entry.getValue() * Math.pow(entry.getKey() - brightness, 2);
