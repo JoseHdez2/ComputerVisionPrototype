@@ -1,13 +1,25 @@
 package transform.point;
 
+import java.awt.Color;
+
 import transform.point.base.AbstractImagePointTransformation;
 
 public class ColorToGrayscale extends AbstractImagePointTransformation{
     
     @Override
     protected int getVOut(int vIn) {
-        // TODO Auto-generated method stub
-        return 0;
+        // Return the identity-- This function shouldn't modify grayscale images!
+        return vIn;
+    }
+
+    @Override
+    protected Color getColorVOut(Color c) {
+
+        int vOutR = (int) (c.getRed() * 0.2126);
+        int vOutG = (int) (c.getGreen() * 0.7152);
+        int vOutB = (int) (c.getBlue() * 0.0722);
+        
+        return new Color(vOutR, vOutG, vOutB);
     }
 
 }

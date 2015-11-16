@@ -1,8 +1,8 @@
 package transform.point;
 
-import transform.point.base.AbstractImagePointTransformation;
+import transform.point.base.ThreeChannelAIPT;
 
-public class GammaCorrection extends AbstractImagePointTransformation {
+public class GammaCorrection extends ThreeChannelAIPT {
 
     public GammaCorrection(float gamma){
         

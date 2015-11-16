@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
-import transform.point.base.AbstractImagePointTransformation;
+import transform.point.base.ThreeChannelAIPT;
 
 
 // TODO: Cargarnos esto? Que la ecualizacion sea una llamada parametrizada a especificacion.
@@ -14,7 +14,7 @@ import transform.point.base.AbstractImagePointTransformation;
  * en el que queremos que el histograma se asemeje al histograma plano.
  *
  */
-public class HistogramEqualization extends AbstractImagePointTransformation{
+public class HistogramEqualization extends ThreeChannelAIPT{
     
     int bitsUsedToCodifyImage;
     int size;   // Number of pixels in image

@@ -95,12 +95,5 @@ public abstract class AbstractImagePointTransformation {
      * @param c Input color
      * @return Output color.
      */
-    protected Color getColorVOut(Color c){
-
-        int vOutR = getVOut(c.getRed());
-        int vOutG = getVOut(c.getGreen());
-        int vOutB = getVOut(c.getBlue());
-        
-        return new Color(vOutR, vOutG, vOutB);
-    }
+    protected abstract Color getColorVOut(Color c);
 }

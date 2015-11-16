@@ -1,7 +1,7 @@
 package transform.point;
 
 import gui.utils.image.NamedImage;
-import transform.point.base.AbstractImagePointTransformation;
+import transform.point.base.ThreeChannelAIPT;
 
 
 
@@ -10,7 +10,7 @@ import transform.point.base.AbstractImagePointTransformation;
 /**
  *  Set the brightness and contrast of an image.
  */
-public class BrightnessAndContrast extends AbstractImagePointTransformation{
+public class BrightnessAndContrast extends ThreeChannelAIPT{
 
     private float A, B;
     

@@ -3,9 +3,9 @@ package transform.point;
 import java.awt.Color;
 import java.util.HashMap;
 
-import transform.point.base.AbstractImagePointTransformation;
+import transform.point.base.ThreeChannelAIPT;
 
-public class HistogramSpecification extends AbstractImagePointTransformation{
+public class HistogramSpecification extends ThreeChannelAIPT{
     
     HashMap<Color,Integer> desiredHistogram;
     

@@ -1,8 +1,8 @@
 package transform.point;
 
-import transform.point.base.AbstractImagePointTransformation;
+import transform.point.base.ThreeChannelAIPT;
 
-public class Negative extends AbstractImagePointTransformation{
+public class Negative extends ThreeChannelAIPT{
 
     @Override
     protected int getVOut(int vIn) {
