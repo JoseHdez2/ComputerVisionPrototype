@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.dialogs.BrightnessContrastDialog;
+import gui.dialog.BrightnessContrastDialog;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
