@@ -3,7 +3,7 @@ package transform.point;
 import java.awt.Color;
 import java.util.HashMap;
 
-import transform.base.AbstractImagePointTransformation;
+import transform.point.base.AbstractImagePointTransformation;
 
 public class HistogramSpecification extends AbstractImagePointTransformation{
     

@@ -1,4 +1,4 @@
-package transform.base;
+package transform.point.base;
 
 import java.awt.Color;
 
@@ -23,6 +23,7 @@ public abstract class AbstractImagePointTransformation {
      * @return  Output (transformed) image.
      */
     protected NamedImage createTransformedImage(NamedImage img1, LUT lut){
+        
         
         NamedImage img2 = img1.deepishCopy();
         

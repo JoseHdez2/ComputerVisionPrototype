@@ -1,6 +1,6 @@
 package transform;
 
-import transform.base.AbstractImagePointTransformation;
+import transform.point.base.AbstractImagePointTransformation;
 
 public class Negative extends AbstractImagePointTransformation{
 

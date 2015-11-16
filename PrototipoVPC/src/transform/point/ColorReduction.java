@@ -1,6 +1,6 @@
 package transform.point;
 
-import transform.base.AbstractImagePointTransformation;
+import transform.point.base.AbstractImagePointTransformation;
 
 public class ColorReduction extends AbstractImagePointTransformation{
 
