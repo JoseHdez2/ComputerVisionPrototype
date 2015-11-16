@@ -16,7 +16,8 @@ public class TransformMenu extends AbstractMenu {
     final static GUIStr[] ACTION_NAMES =
         {
         GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION,
-        GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION
+        GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION,
+        GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION
         };
     
     public TransformMenu(MainWindow parentFrame){
@@ -32,6 +33,9 @@ public class TransformMenu extends AbstractMenu {
             break;
         case TRANSFORM_MENU_NEGATIVE_ACTION:
             negativeActionPerformed(e);
+            break;
+        case TRANSFORM_MENU_HISTOGRAM_EQUALIZATION:
+            histogramEqualizationActionPerformed(e);
             break;
         }
     }
@@ -64,5 +68,10 @@ public class TransformMenu extends AbstractMenu {
     private void negativeActionPerformed(ActionEvent e) {
         
         transform(new Negative());   
+    }
+    
+    private void histogramEqualizationActionPerformed(ActionEvent e) {
+        
+        transform(new HistogramEqualization(parentFrame.getFocusedImage()));   
     }
 }
