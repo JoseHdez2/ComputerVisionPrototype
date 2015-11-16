@@ -122,6 +122,7 @@ public class RegionSelector extends MouseAdapter {
     public void mouseMoved(MouseEvent e) {
         current = getPoint(e);
         status.setPositionLabel(current);
+        status.setColorModeLabel(image.isGrayscale());
         if (current != null)
             status.setColorLabel(image.getPixelColor((int)current.getX(),(int)current.getY()));
         else
@@ -133,12 +134,7 @@ public class RegionSelector extends MouseAdapter {
      * and update status bar
      */
     public void mouseDragged(MouseEvent e) {
-        current = getPoint(e);
-        status.setPositionLabel(current);
-        if (current != null)
-            status.setColorLabel(image.getPixelColor((int)current.getX(),(int)current.getY()));
-        else
-            status.setColorLabel(null);
+        mouseMoved(e);
     }
     
     /**
