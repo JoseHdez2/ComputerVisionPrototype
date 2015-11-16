@@ -33,7 +33,7 @@ public class HistogramEqualization extends AbstractImagePointTransformation{
     @Override
     protected int getVOut(int vIn) {
 
-        int coVin = accumulativeHistogram.get(new Color(vIn,vIn,vIn));
+        Integer coVin = accumulativeHistogram.get(new Color(vIn,vIn,vIn));
         
         int vOut = Math.round(((M / size) * coVin)) - 1;
         

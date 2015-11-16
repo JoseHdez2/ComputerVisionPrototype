@@ -2,7 +2,6 @@ package gui.utils.image;
 
 import java.awt.Color;
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 public class ColorHistogram extends HashMap<Color, Integer> {
     
@@ -16,13 +15,13 @@ public class ColorHistogram extends HashMap<Color, Integer> {
         
         Integer pixelsBelowOrEqualToThisColor = 0;
         for (int i = 0; i <= 255; i++){
-            // TODO: i,i,i mas bien
-//            Color color = new Color(0,0,i);
-            Color color = new Color(i,i,i);
+            Color color = new Color(0,0,i);   // modo raro
+//            Color color = new Color(i,i,i); // modo normal
             if (get(color) != null) {
                 pixelsBelowOrEqualToThisColor += get(color);
             }    
-            accHistogram.put(color, pixelsBelowOrEqualToThisColor);
+//            accHistogram.put(color, pixelsBelowOrEqualToThisColor); // modo normal
+            accHistogram.put(new Color(i,i,i), pixelsBelowOrEqualToThisColor); // modo correccion raro
         }
         
         return accHistogram;
