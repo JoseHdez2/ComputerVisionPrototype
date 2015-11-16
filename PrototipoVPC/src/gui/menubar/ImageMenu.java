@@ -63,7 +63,11 @@ public class ImageMenu extends AbstractMenu{
     
     private void  brightnessAndContrastActionPerformed(ActionEvent e) {
     
-        BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame);
+        NamedImage image = parentFrame.getFocusedImage();
+        
+        if (image != null) {
+            BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame,image);
+        }
     
     }
         
