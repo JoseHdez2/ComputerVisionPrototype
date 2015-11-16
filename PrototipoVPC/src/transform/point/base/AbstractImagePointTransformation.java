@@ -2,6 +2,7 @@ package transform.point.base;
 
 import java.awt.Color;
 
+import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
 
 public abstract class AbstractImagePointTransformation {
@@ -12,8 +13,10 @@ public abstract class AbstractImagePointTransformation {
      * @return Output (transformed) image.
      */
     public NamedImage getTransformedImage(NamedImage img1){
-        
-        return createTransformedImage(img1, createLUT());
+        LUT lut = new LUT();
+        if (img1.isGrayscale()) lut = createGrayscaleLUT();
+        else lut = createColorLUT(img1.getPixelColorCount());
+        return createTransformedImage(img1, lut);
     }
     
     /**
@@ -24,10 +27,8 @@ public abstract class AbstractImagePointTransformation {
      */
     protected NamedImage createTransformedImage(NamedImage img1, LUT lut){
         
-        
         NamedImage img2 = img1.deepishCopy();
         
-        // TODO: La eterna pregunta.
         int imageWidth = img2.getWidth();
         int imageHeight = img2.getHeight();
         
@@ -47,10 +48,9 @@ public abstract class AbstractImagePointTransformation {
     
     /**
      * Creates transformation table for each unique value in the image.
-     * More efficient and scalable than transformExtensive().
      * @param img
      */
-    protected LUT createLUT(){
+    protected LUT createGrayscaleLUT(){
         
         LUT transTable = new LUT();
         
@@ -58,7 +58,7 @@ public abstract class AbstractImagePointTransformation {
         for (int vIn = 0; vIn <= 255; vIn++){
             
             // For this color value, calculate the corresponding new color value.
-            // This method will vary depending on the implementing class (Strategy design pattern).
+            // This method will vary depending on the transformation(implementing class).
             int vOut = getVOut(vIn);
             
             transTable.put(new Color(vIn, vIn, vIn), new Color(vOut, vOut, vOut));
@@ -67,8 +67,18 @@ public abstract class AbstractImagePointTransformation {
         return transTable;
     }
     
+    protected LUT createColorLUT(ColorHistogram colors){
+        
+        LUT transTable = new LUT();
+        
+        for (Color c : colors.keySet())
+            transTable.put(c, getColorVOut(c));
+        
+        return transTable;
+    }
+    
     /**
-     * Given a color value, return its corresponding new value.
+     * Given a grayscale value, return its corresponding new value.
      * This method will be implemented differently by extending classes,
      * leading to the different types of image transformations.
      * NOTE: Other needed parameters will be implicit and provided in
@@ -77,4 +87,20 @@ public abstract class AbstractImagePointTransformation {
      * @return New color value that corresponds to the given one.
      */
     protected abstract int getVOut(int vIn);
+    
+    /**
+     * Given a color, return its corresponding new color.
+     * This should be overwritten if RGB transformation is not the same
+     * as applying the grayscale transformation to each color channel.
+     * @param c Input color
+     * @return Output color.
+     */
+    protected Color getColorVOut(Color c){
+
+        int vOutR = getVOut(c.getRed());
+        int vOutG = getVOut(c.getGreen());
+        int vOutB = getVOut(c.getBlue());
+        
+        return new Color(vOutR, vOutG, vOutB);
+    }
 }
