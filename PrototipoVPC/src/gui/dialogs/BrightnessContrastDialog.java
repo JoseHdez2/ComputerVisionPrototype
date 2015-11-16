@@ -1,8 +1,9 @@
 package gui.dialogs;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
+import transform.point.BrightnessAndContrast;
 
 @SuppressWarnings("serial")
 public class BrightnessContrastDialog extends JFrame {
@@ -29,11 +31,13 @@ public class BrightnessContrastDialog extends JFrame {
     JSpinner[] contrastSpinner = new JSpinner[3];
     
     NamedImage image = null;
+    MainWindow parent = null;
     
     public BrightnessContrastDialog(MainWindow parent, NamedImage image) {
         
         super();
         this.image = image;
+        this.parent = parent;
         
         this.setSize(650,240);
         this.setTitle(I18n.getString(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST));
@@ -45,6 +49,11 @@ public class BrightnessContrastDialog extends JFrame {
         JPanel elementsPanel = createElements();
         JPanel acceptPanel = new JPanel();
         JButton acceptButton = new JButton(I18n.getString(GUIStr.GENERAL_ACCEPT));
+        acceptButton.addActionListener(new ActionListener() { 
+          public void actionPerformed(ActionEvent e) { 
+            setBrightnessAndContrast();
+          } 
+        } );
         acceptPanel.add(acceptButton);
 
         this.add(elementsPanel,BorderLayout.CENTER);
@@ -138,6 +147,22 @@ public class BrightnessContrastDialog extends JFrame {
             contrastSlider[i].setValue(value);
             contrastSpinner[i].setValue(value);
         }
+    }
+    
+    
+    private void setBrightnessAndContrast() {
+        
+        // TODO: provisional con imagenes en b/n
+        BrightnessAndContrast transform = new BrightnessAndContrast(image, brightnessSlider[0].getValue(), contrastSlider[0].getValue());
+        NamedImage img = transform.getTransformedImage(image);
+        
+        System.out.println("transformado");
+        
+        parent.createImageFrame(img);
+//        System.out.println(brightnessSlider[0].getValue());
+//        System.out.println(contrastSlider[0].getValue());
+//        System.out.println((int)img.getBrightness());
+//        System.out.println((int)img.getContrast());
     }
     
 }

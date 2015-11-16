@@ -18,13 +18,20 @@ public class BrightnessAndContrast extends AbstractImagePointTransformation{
         float oldBrightness = img.getBrightness();
         float oldContrast = img.getContrast();
         
+        
+        System.out.println("ViejoBrillo: " + oldBrightness);
+        System.out.println("ViejoContraste: " + oldContrast);
+        System.out.println("NuevoBrillo: " + newBrightness);
+        System.out.println("NuevoContraste: " + newContrast);
+
         A = newContrast / oldContrast;
         B = newBrightness - A * oldBrightness;
     }
 
     @Override
     protected int getVOut(int vIn) {
-        int vOut = (int)(A * vIn + B);
+        //int vOut = (int)(A * vIn + B);
+        int vOut = (int)Math.round(A * vIn + B);
         
         // Handle out-of-range values.
         // TODO: When there are out-of-range vOut values, we are giving a false result.
