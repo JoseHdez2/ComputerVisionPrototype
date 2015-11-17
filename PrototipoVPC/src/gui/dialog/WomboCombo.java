@@ -1,6 +1,5 @@
 package gui.dialog;
 
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
