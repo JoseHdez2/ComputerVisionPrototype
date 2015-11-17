@@ -22,14 +22,14 @@ import i18n.I18n;
 import main.MainWindow;
 import transform.point.BrightnessAndContrast;
 
-public class BrightnessContrastDialogNew extends ImageDialog{
+public class BrightnessContrastDialog extends ImageDialog{
 
     JSlider[] brightnessSlider = new JSlider[3]; //RGB [0,1,2]
     JSlider[] contrastSlider = new JSlider[3];
     JSpinner[] brightnessSpinner = new JSpinner[3];
     JSpinner[] contrastSpinner = new JSpinner[3];
     
-    public BrightnessContrastDialogNew(MainWindow parent, NamedImage image) {
+    public BrightnessContrastDialog(MainWindow parent, NamedImage image) {
         super(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, parent, image);
         this.setLayout(new BorderLayout(0,1));
         JPanel elementsPanel = createElements();

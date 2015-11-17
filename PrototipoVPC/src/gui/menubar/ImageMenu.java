@@ -4,8 +4,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.dialog.BrightnessContrastDialogNew;
-import gui.dialog.BrightnessContrastDialogOld;
+import gui.dialog.BrightnessContrastDialog;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
@@ -83,7 +82,7 @@ public class ImageMenu extends AbstractMenu{
         if (image == null) {
             parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
         } else {
-            BrightnessContrastDialogNew dialog = new BrightnessContrastDialogNew(parentFrame,image);
+            BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame,image);
         }
     
     }
