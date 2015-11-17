@@ -12,15 +12,15 @@ import main.MainWindow;
  */
 public class Dialog extends JFrame{
     
-    float WIDTH_RATIO_TO_PARENT = 0.25f;
-    float HEIGHT_RATIO_TO_PARENT = 0.25f;
+    float widthRatioToParent = 0.75f;
+    float heightRatioToParent = 0.75f;
     
     protected MainWindow parent = null;
     
     public Dialog(GUIStr title, MainWindow parent){
         this.parent = parent;
-        int width = (int) (parent.getWidth() * WIDTH_RATIO_TO_PARENT);
-        int height = (int) (parent.getHeight() * HEIGHT_RATIO_TO_PARENT);
+        int width = (int) (parent.getWidth() * widthRatioToParent);
+        int height = (int) (parent.getHeight() * heightRatioToParent);
         this.setSize(width, height);
         this.setTitle(I18n.getString(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST));
         this.setLocationRelativeTo(null);

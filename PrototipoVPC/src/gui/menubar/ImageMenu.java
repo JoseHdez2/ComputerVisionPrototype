@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
 import gui.dialog.BrightnessContrastDialog;
+import gui.dialog.BrightnessContrastWombo;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
@@ -83,6 +84,8 @@ public class ImageMenu extends AbstractMenu{
             parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
         } else {
             BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame,image);
+            BrightnessContrastWombo dialogWombo = new BrightnessContrastWombo(parentFrame,image);
+            dialogWombo.setTitle("Brightness and Wombo...");
         }
     
     }
