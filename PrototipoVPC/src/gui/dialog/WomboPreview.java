@@ -1,28 +1,49 @@
 package gui.dialog;
 
-import gui.dialog.base.ImageDialog;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
-import main.MainWindow;
 import transform.point.base.AbstractImagePointTransformation;
 
 /**
  *  WomboCombo tied to an image and a transformation.
  *  Previews a transformation with different parameters.
  */
-public class WomboPreview extends ImageDialog{
+public class WomboPreview extends WomboCombo{
     
-    WomboCombo womcom;
+    static final GUIStr[] grayscaleWomboLabels = {GUIStr.TRIVIAL_B};
+    static final GUIStr[] colorWomboLabels = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
     
-    final GUIStr[] grayscaleWomboLabels = {GUIStr.TRIVIAL_B};
-    final GUIStr[] colorWomboLabels = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
-    
-    public WomboPreview(MainWindow parent, NamedImage image, AbstractImagePointTransformation transform){
-        super(null, parent, image);
+    public WomboPreview(NamedImage image, AbstractImagePointTransformation transform){
+//        super(colorWomboLabels, 1, new int[1]);
+        super(colorWomboLabels, 3, new int[3]);
+        
         if(image.isGrayscale()){
-           womcom = new WomboCombo(grayscaleWomboLabels, 1, new int[1]);
+//            this.subWomboLabels = grayscaleWomboLabels;
+//            this.addSubWombo(0, new int[0]);    //Replace color label.
+            this.boundWombos = true;
+            
         } else {
-           womcom = new WomboCombo(colorWomboLabels, 3, new int[3]);
+//            this.subwombos = 3;
         }
+    }
+    
+    /**
+     * Bind referenced subwombo with the parameters of a transformation over an image.
+     * @param i
+     */
+    public void bindSubWombo(int i, NamedImage img1, NamedImage img2, AbstractImagePointTransformation trans){
+        sliders[i].addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+               img2 = trans.getTransformedImage(img1get(i)
+            }
+        });
+        spinners[i].addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+               updateValue(i, sliders[i].getValue());
+            }
+        });
     }
 }
