@@ -2,6 +2,7 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.OptionsDialog;
 import i18n.GUIStr;
 import main.MainWindow;
 
@@ -30,6 +31,6 @@ public class OptionMenu extends AbstractMenu{
     }
 
     private void optionsActionPerformed(ActionEvent e){
-        
+        OptionsDialog optionsDialog = new OptionsDialog(parentFrame);
     }
 }

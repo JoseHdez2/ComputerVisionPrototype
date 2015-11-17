@@ -14,5 +14,6 @@ public class TheMenuBar extends JMenuBar {
         this.add(new ImageMenu(mainWindow));
         this.add(new AnalyzeMenu(mainWindow));
         this.add(new TransformMenu(mainWindow));
+        this.add(new OptionMenu(mainWindow));
     }
 }

@@ -44,6 +44,13 @@ public abstract class AbstractMenu extends JMenu{
     
     // TODO: Should this go here? rn, used by both ImageMenu and TransformMenu.
     protected void transform(AbstractImagePointTransformation trans){
+        System.out.println(parentFrame.getFocusedImage());
+        
+        if(parentFrame.getFocusedImage() == null){
+            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            return;
+        }
+        
         NamedImage image1 = parentFrame.getFocusedImage();
         
         NamedImage image2 = trans.getTransformedImage(image1);

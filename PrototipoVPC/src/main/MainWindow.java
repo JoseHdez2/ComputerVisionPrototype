@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
@@ -100,7 +101,8 @@ public class MainWindow extends JFrame {
 	}
 	
 	public void showErrorDialog(GUIStr errorStr){
-	    
+        JOptionPane.showMessageDialog(this, I18n.getString(errorStr), 
+                I18n.getString(GUIStr.GENERAL_ERROR), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/*

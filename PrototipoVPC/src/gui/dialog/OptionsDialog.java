@@ -5,7 +5,7 @@ import main.MainWindow;
 
 public class OptionsDialog extends Dialog {
 
-    OptionsDialog(MainWindow parent){
+    public OptionsDialog(MainWindow parent){
         super(parent);
     }
 }

@@ -40,7 +40,7 @@ public class ImageMenu extends AbstractMenu{
             cropSelectionActionPerformed(e);
             break;
         case IMAGE_MENU_TO_GRAYSCALE:
-            
+            toGrayscaleActionPerformed(e);
             break;
         case IMAGE_MENU_BRIGHTNESS_CONTRAST:
             brightnessAndContrastActionPerformed(e);
@@ -73,7 +73,7 @@ public class ImageMenu extends AbstractMenu{
     
     private void toGrayscaleActionPerformed(ActionEvent e){
         if(parentFrame.getFocusedImage().isGrayscale())
-            JOptionPane.showMessageDialog(parentFrame, I18n.getString(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE));
+            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE);
         else
             transform(new ColorToGrayscale());   
     }

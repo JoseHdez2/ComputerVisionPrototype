@@ -37,6 +37,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, "BrightnessDialog.Brightness");
         hash.put(GUIStr.BRIGHTNESS_DIALOG_CONTRAST, "BrightnessDialog.Contrast");
         hash.put(GUIStr.GENERAL_ACCEPT, "General.Accept");
+        hash.put(GUIStr.GENERAL_ERROR, "General.Error");
         hash.put(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE, "DialogError.NoSelectedImage");
         hash.put(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE, "DialogError.GrayscaleImage");
         hash.put(GUIStr.OPTION_OVERWRITE, "Option.Overwrite");
