@@ -45,6 +45,8 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE, "DialogError.GrayscaleImage");
         hash.put(GUIStr.OPTION_OVERWRITE, "Option.Overwrite");
         hash.put(GUIStr.TOOLTIP_OPTION_OVERWRITE, "ToolTip.Option.Overwrite");
+        hash.put(GUIStr.IMAGE_MENU_ENTROPY, "ImageMenu.Entropy");
+        hash.put(GUIStr.IMAGE_MENU_ENTROPY_TEXT, "ImageMenu.EntropyText");
     }
     
     public static String get(GUIStr stringId){
