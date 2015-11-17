@@ -102,7 +102,12 @@ public class NamedImage extends BufferedImage {
         for (int i = 0; i < imageWidth; i++){
             for (int j = 0; j < imageHeight; j++){
                 // TODO: Demasiado ineficiente crear un Color cada vez?
-                Color pixelColor = new Color(raster.getSample(i,j,0));
+                Color pixelColor = null;
+                if (isGrayscale())
+                    pixelColor = new Color(raster.getSample(i,j,0),raster.getSample(i,j,0),raster.getSample(i,j,0));
+                else
+                    pixelColor = new Color(raster.getSample(i,j,0),raster.getSample(i,j,1),raster.getSample(i,j,2));
+                
                 if(!pixelColorCount.containsKey(pixelColor)){
                     pixelColorCount.put(pixelColor, 1);
                 } else {

@@ -68,7 +68,7 @@ public abstract class AbstractImagePointTransformation {
     }
     
     protected LUT createColorLUT(ColorHistogram colors){
-        
+                
         LUT transTable = new LUT();
         
         for (Color c : colors.keySet())

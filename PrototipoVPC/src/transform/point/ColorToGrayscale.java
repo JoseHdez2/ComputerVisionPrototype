@@ -15,11 +15,9 @@ public class ColorToGrayscale extends AbstractImagePointTransformation{
     @Override
     protected Color getColorVOut(Color c) {
 
-        int vOutR = (int) (c.getRed() * 0.2126);
-        int vOutG = (int) (c.getGreen() * 0.7152);
-        int vOutB = (int) (c.getBlue() * 0.0722);
+        int vOut = (int) ((c.getRed() * 0.2126) + (c.getGreen() * 0.7152) + (c.getBlue() * 0.0722));
         
-        return new Color(vOutR, vOutG, vOutB);
+        return new Color(vOut, vOut, vOut);
     }
 
 }
