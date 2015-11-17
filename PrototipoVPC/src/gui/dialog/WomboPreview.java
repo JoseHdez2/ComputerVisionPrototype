@@ -37,9 +37,9 @@ public class WomboPreview extends WomboCombo{
     public void bindSubWombo(int i, NamedImage img1, NamedImage img2, AbstractImagePointTransformation trans){
         sliders[i].addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-               img2 = trans.getTransformedImage(img1get(i)
-            }
-        });
+//               img2 = trans.getTransformedImage(img1);
+               updateValue(i, sliders[i].getValue());
+        }});
         spinners[i].addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                updateValue(i, sliders[i].getValue());
