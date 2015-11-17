@@ -1,7 +1,5 @@
 package gui.dialog;
 
-import java.awt.GridLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -13,6 +11,7 @@ import javax.swing.event.ChangeListener;
 import i18n.GUIStr;
 import i18n.I18n;
 
+@SuppressWarnings("serial")
 public class WomboCombo extends JPanel{
     
     // Whether or not all slider-spinner couples use the same value.
@@ -40,7 +39,7 @@ public class WomboCombo extends JPanel{
         this.subwombos = subWombos;
         this.subWomboLabels = subWomboLabels;
         
-        values = new int[subWombos]; // TODO: linea incorrecta pero asi funcionan bien las transformaciones.
+        //values = new int[subWombos]; // TODO: linea incorrecta pero asi funcionan bien las transformaciones.
         sliders = new JSlider[subWombos];
         spinners = new JSpinner[subWombos];
         this.boundWombos = boundWombos;
@@ -51,8 +50,8 @@ public class WomboCombo extends JPanel{
         
         // If subWombos are bound, update all to the first value (in case they are different).
         if(boundWombos) 
-            for(int j = 0; j < subwombos; j++)
-                updateSubWombo(j,values[0]);
+            for(int i = 0; i < subwombos; i++)
+                updateSubWombo(i,values[0]);
     }
     
     /**
@@ -62,6 +61,9 @@ public class WomboCombo extends JPanel{
         this(subWomboLabels, subWombos, values, false);
     }
     
+    /**
+     * Specific subwombo with slider and spinner
+     */
     protected void addSubWombo(int i, int values[]){
         // Sliders
         sliders[i] = new JSlider(JSlider.HORIZONTAL, MIN_VAL, MAX_VAL, values[i]);
@@ -74,11 +76,11 @@ public class WomboCombo extends JPanel{
         spinners[i] = new JSpinner(new SpinnerNumberModel(values[i],MIN_VAL,MAX_VAL,STEP_SIZE));
         spinners[i].addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-               updateValue(i, sliders[i].getValue());
+               updateValue(i, (int)spinners[i].getValue());
             }
          });
         // SubWombo GUI
-        JPanel subWomboPanel = new JPanel(new GridLayout(1,3));
+        JPanel subWomboPanel = new JPanel();
         subWomboPanel.add(new JLabel(I18n.getString(subWomboLabels[i])));
         subWomboPanel.add(sliders[i]);
         subWomboPanel.add(spinners[i]);

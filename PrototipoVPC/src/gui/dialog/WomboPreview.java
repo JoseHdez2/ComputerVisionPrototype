@@ -11,6 +11,7 @@ import transform.point.base.AbstractImagePointTransformation;
  *  WomboCombo tied to an image and a transformation.
  *  Previews a transformation with different parameters.
  */
+@SuppressWarnings("serial")
 public class WomboPreview extends WomboCombo{
     
     static final GUIStr[] grayscaleWomboLabels = {GUIStr.TRIVIAL_B};

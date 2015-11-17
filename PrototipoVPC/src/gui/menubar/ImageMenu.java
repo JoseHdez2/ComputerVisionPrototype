@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.dialog.BrightnessContrastDialog;
 import gui.dialog.BrightnessContrastWombo;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
@@ -79,15 +78,12 @@ public class ImageMenu extends AbstractMenu{
     private void brightnessAndContrastActionPerformed(ActionEvent e) {
     
         NamedImage image = parentFrame.getFocusedImage();
+        BrightnessContrastWombo dialog = null;
         
-        if (image == null) {
+        if (image == null)
             parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
-        } else {
-            BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame,image);
-            BrightnessContrastWombo dialogWombo = new BrightnessContrastWombo(parentFrame,image);
-            dialogWombo.setTitle("Brightness and Wombo...");
-        }
-    
+        else 
+            dialog = new BrightnessContrastWombo(parentFrame,image);    
     }
         
 }

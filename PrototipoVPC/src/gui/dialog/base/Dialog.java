@@ -10,6 +10,7 @@ import main.MainWindow;
  *  Pop-up window smaller than the main window.
  *  Allows for configuration of a small subsection of the program.
  */
+@SuppressWarnings("serial")
 public class Dialog extends JFrame{
     
     float widthRatioToParent = 0.75f;

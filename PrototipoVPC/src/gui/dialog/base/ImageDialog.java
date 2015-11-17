@@ -9,6 +9,7 @@ import main.MainWindow;
  *  Usually used for parametrized transformations,
  *  allowing to preview the image in question.
  */
+@SuppressWarnings("serial")
 public class ImageDialog extends Dialog {
 
     protected NamedImage image = null;

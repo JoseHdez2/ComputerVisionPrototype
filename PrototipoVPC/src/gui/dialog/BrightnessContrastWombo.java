@@ -1,6 +1,7 @@
 package gui.dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import transform.point.BrightnessAndContrast;
 
 // TODO: caso de color
 
+@SuppressWarnings("serial")
 public class BrightnessContrastWombo extends ImageDialog{
     
     GUIStr[] rgb = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
@@ -30,7 +32,7 @@ public class BrightnessContrastWombo extends ImageDialog{
     
     public BrightnessContrastWombo(MainWindow parent, NamedImage image) {
         super(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, parent, image);
-        this.setLayout(new BorderLayout(0,1));
+        this.setSize(new Dimension(650,240));
         
         // Elements panel
         JPanel elementsPanel = new JPanel(new BorderLayout());
@@ -69,9 +71,5 @@ public class BrightnessContrastWombo extends ImageDialog{
         System.out.println("transformado");
         
         parent.createImageFrame(img);
-//        System.out.println(brightnessSlider[0].getValue());
-//        System.out.println(contrastSlider[0].getValue());
-//        System.out.println((int)img.getBrightness());
-//        System.out.println((int)img.getContrast());
     }
 }
