@@ -4,11 +4,15 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
-import gui.dialog.BrightnessContrastDialog;
+import javax.swing.JOptionPane;
+
+import gui.dialog.BrightnessContrastDialogOld;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
+import i18n.I18n;
 import main.MainWindow;
+import transform.point.ColorToGrayscale;
 
 @SuppressWarnings("serial")
 public class ImageMenu extends AbstractMenu{
@@ -16,6 +20,9 @@ public class ImageMenu extends AbstractMenu{
     final static GUIStr[] ACTION_NAMES =
         {
         GUIStr.IMAGE_MENU_CROP_SELECTION,
+        GUIStr.SEPARATOR,
+        GUIStr.IMAGE_MENU_TO_GRAYSCALE,
+        GUIStr.SEPARATOR,
         GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST
         };
     
@@ -31,6 +38,9 @@ public class ImageMenu extends AbstractMenu{
         switch(actionName){
         case IMAGE_MENU_CROP_SELECTION:
             cropSelectionActionPerformed(e);
+            break;
+        case IMAGE_MENU_TO_GRAYSCALE:
+            
             break;
         case IMAGE_MENU_BRIGHTNESS_CONTRAST:
             brightnessAndContrastActionPerformed(e);
@@ -61,12 +71,19 @@ public class ImageMenu extends AbstractMenu{
         }
     }
     
-    private void  brightnessAndContrastActionPerformed(ActionEvent e) {
+    private void toGrayscaleActionPerformed(ActionEvent e){
+        if(parentFrame.getFocusedImage().isGrayscale())
+            JOptionPane.showMessageDialog(parentFrame, I18n.getString(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE));
+        else
+            transform(new ColorToGrayscale());   
+    }
+    
+    private void brightnessAndContrastActionPerformed(ActionEvent e) {
     
         NamedImage image = parentFrame.getFocusedImage();
         
         if (image != null) {
-            BrightnessContrastDialog dialog = new BrightnessContrastDialog(parentFrame,image);
+            BrightnessContrastDialogOld dialog = new BrightnessContrastDialogOld(parentFrame,image);
         }
     
     }

@@ -27,6 +27,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.ANALYZE_MENU, "AnalyzeMenu");
         hash.put(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM, "AnalyzeMenu.AbsoluteHistogram");
         hash.put(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM, "AnalyzeMenu.AccumulativeHistogram");
+        hash.put(GUIStr.OPTIONS_MENU, "OptionsMenu");
         hash.put(GUIStr.HISTOGRAM_LABEL_COLOR, "Histogram.LabelColor");
         hash.put(GUIStr.HISTOGRAM_LABEL_PIXELS, "Histogram.LabelPixels");
         hash.put(GUIStr.IMAGE_MENU, "ImageMenu");
@@ -35,6 +36,10 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, "BrightnessDialog.Brightness");
         hash.put(GUIStr.BRIGHTNESS_DIALOG_CONTRAST, "BrightnessDialog.Contrast");
         hash.put(GUIStr.GENERAL_ACCEPT, "General.Accept");
+        hash.put(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE, "DialogError.NoSelectedImage");
+        hash.put(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE, "DialogError.GrayscaleImage");
+        hash.put(GUIStr.OPTION_OVERWRITE, "Option.Overwrite");
+        hash.put(GUIStr.TOOLTIP_OPTION_OVERWRITE, "ToolTip.Option.Overwrite");
     }
     
     public static String get(GUIStr stringId){

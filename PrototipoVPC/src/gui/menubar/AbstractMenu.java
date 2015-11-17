@@ -5,9 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 
+import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
+import transform.point.base.AbstractImagePointTransformation;
 
 // TODO: Usar enums a nivel global del proyecto en vez de constantes String
 
@@ -39,34 +41,23 @@ public abstract class AbstractMenu extends JMenu{
             }
         }
     }
-
+    
+    // TODO: Should this go here? rn, used by both ImageMenu and TransformMenu.
+    protected void transform(AbstractImagePointTransformation trans){
+        NamedImage image1 = parentFrame.getFocusedImage();
+        
+        NamedImage image2 = trans.getTransformedImage(image1);
+        
+        if (parentFrame.getOpt().isOverwrite()){
+            // TODO: overwrite focused image.
+//            parentFrame.getFocusedImage() = image2;
+        } else {
+            parentFrame.createImageFrame(image2);
+        }
+    }
+    
+    
     protected abstract void actionPerformedHandler(GUIStr actionName, ActionEvent e);
     
-    // TODO: Problema: Hacer un iterador que solo itere por los 
-    /*
-    public Iterator<MyMenuItem> myMenuItemIterator(){
-        Iterator<MyMenuItem> it = new Iterator<MyMenuItem>() {
-
-            private int currentIndex = 0;
-
-            public Iterator<MyMenuItem>(){
-                
-            }
-            
-            public boolean hasNext() {
-                return currentIndex < getComponentCount()
-                return currentIndex < currentSize && arrayList[currentIndex] != null;
-            }
-
-            public MyMenuItem next() {
-                return arrayList[currentIndex++];
-            }
-
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
-        return it;
-    }
-    */
+    
 }

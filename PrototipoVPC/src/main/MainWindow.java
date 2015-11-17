@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
-import gui.menubar.StatusBar;
 import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
 import gui.utils.RegionSelector;
@@ -28,6 +27,7 @@ public class MainWindow extends JFrame {
 	JDesktopPane pane = new JDesktopPane();
 	TheMenuBar menubar = new TheMenuBar(this);
 	StatusBar statusbar = new StatusBar();
+	Options opt = new Options();
 	
 	MainWindow(){
 	    
@@ -99,11 +99,19 @@ public class MainWindow extends JFrame {
 	    }
 	}
 	
+	public void showErrorDialog(GUIStr errorStr){
+	    
+	}
+	
 	/*
 	 * Getters and setters.
 	 */
 	
 	public JDesktopPane getPane() {
 	    return pane;
+    }
+
+    public Options getOpt() {
+        return opt;
     }
 }

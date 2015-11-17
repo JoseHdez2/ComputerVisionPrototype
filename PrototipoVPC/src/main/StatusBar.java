@@ -1,9 +1,8 @@
-package gui.menubar;
+package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.image.ColorModel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

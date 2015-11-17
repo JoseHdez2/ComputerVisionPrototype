@@ -2,12 +2,10 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
-import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform.point.HistogramEqualization;
 import transform.point.Negative;
-import transform.point.base.AbstractImagePointTransformation;
 
 
 @SuppressWarnings("serial")
@@ -43,22 +41,6 @@ public class TransformMenu extends AbstractMenu {
     /*
      * Menu actions
      */
-    
-    // If false, create new image in new frame.
-    boolean OVERWRITE = false;
-    
-    private void transform(AbstractImagePointTransformation trans){
-        NamedImage image1 = parentFrame.getFocusedImage();
-        
-        NamedImage image2 = trans.getTransformedImage(image1);
-        
-        if (OVERWRITE){
-            // TODO: overwrite focused image.
-//            parentFrame.getFocusedImage()
-        } else {
-            parentFrame.createImageFrame(image2);
-        }
-    }
     
     private void equalizeActionPerformed(ActionEvent e) {
         

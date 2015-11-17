@@ -23,7 +23,7 @@ import main.MainWindow;
 import transform.point.BrightnessAndContrast;
 
 @SuppressWarnings("serial")
-public class BrightnessContrastDialog extends JFrame {
+public class BrightnessContrastDialogOld extends JFrame {
     
     JSlider[] brightnessSlider = new JSlider[3]; //RGB [0,1,2]
     JSlider[] contrastSlider = new JSlider[3];
@@ -33,7 +33,7 @@ public class BrightnessContrastDialog extends JFrame {
     NamedImage image = null;
     MainWindow parent = null;
     
-    public BrightnessContrastDialog(MainWindow parent, NamedImage image) {
+    public BrightnessContrastDialogOld(MainWindow parent, NamedImage image) {
         
         super();
         this.image = image;

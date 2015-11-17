@@ -1,12 +1,11 @@
 package gui.utils;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import gui.menubar.StatusBar;
 import gui.utils.image.NamedImage;
+import main.StatusBar;
 
 public class RegionSelector extends MouseAdapter {
     
