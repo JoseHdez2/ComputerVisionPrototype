@@ -70,9 +70,11 @@ public class ImageMenu extends AbstractMenu{
     }
     
     private void toGrayscaleActionPerformed(ActionEvent e){
-        if(parentFrame.getFocusedImage().isGrayscale())
+        if (!assertImageSelected()) return;
+        if(parentFrame.getFocusedImage().isGrayscale()){
             parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_GRAYSCALE_IMAGE);
-        else
+            return;
+        }
             transform(new ColorToGrayscale());   
     }
     
