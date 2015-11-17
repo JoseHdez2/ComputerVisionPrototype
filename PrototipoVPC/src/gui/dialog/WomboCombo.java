@@ -25,6 +25,7 @@ public class WomboCombo extends JPanel{
     final int STEP_SIZE = 1;
     
     int subwombos;
+    GUIStr[] subWomboLabels;
     JSlider[] sliders = null;
     JSpinner[] spinners = null;
     
@@ -37,6 +38,7 @@ public class WomboCombo extends JPanel{
      */
     public WomboCombo(GUIStr[] subWomboLabels, int subWombos, int[] values, boolean boundWombos){
         this.subwombos = subWombos;
+        this.subWomboLabels = subWomboLabels;
         
         values = new int[subWombos]; // TODO: linea incorrecta pero asi funcionan bien las transformaciones.
         sliders = new JSlider[subWombos];
@@ -44,27 +46,7 @@ public class WomboCombo extends JPanel{
         this.boundWombos = boundWombos;
         
         for(int i = 0; i < subwombos; i++){
-            final int innerI = i; // TODO: ???????
-            // Sliders
-            sliders[i] = new JSlider(JSlider.HORIZONTAL, MIN_VAL, MAX_VAL, values[i]);
-            sliders[i].addChangeListener(new ChangeListener() {
-                public void stateChanged(ChangeEvent e) {
-                   updateValue(innerI, sliders[innerI].getValue());
-                }
-             });
-            // Spinners
-            spinners[i] = new JSpinner(new SpinnerNumberModel(values[i],MIN_VAL,MAX_VAL,STEP_SIZE));
-            spinners[i].addChangeListener(new ChangeListener() {
-                public void stateChanged(ChangeEvent e) {
-                   updateValue(innerI, sliders[innerI].getValue());
-                }
-             });
-            // SubWombo GUI
-            JPanel subWomboPanel = new JPanel(new GridLayout(1,3));
-            subWomboPanel.add(new JLabel(I18n.getString(subWomboLabels[i])));
-            subWomboPanel.add(sliders[i]);
-            subWomboPanel.add(spinners[i]);
-            this.add(subWomboPanel);
+            addSubWombo(i, values);
         }
         
         // If subWombos are bound, update all to the first value (in case they are different).
@@ -80,11 +62,34 @@ public class WomboCombo extends JPanel{
         this(subWomboLabels, subWombos, values, false);
     }
     
+    protected void addSubWombo(int i, int values[]){
+        // Sliders
+        sliders[i] = new JSlider(JSlider.HORIZONTAL, MIN_VAL, MAX_VAL, values[i]);
+        sliders[i].addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+               updateValue(i, sliders[i].getValue());
+            }
+         });
+        // Spinners
+        spinners[i] = new JSpinner(new SpinnerNumberModel(values[i],MIN_VAL,MAX_VAL,STEP_SIZE));
+        spinners[i].addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+               updateValue(i, sliders[i].getValue());
+            }
+         });
+        // SubWombo GUI
+        JPanel subWomboPanel = new JPanel(new GridLayout(1,3));
+        subWomboPanel.add(new JLabel(I18n.getString(subWomboLabels[i])));
+        subWomboPanel.add(sliders[i]);
+        subWomboPanel.add(spinners[i]);
+        this.add(subWomboPanel);
+    }
+    
     /**
      * Update one or all subWombos, depending on whether subWombos are bound or not.
      * @param i SubWombo index. (Ignored in case of bound subWombos)
      */
-    private void updateValue(int i, int value){
+    protected void updateValue(int i, int value){
         if(boundWombos)
             for(int j = 0; j < subwombos; j++)
                 updateSubWombo(j,value);
@@ -96,7 +101,7 @@ public class WomboCombo extends JPanel{
      * Update a slider-spinner pair (subWombo).
      * @param i Index of pair.
      */
-    private void updateSubWombo(int i, int value){
+    protected void updateSubWombo(int i, int value){
         sliders[i].setValue(value);
         spinners[i].setValue(value);
     }
