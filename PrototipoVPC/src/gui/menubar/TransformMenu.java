@@ -24,7 +24,7 @@ public class TransformMenu extends AbstractMenu {
 
     @Override
     protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
-
+        
         switch(actionName){
         case TRANSFORM_MENU_EQUALIZE_ACTION:
             equalizeActionPerformed(e);
@@ -43,17 +43,17 @@ public class TransformMenu extends AbstractMenu {
      */
     
     private void equalizeActionPerformed(ActionEvent e) {
-        
+        if (!assertImageSelected()) return;
         transform(new HistogramEqualization(parentFrame.getFocusedImage()));
     }
     
     private void negativeActionPerformed(ActionEvent e) {
-        
+        if (!assertImageSelected()) return;
         transform(new Negative());   
     }
     
     private void histogramEqualizationActionPerformed(ActionEvent e) {
-        
+        if (!assertImageSelected()) return;
         transform(new HistogramEqualization(parentFrame.getFocusedImage()));   
     }
 }

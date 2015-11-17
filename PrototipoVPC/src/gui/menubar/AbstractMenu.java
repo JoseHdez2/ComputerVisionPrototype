@@ -64,6 +64,18 @@ public abstract class AbstractMenu extends JMenu{
     }
     
     
+    /**
+     * Make sure an image is selected. Otherwise, show error and return.
+     */
+    protected boolean assertImageSelected(){
+        if (parentFrame.getFocusedImage() == null){
+            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            return false;
+        }
+        return true;
+    }
+   
+    
     protected abstract void actionPerformedHandler(GUIStr actionName, ActionEvent e);
     
     
