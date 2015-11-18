@@ -1,15 +1,13 @@
-package transform.vicinity;
+package transform.vicinity.base;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 import gui.utils.image.NamedImage;
 
-public class AbstractLinearFilter {
+public abstract class AbstractLinearFilter {
     
-    private Kernel createKernel(){
-        return new Kernel();
-    }
+    protected abstract Kernel createKernel();
     
     public NamedImage applyFilter(NamedImage img1){
         // TODO: peligro; linea falsa.

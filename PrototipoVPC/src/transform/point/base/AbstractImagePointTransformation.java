@@ -4,8 +4,9 @@ import java.awt.Color;
 
 import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
+import transform.base.AbstractImageTransformation;
 
-public abstract class AbstractImagePointTransformation {
+public abstract class AbstractImagePointTransformation extends AbstractImageTransformation {
     
     /**
      * Take an input image and output the transformed image.
