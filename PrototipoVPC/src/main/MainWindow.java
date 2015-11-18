@@ -36,7 +36,7 @@ public class MainWindow extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.setTitle(I18n.getString(GUIStr.MAIN_WINDOW_TITLE));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBackground(Color.LIGHT_GRAY);
+		pane.setBackground(Color.LIGHT_GRAY);
 
 		this.add(pane);
 		this.add(statusbar, BorderLayout.SOUTH);
