@@ -9,7 +9,7 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
-import transform.point.base.AbstractImagePointTransformation;
+import transform.base.AbstractImageTransformation;
 
 // TODO: Usar enums a nivel global del proyecto en vez de constantes String
 
@@ -43,7 +43,7 @@ public abstract class AbstractMenu extends JMenu{
     }
     
     // TODO: Should this go here? rn, used by both ImageMenu and TransformMenu.
-    protected void transform(AbstractImagePointTransformation transformation){
+    protected void transform(AbstractImageTransformation transformation){
         System.out.println(parentFrame.getFocusedImage());
         
         if(parentFrame.getFocusedImage() == null){
@@ -55,12 +55,12 @@ public abstract class AbstractMenu extends JMenu{
         
         NamedImage image2 = transformation.getTransformedImage(image1);
         
-        if (parentFrame.getOpt().isOverwrite()){
+//        if (parentFrame.getOpt().isOverwrite()){
             // TODO: overwrite focused image.
 //            parentFrame.getFocusedImage() = image2;
-        } else {
+//        } else {
             parentFrame.createImageFrame(image2);
-        }
+//        }
     }
     
     

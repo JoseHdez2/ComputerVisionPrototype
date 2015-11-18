@@ -24,6 +24,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION, "TransformMenu.EqualizeAction");
         hash.put(GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION, "TransformMenu.NegativeAction");
         hash.put(GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION, "TransformMenu.HistogramEqualization");
+        hash.put(GUIStr.TRANSFORM_MENU_FILTER_MEAN_BLUR, "TransformMenu.Filter.MeanBlur");
         hash.put(GUIStr.ANALYZE_MENU, "AnalyzeMenu");
         hash.put(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM, "AnalyzeMenu.AbsoluteHistogram");
         hash.put(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM, "AnalyzeMenu.AccumulativeHistogram");

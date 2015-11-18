@@ -6,6 +6,7 @@ import i18n.GUIStr;
 import main.MainWindow;
 import transform.point.HistogramEqualization;
 import transform.point.Negative;
+import transform.vicinity.MeanBlur;
 
 
 @SuppressWarnings("serial")
@@ -15,7 +16,9 @@ public class TransformMenu extends AbstractMenu {
         {
         GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION,
         GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION,
-        GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION
+        GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION,
+        GUIStr.SEPARATOR,
+        GUIStr.TRANSFORM_MENU_FILTER_MEAN_BLUR,
         };
     
     public TransformMenu(MainWindow parentFrame){
@@ -34,6 +37,9 @@ public class TransformMenu extends AbstractMenu {
             break;
         case TRANSFORM_MENU_HISTOGRAM_EQUALIZATION:
             histogramEqualizationActionPerformed(e);
+            break;
+        case TRANSFORM_MENU_FILTER_MEAN_BLUR:
+            filterMeanBlurActionPerformed(e);
             break;
         }
     }
@@ -55,5 +61,10 @@ public class TransformMenu extends AbstractMenu {
     private void histogramEqualizationActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
         transform(new HistogramEqualization(parentFrame.getFocusedImage()));   
+    }
+    
+    private void filterMeanBlurActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        transform(new MeanBlur());   
     }
 }

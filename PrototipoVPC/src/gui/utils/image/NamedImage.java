@@ -40,7 +40,7 @@ public class NamedImage extends BufferedImage {
     
     /**
      * Returns the color for pixel in x and y coordinates
-     * @return Color if exists pixel
+     * @return Color if the pixel exists, null if it doesn't.
      */
     public Color getPixelColor(int x, int y) {
         if (validPixel(x,y)){
@@ -131,6 +131,18 @@ public class NamedImage extends BufferedImage {
         BufferedImage bi = new BufferedImage(cm, raster, isAlphaPremultiplied, null);
         
         return new NamedImage(bi, this.getFile());
+    }
+    
+    /**
+     * NOTE: Pixel positions/indexes start at zeroth.
+     * @param x
+     * @param y
+     * @return  The provided pixel position is not in the image.
+     */
+    public boolean outOfBounds(int x, int y){
+        if (x < 0 || x > this.getWidth() - 1) return true;
+        if (y < 0 || y > this.getHeight() - 1) return true;
+        else return false;
     }
     
     /*
