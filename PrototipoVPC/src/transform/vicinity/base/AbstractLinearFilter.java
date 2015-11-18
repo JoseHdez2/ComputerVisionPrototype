@@ -4,16 +4,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import gui.utils.image.NamedImage;
+import transform.base.AbstractImageTransformation;
 
-public abstract class AbstractLinearFilter {
+public abstract class AbstractLinearFilter extends AbstractImageTransformation{
+
     
-    protected abstract Kernel createKernel();
+
+    @Override
+    public NamedImage getTransformedImage(NamedImage img1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+    
+    // superponer, multiplicar, sumar y asignar
+    
     
     public NamedImage applyFilter(NamedImage img1){
         // TODO: peligro; linea falsa.
+        Kernel kernel = createKernel();
         NamedImage img2 = new NamedImage(new BufferedImage(0,0,0), new File("wepa"));
         return img2;
     }
+
+    
+    protected abstract Kernel createKernel();
     
     /*
      * pillar imagen

@@ -1,56 +1,78 @@
 package transform.vicinity.base;
 
-import java.util.ArrayList;
-
-public class Kernel extends ArrayList<ArrayList<Integer>>{
+public class Kernel extends FloatMatrix{
     
-    boolean valid;
-    
-    public Kernel(){
-        
+    public Kernel(float[][] data){
+        super(data);
     }
     
-    public void updateValidity(){
-        if (this.isEmpty()){
-            valid = false;
-        }
-        if (isRectangular() && hasCenterPixel()){
-            valid = true;
-        }
-        else valid = false;
+    public Kernel(int width, int height){
+        super(width, height);
     }
     
     /**
-     * @return Kernel is not empty and all rows have the same number of elements.
+     * @return Is valid FloatMatrix and has a central pixel. 
      */
-    public boolean isRectangular(){
-        if (this.isEmpty()) return false;
-        int expectedWidth = this.size();
-        int expectedHeight = this.get(0).size();
-        for(int i = 0; i < expectedHeight; i++){
-            if (this.get(i).size() != expectedWidth) return false;
-        }
+    public boolean isValid(){
+        if (!super.isValid()) return false;
+        if (!hasCentralPixel()) return false;
         return true;
     }
     
     /**
-     * NOTE: Assumes true for {@link Kernel#isRectangular()}.
      * @return Has odd number of both rows and columns.
      */
-    public boolean hasCenterPixel(){
-        if ((this.size() % 2) != 0) 
-        if (this.get(0))
+    public boolean hasCentralPixel(){
+        if ((getWidth() % 2) == 0) return false;
+        if ((getHeight() % 2) == 0) return false;
+        return true;
     }
     
-    public Integer[] centerPixelCoords(){
+    /**
+     * @return Equivalent kernel whose elements add up to 1.
+     */
+    public Kernel getNormalized(){
+        int elementCount = this.getElementCount();
+        Kernel normKernel = new Kernel(this.width, this.height);
         
+        for(int i = 0; i < this.height; i++){
+            for (int j = 0; j < this.width; j++){
+                normKernel.set(i, j, this.get(i,j) * (1f / elementCount));
+            }
+        }
+        
+        return normKernel;
     }
     
+    
+    // TODO: Pa que sirve la funcion de abajo? Pa que sirve hacer la H'.
     /**
      * Same as rotating the kernel 180 degrees.
      * @return Corresponding prime Kernel (H').
      */
     public Kernel getPrimeKernel(){
-        Kernel primeKernel = new Kernel();
+        Kernel primeKernel = new Kernel(this.width, this.height);
+        
+        for(int i = 0; i < this.height; i++){
+            for (int j = 0; j < this.width; j++){
+                primeKernel.set(i, j, this.get(this.width - i, this.height - j));
+            }
+        }
+        
+        return primeKernel;
+    }
+    
+    /**
+     * @return Index of center row. Assumes true for {@link Kernel#isValid()}.
+     */
+    public int centerRow(){
+        return this.height / 2;
+    }
+    
+    /**
+     * @return Index of center column. Assumes true for {@link Kernel#isValid()}.
+     */
+    public int centerCol(){
+        return this.width / 2;
     }
 }
