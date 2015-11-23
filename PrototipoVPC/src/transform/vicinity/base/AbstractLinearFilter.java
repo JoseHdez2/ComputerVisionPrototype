@@ -8,22 +8,15 @@ import transform.base.AbstractImageTransformation;
 
 public abstract class AbstractLinearFilter extends AbstractImageTransformation{
 
-    
-
     @Override
-    public NamedImage getTransformedImage(NamedImage img1) {
-        // TODO Auto-generated method stub
-        return applyFilter(img1);
-    }
-    
+    public abstract NamedImage getTransformedImage(NamedImage img1);
     
     // superponer, multiplicar, sumar y asignar
     
     // TODO: Reescribir esta guarrada
-    public NamedImage applyFilter(NamedImage img1){
+    public NamedImage applyFilter(NamedImage img1, Kernel kernel){
         NamedImage img2 = img1.deepishCopy();
         
-        Kernel kernel = createKernel();
         if (!kernel.isValid()) System.err.println("Invalid Kernel");
         kernel = kernel.getNormalized();
         
@@ -37,7 +30,7 @@ public abstract class AbstractLinearFilter extends AbstractImageTransformation{
         
         // Each pixel of the image will act as the kernel's pivot.
         for (int pivJ = 0; pivJ < imageHeight; pivJ++){
-            for (int pivI = 0; pivI < imageHeight; pivI++){
+            for (int pivI = 0; pivI < imageWidth; pivI++){
                 
                 // Using kernel center as pivot, visit each kernel pixel.
                 for (int kerJ = 0; kerJ <= kernelHeight; kerJ++ ){
@@ -72,9 +65,6 @@ public abstract class AbstractLinearFilter extends AbstractImageTransformation{
         
         return img2;
     }
-
-    
-    protected abstract Kernel createKernel();
     
     /*
      * pillar imagen

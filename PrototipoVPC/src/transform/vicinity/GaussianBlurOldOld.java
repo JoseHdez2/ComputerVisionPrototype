@@ -4,11 +4,11 @@ import transform.vicinity.base.AbstractLinearFilter;
 import transform.vicinity.base.Kernel;
 
 // TODO: No he borrado la clase porque le tengo cariño <3
-public class GaussianBlur extends AbstractLinearFilter{
+public class GaussianBlurOldOld extends AbstractLinearFilter{
 
     int kerSize;
     
-    public GaussianBlur(int kerSize){
+    public GaussianBlurOldOld(int kerSize){
         this.kerSize = kerSize;
     }
     
