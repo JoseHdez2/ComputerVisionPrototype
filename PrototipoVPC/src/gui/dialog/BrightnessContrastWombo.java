@@ -24,8 +24,8 @@ import transform.point.BrightnessAndContrast;
 public class BrightnessContrastWombo extends ImageDialog{
     
     GUIStr[] rgb = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
-    int[] initialBrightness = {(int) image.getBrightness(), 0, 0};
-    int[] initialContrast = {(int) image.getContrast(), 0, 0};
+    int[] initialBrightness = {(int) Math.round(image.getBrightness()), 0, 0};
+    int[] initialContrast = {(int) Math.round(image.getContrast()), 0, 0};
     
     WomboCombo brightnessWombo = new WomboCombo(rgb, 3, initialBrightness, true);
     WomboCombo contrastWombo = new WomboCombo(rgb, 3, initialContrast, true);

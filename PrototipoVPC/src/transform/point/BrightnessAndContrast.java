@@ -17,12 +17,6 @@ public class BrightnessAndContrast extends ThreeChannelAIPT{
     public BrightnessAndContrast(NamedImage img, int newBrightness, int newContrast){
         float oldBrightness = img.getBrightness();
         float oldContrast = img.getContrast();
-        
-        
-        System.out.println("ViejoBrillo: " + oldBrightness);
-        System.out.println("ViejoContraste: " + oldContrast);
-        System.out.println("NuevoBrillo: " + newBrightness);
-        System.out.println("NuevoContraste: " + newContrast);
 
         if (oldContrast == 0){
             A = 255;

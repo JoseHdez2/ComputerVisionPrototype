@@ -34,28 +34,28 @@ public class BrightnessAndContrast {
         
         outdatedBrightness = false;
         HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
-        int sum = 0;
+        float sum = 0;
         
         for(Entry<Integer,Integer> entry : h.entrySet()) {
             sum += entry.getValue() * entry.getKey();
         }
-//        System.out.println((int)Math.round(a));   Output format like rounded int
-        return (float)(sum/img.getPixelCount());
+
+        return (sum/img.getPixelCount());
     }
     
     private float calculateContrast(NamedImage img) {
         
         outdatedContrast = false;
         HashMap<Integer, Integer> h = img.getPixelColorCount().getColorToInteger();
-        int sum = 0;
+        float sum = 0;
         float brightness = img.getBrightness(); 
         
         for(Entry<Integer,Integer> entry : h.entrySet()) {
             sum += entry.getValue() * Math.pow(entry.getKey() - brightness, 2);
         }
         
-        float sum2 = (float)(sum/img.getPixelCount());
+        sum /= img.getPixelCount();
 
-        return (float)(Math.sqrt(sum2));
+        return (float)(Math.sqrt(sum));
     }    
 }

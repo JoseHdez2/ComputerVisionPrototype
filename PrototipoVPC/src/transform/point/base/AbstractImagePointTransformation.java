@@ -1,6 +1,7 @@
 package transform.point.base;
 
 import java.awt.Color;
+import java.awt.image.WritableRaster;
 
 import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
@@ -30,19 +31,29 @@ public abstract class AbstractImagePointTransformation extends AbstractImageTran
         
         NamedImage img2 = img1.deepishCopy();
         
+        WritableRaster raster = img2.getRaster();
         int imageWidth = img2.getWidth();
         int imageHeight = img2.getHeight();
         
         for (int i = 0; i < imageWidth; i++){
             for (int j = 0; j < imageHeight; j++){
 
-                Color oldPixelColor = new Color(img1.getRGB(i, j));
+                Color oldPixelColor = null;
+                
+                if (img2.isGrayscale())
+                    oldPixelColor = new Color(raster.getSample(i,j,0),raster.getSample(i,j,0),raster.getSample(i,j,0));
+                else
+                    oldPixelColor = new Color(raster.getSample(i,j,0),raster.getSample(i,j,1),raster.getSample(i,j,2));
                 
                 Color newPixelColor = lut.get(oldPixelColor);
-                
-                img2.setRGB(i, j, newPixelColor.getRGB());
+
+                raster.setSample(i,j,0,newPixelColor.getRed());
+                if (!img2.isGrayscale()) {
+                    raster.setSample(i,j,1,newPixelColor.getGreen());
+                    raster.setSample(i,j,2,newPixelColor.getBlue());
+                }
             }
-        }
+        }        
         
         return img2;
     }
@@ -61,6 +72,8 @@ public abstract class AbstractImagePointTransformation extends AbstractImageTran
             // For this color value, calculate the corresponding new color value.
             // This method will vary depending on the transformation(implementing class).
             int vOut = getVOut(vIn);
+            
+            //System.out.println(vIn + " -> " + vOut);
             
             transTable.put(new Color(vIn, vIn, vIn), new Color(vOut, vOut, vOut));
         }

@@ -139,12 +139,6 @@ public class BrightnessContrastDialog extends ImageDialog{
         BrightnessAndContrast transform = new BrightnessAndContrast(image, brightnessSlider[0].getValue(), contrastSlider[0].getValue());
         NamedImage img = transform.getTransformedImage(image);
         
-        System.out.println("transformado");
-        
         parent.createImageFrame(img);
-//        System.out.println(brightnessSlider[0].getValue());
-//        System.out.println(contrastSlider[0].getValue());
-//        System.out.println((int)img.getBrightness());
-//        System.out.println((int)img.getContrast());
     }
 }
