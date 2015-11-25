@@ -4,35 +4,37 @@ import transform.vicinity.base.AbstractLinearFilter;
 import transform.vicinity.base.Kernel;
 
 // TODO: No he borrado la clase porque le tengo cariño <3
-public class GaussianBlur extends AbstractLinearFilter{
+public class GaussianBlur extends AbstractLinearDoubleFilter{
 
-    int kerSize;
+    float sigma;
     
-    public GaussianBlur(int kerSize){
-        this.kerSize = kerSize;
+    public GaussianBlur(float sigma){
+        this.sigma = sigma;
     }
     
-    @Override
-    protected Kernel createKernel() {
-        float data[][] = new float [kerSize][kerSize];
-        
-        int halfKernel = kerSize / 2;
-        
-        // We build the gaussian kernel depending on the size given.
-        for(int x= halfKernel; x < kerSize; x++){
-            for(int y= 0; y < kerSize; y++){
-                // Calculate kernel element value
-                int value = (int)(Math.pow(x, 2) + Math.pow(y, 2));
-                // Since gaussian is symmetrical, we repeat value for the four quadrants.
-                data[halfKernel - x][halfKernel - y] = value;
-                data[halfKernel - x][halfKernel + y] = value;
-                data[halfKernel + x][halfKernel - y] = value;
-                data[halfKernel + x][halfKernel + y] = value;
-            }
-        }
-        
-        Kernel kernel = new Kernel(data);
-        return kernel;
+    protected Kernel createHorizontalKernel(){
+        float data[][] = 
+            {   
+                {4, 20, 135, 411, 801, 1000, 801, 411, 135, 20, 4},
+            };
+        return new Kernel(data);
     }
-
+    
+    protected Kernel createVerticalKernel(){
+        float data[][] = 
+            {   
+                {4}, 
+                {20}, 
+                {135}, 
+                {411}, 
+                {801}, 
+                {1000}, 
+                {801}, 
+                {411}, 
+                {135}, 
+                {20}, 
+                {4},
+            };
+        return new Kernel(data);
+    }
 }

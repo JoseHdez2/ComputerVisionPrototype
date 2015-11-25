@@ -24,8 +24,14 @@ public class BrightnessAndContrast extends ThreeChannelAIPT{
         System.out.println("NuevoBrillo: " + newBrightness);
         System.out.println("NuevoContraste: " + newContrast);
 
-        A = newContrast / oldContrast;
+        if (oldContrast == 0){
+            A = 255;
+        } else {
+            A = newContrast / oldContrast;
+        }
+        
         B = newBrightness - A * oldBrightness;
+        // if (B < 0) B = 0;    // TODO do we need to check this?
     }
 
     @Override
