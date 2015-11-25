@@ -9,19 +9,17 @@ public class ColorHistogram extends HashMap<Color, Integer> {
      * @return Accumulative histogram version of itself.
      */
     public ColorHistogram getAccumulative(){
-        // TODO: Assumes grayscale histogram.
+        // TODO: Assumes grayscale histogram. IMPORTANT.
         
         ColorHistogram accHistogram = new ColorHistogram();
         
         Integer pixelsBelowOrEqualToThisColor = 0;
         for (int i = 0; i <= 255; i++){
-            Color color = new Color(0,0,i);   // modo raro
-//            Color color = new Color(i,i,i); // modo normal
+            Color color = new Color(i,i,i);
             if (get(color) != null) {
                 pixelsBelowOrEqualToThisColor += get(color);
             }    
-//            accHistogram.put(color, pixelsBelowOrEqualToThisColor); // modo normal
-            accHistogram.put(new Color(i,i,i), pixelsBelowOrEqualToThisColor); // modo correccion raro
+            accHistogram.put(color, pixelsBelowOrEqualToThisColor);
         }
         
         return accHistogram;
