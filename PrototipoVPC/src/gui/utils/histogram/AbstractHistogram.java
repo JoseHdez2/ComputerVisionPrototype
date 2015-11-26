@@ -139,17 +139,12 @@ public abstract class AbstractHistogram {
     private void calculateInformation() {
         
         for (int i=0; i<=255; i++) {
-            if (pixelArray.get(i) > 0) {
+            if ((min == 0) && (pixelArray.get(i) > 0))
                 min = i;
+            if ((max == 255) && (pixelArray.get(255-i) > 0))
+                max = 255-i;
+            if ((min > 0) && (max < 255))
                 break;
-            }
-        }
-        
-        for (int i=255; i>=0; i--) {
-            if (pixelArray.get(i) < 255) {
-                max = i;
-                break;
-            }
-        }        
+        }      
     }
 }
