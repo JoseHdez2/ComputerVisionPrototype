@@ -127,9 +127,10 @@ public class NamedImage extends BufferedImage {
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
         
         WritableRaster raster = this.copyData(null);
+        raster = (WritableRaster)raster.createChild(0,0,this.getWidth(),this.getHeight(),0,0,null);
         
         BufferedImage bi = new BufferedImage(cm, raster, isAlphaPremultiplied, null);
-        
+
         return new NamedImage(bi, this.getFile());
     }
     
