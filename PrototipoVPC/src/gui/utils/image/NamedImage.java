@@ -154,6 +154,10 @@ public class NamedImage extends BufferedImage {
         return file.getName();
     }
     
+    public String getBasicName(){
+        return file.getName().replace("."+getExtension(), "");
+    }
+    
     public String getExtension() {
         
         int i = getName().lastIndexOf('.');
