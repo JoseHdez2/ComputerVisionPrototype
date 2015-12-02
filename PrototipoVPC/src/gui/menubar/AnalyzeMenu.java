@@ -2,6 +2,7 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.DifferenceMapDialog;
 import gui.dialog.DifferencingDialog;
 import gui.utils.histogram.AbsoluteHistogram;
 import gui.utils.histogram.AccumulativeHistogram;
@@ -16,7 +17,9 @@ public class AnalyzeMenu extends AbstractMenu{
         {
         GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM,
         GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM,
-        GUIStr.ANALYZE_MENU_DIFFERENCING
+        GUIStr.SEPARATOR,
+        GUIStr.ANALYZE_MENU_DIFFERENCING,
+        GUIStr.ANALYZE_MENU_DIFFERENCE_MAP
         };
     
     public AnalyzeMenu(MainWindow parentFrame) {
@@ -37,7 +40,10 @@ public class AnalyzeMenu extends AbstractMenu{
             break;
         case ANALYZE_MENU_DIFFERENCING:
             differencingActionPerformed(e);
-            break;            
+            break;
+        case ANALYZE_MENU_DIFFERENCE_MAP:
+            differenceMapActionPerformed(e);
+            break;  
         }
     }    
     
@@ -67,5 +73,12 @@ public class AnalyzeMenu extends AbstractMenu{
         DifferencingDialog d = new DifferencingDialog(parentFrame);
         d.show();
     }
+    
+    
+    private void differenceMapActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        DifferenceMapDialog d = new DifferenceMapDialog(parentFrame.getFocusedImage());
+        d.show();
+    }    
         
 }
