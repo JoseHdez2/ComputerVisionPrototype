@@ -48,6 +48,8 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.TOOLTIP_OPTION_OVERWRITE, "ToolTip.Option.Overwrite");
         hash.put(GUIStr.IMAGE_MENU_ENTROPY, "ImageMenu.Entropy");
         hash.put(GUIStr.IMAGE_MENU_ENTROPY_TEXT, "ImageMenu.EntropyText");
+        hash.put(GUIStr.ANALYZE_MENU_DIFFERENCING, "AnalyzeMenu.Differencing");
+        hash.put(GUIStr.DIALOG_ERROR_DIFFERENCING, "DialogError.Differencing");
     }
     
     public static String get(GUIStr stringId){
