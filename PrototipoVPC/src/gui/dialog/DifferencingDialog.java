@@ -14,7 +14,7 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
-import transform.point.BrightnessAndContrast;
+import transform.point.math.ImageDifferencing;
 
 public class DifferencingDialog {
 
@@ -80,10 +80,10 @@ public class DifferencingDialog {
                 return;
             }
             
-            //BrightnessAndContrast transform = new BrightnessAndContrast(image, brightnessWombo.get(0), contrastWombo.get(0));
-            //NamedImage img = transform.getTransformedImage(image);
+            ImageDifferencing differencing = new ImageDifferencing(img1, img2);
+            NamedImage img = differencing.getDiff();
 
-            //parent.createImageFrame(img);            
+            parent.createImageFrame(img);            
          }        
     }
 }

@@ -61,11 +61,11 @@ public class AnalyzeMenu extends AbstractMenu{
         }
     }
     
+    
     private void differencingActionPerformed(ActionEvent e) {
         
         DifferencingDialog d = new DifferencingDialog(parentFrame);
         d.show();
-
     }
         
 }
