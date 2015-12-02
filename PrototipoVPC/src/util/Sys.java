@@ -23,6 +23,12 @@ public abstract class Sys {
             System.out.println(objects[i]);
     }
     
+    /**
+     * Wrapper function for throwing an exception with a string formatted with String.format().
+     * @param format    Format of the string
+     * @param objects   Objects to be "embedded" into the string.
+     * @throws Exception
+     */
     public static void exception(String format, Object... objects) throws Exception{
         
         throw new Exception(String.format(format, objects));

@@ -2,6 +2,7 @@ package transform.point;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import transform.point.base.LUT;
 import transform.point.base.ThreeChannelAIPT;
@@ -9,7 +10,7 @@ import util.Sys;
 
 public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
 
-    LUT myLUT = new LUT();
+    HashMap<Integer, Integer> myLUT = new LUT();
     
     // TODO: hecho para imagenes en blanco y negro
     
@@ -17,25 +18,32 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
 
         checkArguments(points);
         
+        
+        int p = 0;  // Indice de puntos.
+        int min = 0, max = 0, H = 0, L = 0;
         for (int i = 0; i < 255; i++){
-            int p = 0;
             
             // Nos movemos buscando la linea adecuada al punto
-            while (i > points.get(p).getX()){
+            while (i > points.get(p).x){
                 p++;
+                min = points.get(p).x;
             }
+            
+            int A = (H - L) / (max - min);
+            int B = L - A * min;
+            
         }
     }
     
     protected void checkArguments(ArrayList<Point> points) throws Exception{
         for (Point p : points){
-            if (p.getX() < 0 || p.getX() > 255 || p.getY() < 0 || p.getY() > 255)
+            if (p.x < 0 || p.x > 255 || p.y < 0 || p.y > 255)
                 Sys.exception("Point in piecewise out of bounds: %s", p);
         }
         
         for (int i = 0; i < points.size(); i++){
             if (i == 0) continue;
-            if (points.get(i).getX() < points.get(i-1).getX()){
+            if (points.get(i).x < points.get(i-1).x){
                 Sys.exception("Points not in order or overlapping: p1=%s p2=%s", points.get(i-1), points.get(i));
             }
         }
@@ -43,8 +51,7 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
     
     @Override
     protected int getVOut(int vIn) {
-        // TODO Auto-generated method stub
-        return 0;
+        return myLUT.get(vIn);
     }
 
 }
