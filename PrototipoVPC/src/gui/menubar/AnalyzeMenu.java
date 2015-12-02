@@ -2,6 +2,8 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.DifferenceMapDialog;
+import gui.dialog.DifferencingDialog;
 import gui.utils.histogram.AbsoluteHistogram;
 import gui.utils.histogram.AccumulativeHistogram;
 import gui.utils.image.NamedImage;
@@ -14,8 +16,10 @@ public class AnalyzeMenu extends AbstractMenu{
     final static GUIStr[] ACTION_NAMES =
         {
         GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM,
-        GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM
-
+        GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM,
+        GUIStr.SEPARATOR,
+        GUIStr.ANALYZE_MENU_DIFFERENCING,
+        GUIStr.ANALYZE_MENU_DIFFERENCE_MAP
         };
     
     public AnalyzeMenu(MainWindow parentFrame) {
@@ -34,6 +38,12 @@ public class AnalyzeMenu extends AbstractMenu{
         case ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM:
             accumulativeHistogramActionPerformed(e);
             break;
+        case ANALYZE_MENU_DIFFERENCING:
+            differencingActionPerformed(e);
+            break;
+        case ANALYZE_MENU_DIFFERENCE_MAP:
+            differenceMapActionPerformed(e);
+            break;  
         }
     }    
     
@@ -56,4 +66,19 @@ public class AnalyzeMenu extends AbstractMenu{
             AccumulativeHistogram h = new AccumulativeHistogram(image);
         }
     }
+    
+    
+    private void differencingActionPerformed(ActionEvent e) {
+        
+        DifferencingDialog d = new DifferencingDialog(parentFrame);
+        d.show();
+    }
+    
+    
+    private void differenceMapActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        DifferenceMapDialog d = new DifferenceMapDialog(parentFrame.getFocusedImage());
+        d.show();
+    }    
+        
 }
