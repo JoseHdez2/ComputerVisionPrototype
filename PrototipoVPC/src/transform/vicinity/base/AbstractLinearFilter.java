@@ -48,8 +48,13 @@ public abstract class AbstractLinearFilter extends AbstractImageTransformation{
                         if (img1.outOfBounds(imgI, imgJ)) continue;
                         
                         if (img1.isGrayscale()){
-                            int img1Gray = img1.getPixelColor(imgI, imgJ).getBlue();
-                            int img2Gray = img2.getPixelColor(imgI, imgJ).getBlue();
+                            int img1Gray = 0, img2Gray = 0;
+                            try {
+                                img1Gray = img1.getPixelColor(imgI, imgJ).getBlue();
+                                img2Gray = img2.getPixelColor(imgI, imgJ).getBlue();
+                            } catch (Exception e) {
+                                e.printStackTrace(System.err);
+                            }
                             System.out.println(String.format("pixI= %d, pixJ= %d", imgI, imgJ));
                             int newGray = (int)(img1Gray * kernel.get(imgI, imgJ)) + img2Gray;
                             Color newColor = new Color(newGray, newGray, newGray);
