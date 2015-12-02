@@ -3,9 +3,11 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.HashMap;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import gui.menubar.TheMenuBar;
@@ -24,6 +26,7 @@ public class MainWindow extends JFrame {
 
 	final int WIDTH_DEFAULT = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2;
 	final int HEIGHT_DEFAULT = (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()/1.5);
+	HashMap<String,Integer> openedImages = new HashMap<String,Integer>();
 	
 	JDesktopPane pane = new JDesktopPane();
 	TheMenuBar menubar = new TheMenuBar(this);
@@ -48,7 +51,33 @@ public class MainWindow extends JFrame {
      * Create new InternalFrame for image's transforms
      */
 	public void createImageFrame(NamedImage image) {
-	    MyInternalFrame frame = new MyInternalFrame(image, statusbar);
+	    
+	    JInternalFrame[] frames = pane.getAllFrames();
+	    boolean opened = false;
+	    String name = image.getName();
+	    String title;
+
+	    // Comprobar si ya se ha abierto la imagen anteriormente
+	    for (int i=0; i<frames.length; i++) {
+	        MyInternalFrame f = (MyInternalFrame)frames[i];
+	        
+	        if (f.getNamedImage().getName().equals(name)) {
+	            opened = true;
+	        }   
+	    }
+
+	    // Cambiar el titulo del InternalFrame
+	    if (opened == false) {
+	        title = name;
+	        openedImages.put(name,0);	        
+	    }
+	    else {
+	        int index = openedImages.get(name) + 1;
+	        openedImages.put(name,index);
+	        title = image.getBasicName() + "(" + index + ")." + image.getExtension();
+	    }
+	    
+	    MyInternalFrame frame = new MyInternalFrame(title, image, statusbar);
         pane.add(frame);
         
         try {

@@ -13,8 +13,8 @@ public class MyInternalFrame extends JInternalFrame{
     NamedImage namedImg = null;
     RegionSelector regionSelector = null;
     
-    public MyInternalFrame(NamedImage namedImg, StatusBar statusbar){
-      super(namedImg.getName(), true, true, true, true);
+    public MyInternalFrame(String title, NamedImage namedImg, StatusBar statusbar){
+      super(title, true, true, true, true);
       
       // TODO: Asegurar que no necesitamos constructores mas flexibles/vacios
       this.namedImg = namedImg;
