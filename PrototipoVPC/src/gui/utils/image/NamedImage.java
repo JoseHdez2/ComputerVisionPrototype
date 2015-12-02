@@ -19,7 +19,7 @@ public class NamedImage extends BufferedImage {
         super(bi.getColorModel(), bi.getRaster(), bi.getColorModel().isAlphaPremultiplied(), null);
         this.file = file;
 
-        // TODO: seria posible que carguemos una imagen que no tenga ni
+        // TODO: seria posible que carguemos una imagen que no tenga ni 1 ni 3 bandas.
         // Asumimos que si no tiene 1 banda, tendra 3.
         if(this.getRaster().getNumBands() == 1){
             grayscale = true;
@@ -41,35 +41,23 @@ public class NamedImage extends BufferedImage {
     /**
      * Returns the color for pixel in x and y coordinates
      * @return Color if the pixel exists, null if it doesn't.
+     * @throws Exception If position is invalid (out of bounds).
      */
-    public Color getPixelColor(int x, int y) {
-        if (validPixel(x,y)){
-            // TODO: Cuidado. Comprobar que esas bandas son asi. 
-            if (isGrayscale()){
-                return new Color(
-                        this.getRaster().getSample(x,y,0),
-                        this.getRaster().getSample(x,y,0),
-                        this.getRaster().getSample(x,y,0));
-            } else {
+    public Color getPixelColor(int x, int y) throws Exception {
+        if (this.outOfBounds(x,y)) 
+            throw new Exception(String.format("getPixelColor: pos(%d,%d) is out of bounds.",x,y));
+        // TODO: Cuidado. Comprobar que esas bandas son asi. 
+        if (isGrayscale()){
             return new Color(
-                    this.getRaster().getSample(x,y,0),
-                    this.getRaster().getSample(x,y,1),
-                    this.getRaster().getSample(x,y,2));
-            }
+                this.getRaster().getSample(x,y,0),
+                this.getRaster().getSample(x,y,0),
+                this.getRaster().getSample(x,y,0));
+        } else {
+        return new Color(
+                this.getRaster().getSample(x,y,0),
+                this.getRaster().getSample(x,y,1),
+                this.getRaster().getSample(x,y,2));
         }
-        else
-            return null;
-    }
-    
-    /**
-     * Validate x and y coordinates for image
-     * @return boolean
-     */
-    private boolean validPixel(int x, int y) {
-        if (x < this.getWidth() && y < this.getHeight())
-            return true;
-        else
-            return false;
     }
 
     /**

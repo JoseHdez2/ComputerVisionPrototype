@@ -34,10 +34,13 @@ public class HistogramEqualization extends ThreeChannelAIPT{
     protected int getVOut(int vIn) {
 
         Integer coVin = accumulativeHistogram.get(new Color(vIn,vIn,vIn));
-        System.out.println(String.format("coVin[%d]=%d", vIn, coVin));
         
         int vOut = Math.round((((float)M / size) * coVin)) - 1;
         
+
+        System.out.println(String.format("coVin[%d]=%d, vOut=%d", vIn, coVin, vOut));
+        
+        // Falseamos para que no haya valores negativos
         if (vOut < 0) vOut = 0;
         
         return vOut;
