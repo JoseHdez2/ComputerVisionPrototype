@@ -77,7 +77,7 @@ public class AnalyzeMenu extends AbstractMenu{
     
     private void differenceMapActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
-        DifferenceMapDialog d = new DifferenceMapDialog(parentFrame.getFocusedImage());
+        DifferenceMapDialog d = new DifferenceMapDialog(parentFrame.getFocusedImage(),parentFrame);
         d.show();
     }    
         

@@ -1,5 +1,8 @@
 package transform.point.math;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
 import gui.utils.image.NamedImage;
 import gui.utils.image.NamedImageCreator;
 
@@ -15,6 +18,10 @@ public class ImageDifferencing {
         this.img2 = img2;
     }
     
+    /**
+     * Returns new image difference between img1 and img2
+     * @return Differencing NamedImage.
+     */
     public NamedImage getDiff() {
     
         NamedImage image = NamedImageCreator.create(img1.getFile());    // Ojo con el File
@@ -46,4 +53,36 @@ public class ImageDifferencing {
         return image;
     }
     
+    /**
+     * Returns new image with map color difference by threshold value
+     * @return NamedImage with colored changes.
+     */
+    public NamedImage getMap(int threshold) {
+       
+        // Generar nueva imagen a color
+        BufferedImage bi = new BufferedImage(img1.getWidth(),img1.getHeight(),BufferedImage.TYPE_INT_RGB);
+        NamedImage image = new NamedImage(bi,img1.getFile());
+       
+        int imageWidth = image.getWidth();
+        int imageHeight = image.getHeight();
+       
+        for (int i=0; i<imageWidth; i++) {
+            for (int j=0; j<imageHeight; j++) {
+               
+                Color oldColor = null;
+                try {
+                    oldColor = img1.getPixelColor(i, j);
+                } catch(Exception e){};
+                
+                if (oldColor.getBlue() > threshold) {
+                    image.setPixelColor(i, j, Color.red);
+                } else {
+                    image.setPixelColor(i, j, oldColor);
+                }
+            }
+        }
+        
+        return image;
+    }
+
 }

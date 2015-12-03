@@ -9,16 +9,19 @@ import javax.swing.SpinnerNumberModel;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
+import main.MainWindow;
 import transform.point.math.ImageDifferencing;
 
 public class DifferenceMapDialog {
     
     JSpinner spinner = new JSpinner(new SpinnerNumberModel(0,0,255,1));
     
+    MainWindow parent = null;
     NamedImage image = null;
     
-    public DifferenceMapDialog(NamedImage image) {
+    public DifferenceMapDialog(NamedImage image, MainWindow parent) {
         
+        this.parent = parent;
         this.image = image;
     }
 
@@ -44,10 +47,10 @@ public class DifferenceMapDialog {
         
         if (option == JOptionPane.OK_OPTION) {
             
-            //ImageDifferencing differencing = new ImageDifferencing(img1, img2);
-            //NamedImage img = differencing.getDiff();
+            ImageDifferencing differencing = new ImageDifferencing(image,null);
+            NamedImage img = differencing.getMap((int)spinner.getValue());
 
-            //parent.createImageFrame(img);  
+            parent.createImageFrame(img);  
         }
     }
     

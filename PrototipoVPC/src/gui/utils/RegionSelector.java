@@ -127,7 +127,7 @@ public class RegionSelector extends MouseAdapter {
                 status.setColorLabel(image.getPixelColor((int)current.getX(),(int)current.getY()));
             } catch (Exception e1) {
                 // TODO Auto-generated catch block
-                e1.printStackTrace();
+                //e1.printStackTrace();
             }
         else
             status.setColorLabel(null);
