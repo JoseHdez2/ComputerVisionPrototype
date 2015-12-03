@@ -1,9 +1,5 @@
 package transform.point.math;
 
-import java.awt.Color;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-
 import gui.utils.image.NamedImage;
 import gui.utils.image.NamedImageCreator;
 
@@ -22,10 +18,6 @@ public class ImageDifferencing {
     public NamedImage getDiff() {
     
         NamedImage image = NamedImageCreator.create(img1.getFile());    // Ojo con el File
-        WritableRaster raster = image.getRaster();
-        Raster r1 = img1.getRaster();
-        Raster r2 = img2.getRaster();
-        
         int[] rgb = new int[3];
         
         int imageWidth = image.getWidth();
