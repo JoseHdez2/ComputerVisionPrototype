@@ -59,7 +59,43 @@ public class NamedImage extends BufferedImage {
                 this.getRaster().getSample(x,y,2));
         }
     }
+    
+    /**
+     * Set new color at x and y coordinates of image
+     */
+    public void setPixelColor(int x, int y, Color color) {
 
+        WritableRaster raster = this.getRaster();
+        
+        raster.setSample(x,y,0,color.getRed());
+        if (!this.isGrayscale()) {
+            raster.setSample(x,y,1,color.getGreen());
+            raster.setSample(x,y,2,color.getBlue());
+        }
+    }
+
+    /**
+     * Get RGB band value
+     * @return R,G o B value from specified band
+     */
+    public int getValueRGB(int x, int y, int band) {
+        
+        return this.getRaster().getSample(x,y,band);
+    }
+    
+    /**
+     * Set RGB color from RGB[] values
+     */
+    public void setValueRGB(int x, int y, int[] rgb) {
+        
+        WritableRaster raster = this.getRaster();
+        raster.setSample(x,y,0,rgb[0]);
+        
+        if (!this.isGrayscale()) {
+            raster.setSample(x,y,1,rgb[1]);
+            raster.setSample(x,y,2,rgb[2]);
+        }
+    }
     /**
      * Provides lazy evaluation simulation.
      * @return Number of pixels for each color in the image.

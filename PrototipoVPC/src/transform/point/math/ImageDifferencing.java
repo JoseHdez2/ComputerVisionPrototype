@@ -1,5 +1,6 @@
 package transform.point.math;
 
+import java.awt.Color;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
@@ -32,22 +33,21 @@ public class ImageDifferencing {
         
         for (int i=0; i<imageWidth; i++) {
             for (int j=0; j<imageHeight; j++) {
-                                    
+ 
                 // Calcular diferencia
-                rgb[0] = Math.abs(r1.getSample(i,j,0) - r2.getSample(i,j,0));
+                rgb[0] = Math.abs(img1.getValueRGB(i,j,0) - img2.getValueRGB(i,j,0));
                 
                 if (!image.isGrayscale()) {
-                    rgb[1] = Math.abs(r1.getSample(i,j,1) - r2.getSample(i,j,1));
-                    rgb[2] = Math.abs(r1.getSample(i,j,2) - r2.getSample(i,j,2));  
+                    rgb[1] = Math.abs(img1.getValueRGB(i,j,1) - img2.getValueRGB(i,j,1));
+                    rgb[2] = Math.abs(img1.getValueRGB(i,j,2) - img2.getValueRGB(i,j,2));  
                 }
                 
                 // Asignar pixel
-                raster.setSample(i,j,0,rgb[0]);
-                
                 if (!image.isGrayscale()) {
-                    raster.setSample(i,j,1,rgb[1]); 
-                    raster.setSample(i,j,2,rgb[2]); 
-                }       
+                    image.setValueRGB(i,j, new int[]{rgb[0]});
+                } else {
+                    image.setValueRGB(i,j, new int[]{rgb[0],rgb[1],rgb[2]});
+                }
             }
         }
         
