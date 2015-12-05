@@ -52,6 +52,9 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.DIALOG_ERROR_DIFFERENCING, "DialogError.Differencing");
         hash.put(GUIStr.ANALYZE_MENU_DIFFERENCE_MAP, "AnalyzeMenu.DifferenceMap");
         hash.put(GUIStr.DIFFERENCE_MAP_THRESHOLD, "DifferenceMap.Threshold");
+        hash.put(GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION, "TransformMenu.HistogramSpecification");
+        hash.put(GUIStr.HISTOGRAM_SPECIFICATION_TEXT1, "HistogramSpecification.Text1");
+        hash.put(GUIStr.HISTOGRAM_SPECIFICATION_TEXT2, "HistogramSpecification.Text2");
     }
     
     public static String get(GUIStr stringId){

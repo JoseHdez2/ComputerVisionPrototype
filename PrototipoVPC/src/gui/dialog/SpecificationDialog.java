@@ -9,11 +9,10 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
-import transform.point.math.ImageDifferencing;
 
-public class DifferencingDialog extends SelectionDialog {
+public class SpecificationDialog extends SelectionDialog {
     
-    public DifferencingDialog(MainWindow parent) {
+    public SpecificationDialog(MainWindow parent) {
         super(parent);
         
         show();
@@ -21,9 +20,9 @@ public class DifferencingDialog extends SelectionDialog {
     
     private void show() {
     
-        super.show(GUIStr.ANALYZE_MENU_DIFFERENCING,
-                    I18n.getString(GUIStr.IMAGE_MENU) + " 1: ",
-                    I18n.getString(GUIStr.IMAGE_MENU) + " 2: ");
+        super.show(GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION,
+                    I18n.getString(GUIStr.HISTOGRAM_SPECIFICATION_TEXT1),
+                    I18n.getString(GUIStr.HISTOGRAM_SPECIFICATION_TEXT2));
         
         
         if (option == JOptionPane.OK_OPTION) {
@@ -40,15 +39,10 @@ public class DifferencingDialog extends SelectionDialog {
                     img2 = frame.getNamedImage();
             }
             
-            if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
-                parent.showErrorDialog(GUIStr.DIALOG_ERROR_DIFFERENCING);
-                return;
-            }
-            
-            ImageDifferencing differencing = new ImageDifferencing(img1, img2);
-            NamedImage img = differencing.getDiff();
+            //ImageDifferencing differencing = new ImageDifferencing(img1, img2);
+            //NamedImage img = differencing.getDiff();
 
-            parent.createImageFrame(img);            
+            //parent.createImageFrame(img);            
          }        
     }
 }

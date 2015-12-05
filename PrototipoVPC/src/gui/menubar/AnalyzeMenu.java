@@ -69,9 +69,8 @@ public class AnalyzeMenu extends AbstractMenu{
     
     
     private void differencingActionPerformed(ActionEvent e) {
-        
+        if (!assertImageSelected()) return;
         DifferencingDialog d = new DifferencingDialog(parentFrame);
-        d.show();
     }
     
     

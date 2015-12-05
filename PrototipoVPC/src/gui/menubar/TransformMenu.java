@@ -2,6 +2,7 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.SpecificationDialog;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform.point.HistogramEqualization;
@@ -17,6 +18,7 @@ public class TransformMenu extends AbstractMenu {
         GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION,
         GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION,
         GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION,
+        GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION,
         GUIStr.SEPARATOR,
         GUIStr.TRANSFORM_MENU_FILTER_MEAN_BLUR,
         };
@@ -38,6 +40,9 @@ public class TransformMenu extends AbstractMenu {
         case TRANSFORM_MENU_HISTOGRAM_EQUALIZATION:
             histogramEqualizationActionPerformed(e);
             break;
+        case TRANSFORM_MENU_HISTOGRAM_SPECIFICATION:
+            histogramSpecificationActionPerformed(e);
+            break;            
         case TRANSFORM_MENU_FILTER_MEAN_BLUR:
             filterMeanBlurActionPerformed(e);
             break;
@@ -62,6 +67,11 @@ public class TransformMenu extends AbstractMenu {
         if (!assertImageSelected()) return;
         transform(new HistogramEqualization(parentFrame.getFocusedImage()));   
     }
+    
+    private void histogramSpecificationActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        SpecificationDialog d = new SpecificationDialog(parentFrame);
+    }    
     
     private void filterMeanBlurActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
