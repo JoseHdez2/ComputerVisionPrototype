@@ -9,6 +9,8 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
+import transform.point.BrightnessAndContrast;
+import transform.point.HistogramSpecification;
 
 public class SpecificationDialog extends SelectionDialog {
     
@@ -39,10 +41,10 @@ public class SpecificationDialog extends SelectionDialog {
                     img2 = frame.getNamedImage();
             }
             
-            //ImageDifferencing differencing = new ImageDifferencing(img1, img2);
-            //NamedImage img = differencing.getDiff();
-
-            //parent.createImageFrame(img);            
+            HistogramSpecification transform = new HistogramSpecification(img1, img2);
+            NamedImage img = transform.getTransformedImage(img1);
+           
+            parent.createImageFrame(img);            
          }        
     }
 }
