@@ -7,7 +7,7 @@ import gui.utils.LookAndFeelManager;
 
 public class Main {
 	public static void main(String[] args) {
-				
+	    
 		try {
 		    LookAndFeelManager.manage();
 		    JFrame jf = new MainWindow();
