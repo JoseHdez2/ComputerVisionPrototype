@@ -55,6 +55,9 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION, "TransformMenu.HistogramSpecification");
         hash.put(GUIStr.HISTOGRAM_SPECIFICATION_TEXT1, "HistogramSpecification.Text1");
         hash.put(GUIStr.HISTOGRAM_SPECIFICATION_TEXT2, "HistogramSpecification.Text2");
+        hash.put(GUIStr.GEOMETRY_MENU, "GeometryMenu");
+        hash.put(GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR, "GeometryMenu.VerticalMirror");
+        hash.put(GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR, "GeometryMenu.HorizontalMirror");
     }
     
     public static String get(GUIStr stringId){
