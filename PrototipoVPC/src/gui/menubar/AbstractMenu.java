@@ -10,6 +10,7 @@ import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.base.AbstractImageTransformation;
+import transform2.base.CoordinatesTransform;
 
 // TODO: Usar enums a nivel global del proyecto en vez de constantes String
 
@@ -44,6 +45,26 @@ public abstract class AbstractMenu extends JMenu{
     
     // TODO: Should this go here? rn, used by both ImageMenu and TransformMenu.
     protected void transform(AbstractImageTransformation transformation){
+        System.out.println(parentFrame.getFocusedImage());
+        
+        if(parentFrame.getFocusedImage() == null){
+            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            return;
+        }
+        
+        NamedImage image1 = parentFrame.getFocusedImage();
+        
+        NamedImage image2 = transformation.getTransformedImage(image1);
+        
+//        if (parentFrame.getOpt().isOverwrite()){
+            // TODO: overwrite focused image.
+//            parentFrame.getFocusedImage() = image2;
+//        } else {
+            parentFrame.createImageFrame(image2);
+//        }
+    }
+    
+    protected void transform(CoordinatesTransform transformation){
         System.out.println(parentFrame.getFocusedImage());
         
         if(parentFrame.getFocusedImage() == null){
