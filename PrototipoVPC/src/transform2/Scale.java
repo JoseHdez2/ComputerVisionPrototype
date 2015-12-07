@@ -2,20 +2,25 @@ package transform2;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 
 import gui.utils.image.NamedImage;
+import transform2.base.CoordinatesTransform;
 
-public abstract class Scale {
+public abstract class Scale extends CoordinatesTransform {
     
+    NamedImage image = null;    // Imagen Original
     float xScale, yScale;
     
-    public Scale(float xScale, float yScale){
+    public Scale(NamedImage img, float xScale, float yScale){
+        image = img;
         setScale(xScale, yScale);
     }
     
-    public Scale(int img2x, int img2y, NamedImage img1){
-        float xScale = img2x / img1.getWidth();
-        float yScale = img2y / img1.getHeight();
+    public Scale(NamedImage img, int img2x, int img2y){
+        image = img;
+        float xScale = img2x / img.getWidth();
+        float yScale = img2y / img.getHeight();
         setScale(xScale, yScale);
     }
     
@@ -29,7 +34,10 @@ public abstract class Scale {
         // Determinar tamaño de la nueva imagen
         Dimension d2 = scaleDimension(img1.getWidth(), img1.getHeight());
         
-        return img1;
+        BufferedImage bi = new BufferedImage(d2.width, d2.height, img1.getType());
+        NamedImage img2 = new NamedImage(bi, img1.getFile());
+        
+        return img2;
     }
     
     /**
@@ -46,5 +54,5 @@ public abstract class Scale {
      * @param img1y
      * @return  Corresponding point in img2.
      */
-    abstract public Point map(int img1x, int img1y);
+    //abstract public Point map(int img1x, int img1y);
 }

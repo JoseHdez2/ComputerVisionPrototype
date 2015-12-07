@@ -23,7 +23,17 @@ public abstract class CoordinatesTransform {
     
     //abstract protected Point getCorrespondingPixel();
     
+    /** Given a image get a new image with corresponding dimensions
+     *  (Transpose: width <-> height, Scale: width*3.15,...)
+     * @param img original
+     * @return new image
+     */
     protected abstract NamedImage getCorrespondingImage(NamedImage img);
     
+    /** Given x and y coordinates get corresponding color
+     * @param x
+     * @param y
+     * @return corresponding color
+     */
     protected abstract Color getCorrespondingPixel(int x, int y);
 }
