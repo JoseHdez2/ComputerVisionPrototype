@@ -13,13 +13,16 @@ public class VerticalMirror extends CoordinatesTransform {
         image = img;
     }
     
+    protected NamedImage getCorrespondingImage(NamedImage img) {
+        return img.deepishCopy();
+    }
+    
     protected Color getCorrespondingPixel(int x, int y) {
         
         Color color = null;
         try {
             color = image.getPixelColor(x, image.getHeight()-1 - y);
         } catch(Exception e){};
-        
         
         return color;
     }

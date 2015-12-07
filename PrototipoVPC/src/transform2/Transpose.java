@@ -1,27 +1,32 @@
 package transform2;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 import gui.utils.image.NamedImage;
 import transform2.base.CoordinatesTransform;
 
-public class HorizontalMirror extends CoordinatesTransform {
+public class Transpose extends CoordinatesTransform {
     
     NamedImage image = null;
     
-    public HorizontalMirror(NamedImage img) {
+    public Transpose(NamedImage img) {
         image = img;
     }
     
     protected NamedImage getCorrespondingImage(NamedImage img) {
-        return img.deepishCopy();
+
+        BufferedImage bi = new BufferedImage(img.getHeight(),img.getWidth(),img.getType());
+        NamedImage img2 = new NamedImage(bi,img.getFile());
+        
+        return img2;
     }
     
     protected Color getCorrespondingPixel(int x, int y) {
         
         Color color = null;
         try {
-            color = image.getPixelColor(image.getWidth()-1 - x, y);
+            color = image.getPixelColor(y,x);
         } catch(Exception e){};
         
         return color;

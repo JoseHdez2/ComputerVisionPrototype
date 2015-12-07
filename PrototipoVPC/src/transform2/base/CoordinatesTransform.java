@@ -8,7 +8,7 @@ public abstract class CoordinatesTransform {
     
     public NamedImage getTransformedImage(NamedImage img1){
         
-        NamedImage img2 = img1.deepishCopy();
+        NamedImage img2 = getCorrespondingImage(img1);
         
         for(int i = 0; i < img2.getWidth(); i++){
             for(int j = 0; j < img2.getHeight(); j++){
@@ -23,6 +23,7 @@ public abstract class CoordinatesTransform {
     
     //abstract protected Point getCorrespondingPixel();
     
+    protected abstract NamedImage getCorrespondingImage(NamedImage img);
     
     protected abstract Color getCorrespondingPixel(int x, int y);
 }

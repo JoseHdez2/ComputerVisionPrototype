@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform2.HorizontalMirror;
+import transform2.Transpose;
 import transform2.VerticalMirror;
 
 
@@ -15,6 +16,7 @@ public class GeometryMenu extends AbstractMenu {
         {
         GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR,
         GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR,
+        GUIStr.GEOMETRY_MENU_TRANSPOSE,
         };
     
     public GeometryMenu(MainWindow parentFrame){
@@ -31,6 +33,9 @@ public class GeometryMenu extends AbstractMenu {
         case GEOMETRY_MENU_HORIZONTAL_MIRROR:
             horizontalMirrorActionPerformed(e);
             break;
+        case GEOMETRY_MENU_TRANSPOSE:
+            transposeActionPerformed(e);
+            break;            
         }
     }
     
@@ -47,4 +52,9 @@ public class GeometryMenu extends AbstractMenu {
         if (!assertImageSelected()) return;
         transform(new HorizontalMirror(parentFrame.getFocusedImage()));   
     }
+    
+    private void transposeActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        transform(new Transpose(parentFrame.getFocusedImage()));   
+    }    
 }

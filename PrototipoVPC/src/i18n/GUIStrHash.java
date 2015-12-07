@@ -58,6 +58,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.GEOMETRY_MENU, "GeometryMenu");
         hash.put(GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR, "GeometryMenu.VerticalMirror");
         hash.put(GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR, "GeometryMenu.HorizontalMirror");
+        hash.put(GUIStr.GEOMETRY_MENU_TRANSPOSE, "GeometryMenu.Transpose");
     }
     
     public static String get(GUIStr stringId){
