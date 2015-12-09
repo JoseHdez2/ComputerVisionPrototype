@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import gui.utils.LookAndFeelManager;
 
 public class Main {
+    
 	public static void main(String[] args) {
 	    
 		try {

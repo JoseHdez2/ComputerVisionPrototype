@@ -1,16 +1,14 @@
-package transform2;
+package transform2.base;
 
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import gui.utils.image.NamedImage;
-import transform2.base.CoordinatesTransform;
 
 public abstract class Scale extends CoordinatesTransform {
     
-    NamedImage image = null;    // Imagen Original
-    float xScale, yScale;
+    protected NamedImage image = null;    // Imagen Original
+    protected float xScale, yScale;
     
     public Scale(NamedImage img, float xScale, float yScale){
         image = img;

@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 
 import i18n.GUIStr;
 import main.MainWindow;
-import transform2.HorizontalMirror;
+import transform2.MirrorHorizontal;
 import transform2.Transpose;
-import transform2.VerticalMirror;
+import transform2.MirrorVertical;
 
 
 @SuppressWarnings("serial")
@@ -45,12 +45,12 @@ public class GeometryMenu extends AbstractMenu {
     
     private void verticalMirrorActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
-        transform(new VerticalMirror(parentFrame.getFocusedImage()));
+        transform(new MirrorVertical(parentFrame.getFocusedImage()));
     }
     
     private void horizontalMirrorActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
-        transform(new HorizontalMirror(parentFrame.getFocusedImage()));   
+        transform(new MirrorHorizontal(parentFrame.getFocusedImage()));   
     }
     
     private void transposeActionPerformed(ActionEvent e) {

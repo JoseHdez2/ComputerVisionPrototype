@@ -3,6 +3,7 @@ package transform2;
 import java.awt.Color;
 
 import gui.utils.image.NamedImage;
+import transform2.base.Scale;
 
 public class ScaleNN extends Scale {
     

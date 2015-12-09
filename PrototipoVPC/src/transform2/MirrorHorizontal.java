@@ -3,18 +3,12 @@ package transform2;
 import java.awt.Color;
 
 import gui.utils.image.NamedImage;
-import transform2.base.CoordinatesTransform;
+import transform2.base.AbstractMirror;
 
-public class HorizontalMirror extends CoordinatesTransform {
+public class MirrorHorizontal extends AbstractMirror {
     
-    NamedImage image = null;
-    
-    public HorizontalMirror(NamedImage img) {
-        image = img;
-    }
-    
-    protected NamedImage getCorrespondingImage(NamedImage img) {
-        return img.deepishCopy();
+    public MirrorHorizontal(NamedImage img) {
+        super(img);
     }
     
     protected Color getCorrespondingPixel(int x, int y) {

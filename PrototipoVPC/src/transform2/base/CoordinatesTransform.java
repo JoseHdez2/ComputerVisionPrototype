@@ -21,8 +21,6 @@ public abstract class CoordinatesTransform {
         return img2;
     }
     
-    //abstract protected Point getCorrespondingPixel();
-    
     /** Given a image get a new image with corresponding dimensions
      *  (Transpose: width <-> height, Scale: width*3.15,...)
      * @param img original
@@ -30,7 +28,7 @@ public abstract class CoordinatesTransform {
      */
     protected abstract NamedImage getCorrespondingImage(NamedImage img);
     
-    /** Given x and y coordinates get corresponding color
+    /** Given x and y coordinates of img2, get the color of the corresponding pixel in img1.
      * @param x
      * @param y
      * @return corresponding color
