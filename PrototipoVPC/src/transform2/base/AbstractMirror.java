@@ -2,7 +2,7 @@ package transform2.base;
 
 import gui.utils.image.NamedImage;
 
-public class AbstractMirror {
+public abstract class AbstractMirror extends CoordinatesTransform {
 
     protected NamedImage image = null;
     
@@ -13,4 +13,5 @@ public class AbstractMirror {
     protected NamedImage getCorrespondingImage(NamedImage img) {
         return img.deepishCopy();
     }
+    
 }

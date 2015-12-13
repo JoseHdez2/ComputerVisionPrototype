@@ -24,12 +24,24 @@ public class ScaleBilinear extends Scale {
     
     protected Color getCorrespondingPixel(int x, int y) {
         
-        Color color = null;
-        try {
-            color = image.getPixelColor(0,0);
-        } catch(Exception e){};
+        // Coordenadas
+        float cx = (x/xScale);
+        float cy = (y/yScale);
+           
+        // A,B,C,D
+        int a = image.getValueRGB((int)Math.floor(cx), (int)Math.ceil(cy), 0);
+        int b = image.getValueRGB((int)Math.ceil(cx), (int)Math.ceil(cy), 0);
+        int c = image.getValueRGB((int)Math.floor(cx), (int)Math.ceil(cy), 0);
+        int d = image.getValueRGB((int)Math.ceil(cx), (int)Math.ceil(cy), 0);
         
-        return color;
+        // Constantes p y q
+        float p = (float)(cx - Math.floor(cx));
+        float q = (float)(cy - Math.floor(cy));
+        
+        int color = (int)(c + (d-c)*p + (a-c)*q + (b+c+-a-d)*p*q);
+        
+        // Only grayscale
+        return new Color(color,color,color);
     }
 
 }

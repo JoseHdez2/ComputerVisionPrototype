@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform2.MirrorHorizontal;
-import transform2.Transpose;
 import transform2.MirrorVertical;
+import transform2.Transpose;
 
 
 @SuppressWarnings("serial")

@@ -44,7 +44,9 @@ public abstract class Scale extends CoordinatesTransform {
      * @return  (Image2's) Dimension after scaling Image1.
      */
     public Dimension scaleDimension(int img1x, int img1y){
-        return new Dimension((int)this.xScale * img1x, (int)this.yScale * img1y);
+//        return new Dimension((int)this.xScale * img1x, (int)this.yScale * img1y);
+        return new Dimension(Math.round(this.xScale * img1x - 1), 
+                Math.round(this.yScale * img1y - 1));
     }
     
     /**

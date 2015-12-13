@@ -5,14 +5,14 @@ import java.awt.Color;
 import gui.utils.image.NamedImage;
 import transform2.base.Scale;
 
-public class ScaleNN extends Scale {
+public class ScaleNearest extends Scale {
     
     
-    public ScaleNN(NamedImage img, float xScale, float yScale) {
+    public ScaleNearest(NamedImage img, float xScale, float yScale) {
         super(img, xScale, yScale);
     }
     
-    public ScaleNN(NamedImage img, int img2x, int img2y) {
+    public ScaleNearest(NamedImage img, int img2x, int img2y) {
         super(img, img2x, img2y);
     }
     
