@@ -59,6 +59,12 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR, "GeometryMenu.VerticalMirror");
         hash.put(GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR, "GeometryMenu.HorizontalMirror");
         hash.put(GUIStr.GEOMETRY_MENU_TRANSPOSE, "GeometryMenu.Transpose");
+        hash.put(GUIStr.GEOMETRY_MENU_SCALE, "GeometryMenu.Scale");
+        hash.put(GUIStr.DIALOG_SCALE_PERCENT, "DialogScale.Percent");
+        hash.put(GUIStr.DIALOG_SCALE_SIZE, "DialogScale.Size");
+        hash.put(GUIStr.DIALOG_SCALE_INTERPOLATION, "DialogScale.Interpolation");
+        hash.put(GUIStr.DIALOG_SCALE_NEAREST, "DialogScale.Nearest");
+        hash.put(GUIStr.DIALOG_SCALE_BILINEAR, "DialogScale.Bilinear");
     }
     
     public static String get(GUIStr stringId){

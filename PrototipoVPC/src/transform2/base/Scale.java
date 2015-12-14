@@ -12,13 +12,16 @@ public abstract class Scale extends CoordinatesTransform {
     
     public Scale(NamedImage img, float xScale, float yScale){
         image = img;
-        setScale(xScale, yScale);
+        setScale(xScale/100, yScale/100);
     }
     
+    /**
+     * @param img1x
+     */
     public Scale(NamedImage img, int img2x, int img2y){
         image = img;
-        float xScale = img2x / img.getWidth();
-        float yScale = img2y / img.getHeight();
+        float xScale = (float)img2x / img.getWidth();
+        float yScale = (float)img2y / img.getHeight();
         setScale(xScale, yScale);
     }
     
