@@ -164,6 +164,6 @@ public class FileMenu extends AbstractMenu {
     
     private void quitActionPerformed(ActionEvent e) { 
         
-        System.exit(0);
+        System.exit(0); 
     }
 }
