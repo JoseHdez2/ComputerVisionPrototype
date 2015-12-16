@@ -2,6 +2,7 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.RotationDialog;
 import gui.dialog.ScaleDialog;
 import i18n.GUIStr;
 import main.MainWindow;
@@ -19,7 +20,8 @@ public class GeometryMenu extends AbstractMenu {
         GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR,
         GUIStr.GEOMETRY_MENU_TRANSPOSE,
         GUIStr.SEPARATOR,
-        GUIStr.GEOMETRY_MENU_SCALE
+        GUIStr.GEOMETRY_MENU_SCALE,
+        GUIStr.GEOMETRY_MENU_ROTATION
         };
     
     public GeometryMenu(MainWindow parentFrame){
@@ -41,7 +43,10 @@ public class GeometryMenu extends AbstractMenu {
             break;  
         case GEOMETRY_MENU_SCALE:
             scaleActionPerformed(e);
-            break;                  
+            break;      
+        case GEOMETRY_MENU_ROTATION:
+            rotationActionPerformed(e);
+            break;                
         }
     }
     
@@ -67,5 +72,10 @@ public class GeometryMenu extends AbstractMenu {
     private void scaleActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
         ScaleDialog d = new ScaleDialog(parentFrame,parentFrame.getFocusedImage());
-    }    
+    }   
+    
+    private void rotationActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        RotationDialog d = new RotationDialog(parentFrame,parentFrame.getFocusedImage());
+    }        
 }

@@ -5,12 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.TitledBorder;
 
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
@@ -82,21 +84,12 @@ public class ScaleDialog {
             } 
         } );
         
-        nearestButton = new JRadioButton(I18n.getString(GUIStr.DIALOG_SCALE_NEAREST));
-        nearestButton.addActionListener(new ActionListener() { 
-            public void actionPerformed(ActionEvent e) { 
-                nearestButton.setSelected(true);
-                bilinearButton.setSelected(false);
-            } 
-        } );
-        
+        nearestButton = new JRadioButton(I18n.getString(GUIStr.DIALOG_SCALE_NEAREST));        
         bilinearButton = new JRadioButton(I18n.getString(GUIStr.DIALOG_SCALE_BILINEAR));
-        bilinearButton.addActionListener(new ActionListener() { 
-            public void actionPerformed(ActionEvent e) { 
-                bilinearButton.setSelected(true);
-                nearestButton.setSelected(false);
-            } 
-        } );
+        
+        ButtonGroup interpolationGroup = new ButtonGroup();
+        interpolationGroup.add(nearestButton);
+        interpolationGroup.add(bilinearButton);
         
         // Definir elementos por defecto
         percentButton.setSelected(true);
@@ -106,7 +99,6 @@ public class ScaleDialog {
             valuesSpinners[i].setEnabled(false);
         }
         nearestButton.setSelected(true);
-        bilinearButton.setSelected(false);
     }
     
     private JPanel createPanel() {
@@ -116,7 +108,8 @@ public class ScaleDialog {
         // Panel de datos
         JPanel inputPanel = new JPanel(new GridLayout(4,1));
         // Panel de selección de interpolación
-        JPanel algorithmPanel = new JPanel(new GridLayout(3,1));
+        JPanel algorithmPanel = new JPanel(new GridLayout(2,1));
+        algorithmPanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_SCALE_INTERPOLATION)));
         
         // Panel de Porcentajes
         JPanel percentPanel = new JPanel();
@@ -138,7 +131,7 @@ public class ScaleDialog {
         inputPanel.add(valuesButton);
         inputPanel.add(valuesPanel);
         
-        algorithmPanel.add(new JLabel(I18n.getString(GUIStr.DIALOG_SCALE_INTERPOLATION)));
+     // Añadir al panel de interpolacion
         algorithmPanel.add(nearestButton);
         algorithmPanel.add(bilinearButton);
         
@@ -182,7 +175,9 @@ public class ScaleDialog {
             }
             
             NamedImage img = transform.getTransformedImage(image);
-            parent.createImageFrame(img);            
-         }      
+            parent.createImageFrame(img);
+            
+//            show(GUIStr.GEOMETRY_MENU_SCALE);
+        }      
     }
 }

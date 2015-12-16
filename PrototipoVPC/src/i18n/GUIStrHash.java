@@ -65,6 +65,11 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.DIALOG_SCALE_INTERPOLATION, "DialogScale.Interpolation");
         hash.put(GUIStr.DIALOG_SCALE_NEAREST, "DialogScale.Nearest");
         hash.put(GUIStr.DIALOG_SCALE_BILINEAR, "DialogScale.Bilinear");
+        hash.put(GUIStr.GEOMETRY_MENU_ROTATION, "GeometryMenu.Rotation");
+        hash.put(GUIStr.DIALOG_ROTATION_ANGLE, "DialogRotation.Angle");
+        hash.put(GUIStr.DIALOG_ROTATION_MOTION, "DialogRotation.Motion");
+        hash.put(GUIStr.DIALOG_ROTATION_CLOCKWISE, "DialogRotation.Clockwise");
+        hash.put(GUIStr.DIALOG_ROTATION_ANTICLOCKWISE, "DialogRotation.Anticlockwise");
     }
     
     public static String get(GUIStr stringId){
