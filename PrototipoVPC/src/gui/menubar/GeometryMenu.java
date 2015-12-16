@@ -2,11 +2,13 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.RotationDialog;
+import gui.dialog.ScaleDialog;
 import i18n.GUIStr;
 import main.MainWindow;
 import transform2.MirrorHorizontal;
-import transform2.Transpose;
 import transform2.MirrorVertical;
+import transform2.Transpose;
 
 
 @SuppressWarnings("serial")
@@ -17,6 +19,9 @@ public class GeometryMenu extends AbstractMenu {
         GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR,
         GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR,
         GUIStr.GEOMETRY_MENU_TRANSPOSE,
+        GUIStr.SEPARATOR,
+        GUIStr.GEOMETRY_MENU_SCALE,
+        GUIStr.GEOMETRY_MENU_ROTATION
         };
     
     public GeometryMenu(MainWindow parentFrame){
@@ -35,7 +40,13 @@ public class GeometryMenu extends AbstractMenu {
             break;
         case GEOMETRY_MENU_TRANSPOSE:
             transposeActionPerformed(e);
-            break;            
+            break;  
+        case GEOMETRY_MENU_SCALE:
+            scaleActionPerformed(e);
+            break;      
+        case GEOMETRY_MENU_ROTATION:
+            rotationActionPerformed(e);
+            break;                
         }
     }
     
@@ -57,4 +68,14 @@ public class GeometryMenu extends AbstractMenu {
         if (!assertImageSelected()) return;
         transform(new Transpose(parentFrame.getFocusedImage()));   
     }    
+    
+    private void scaleActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        ScaleDialog d = new ScaleDialog(parentFrame,parentFrame.getFocusedImage());
+    }   
+    
+    private void rotationActionPerformed(ActionEvent e) {
+        if (!assertImageSelected()) return;
+        RotationDialog d = new RotationDialog(parentFrame,parentFrame.getFocusedImage());
+    }        
 }

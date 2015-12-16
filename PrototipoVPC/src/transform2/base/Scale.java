@@ -12,13 +12,16 @@ public abstract class Scale extends CoordinatesTransform {
     
     public Scale(NamedImage img, float xScale, float yScale){
         image = img;
-        setScale(xScale, yScale);
+        setScale(xScale/100, yScale/100);
     }
     
+    /**
+     * @param img1x
+     */
     public Scale(NamedImage img, int img2x, int img2y){
         image = img;
-        float xScale = img2x / img.getWidth();
-        float yScale = img2y / img.getHeight();
+        float xScale = (float)img2x / img.getWidth();
+        float yScale = (float)img2y / img.getHeight();
         setScale(xScale, yScale);
     }
     
@@ -44,7 +47,9 @@ public abstract class Scale extends CoordinatesTransform {
      * @return  (Image2's) Dimension after scaling Image1.
      */
     public Dimension scaleDimension(int img1x, int img1y){
-        return new Dimension((int)this.xScale * img1x, (int)this.yScale * img1y);
+//        return new Dimension((int)this.xScale * img1x, (int)this.yScale * img1y);
+        return new Dimension(Math.round(this.xScale * img1x - 1), 
+                Math.round(this.yScale * img1y - 1));
     }
     
     /**
