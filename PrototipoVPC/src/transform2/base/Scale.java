@@ -48,8 +48,8 @@ public abstract class Scale extends CoordinatesTransform {
      */
     public Dimension scaleDimension(int img1x, int img1y){
 //        return new Dimension((int)this.xScale * img1x, (int)this.yScale * img1y);
-        return new Dimension(Math.round(this.xScale * img1x - 1), 
-                Math.round(this.yScale * img1y - 1));
+        return new Dimension(Math.round(this.xScale * (img1x - 1)), 
+                Math.round(this.yScale * (img1y - 1)));
     }
     
     /**

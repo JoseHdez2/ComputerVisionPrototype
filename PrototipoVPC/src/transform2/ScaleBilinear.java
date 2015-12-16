@@ -31,8 +31,8 @@ public class ScaleBilinear extends Scale {
         // A,B,C,D
         int a = image.getValueRGB((int)Math.floor(cx), (int)Math.ceil(cy), 0);
         int b = image.getValueRGB((int)Math.ceil(cx), (int)Math.ceil(cy), 0);
-        int c = image.getValueRGB((int)Math.floor(cx), (int)Math.ceil(cy), 0);
-        int d = image.getValueRGB((int)Math.ceil(cx), (int)Math.ceil(cy), 0);
+        int c = image.getValueRGB((int)Math.floor(cx), (int)Math.floor(cy), 0);
+        int d = image.getValueRGB((int)Math.ceil(cx), (int)Math.floor(cy), 0);
         
         // Constantes p y q
         float p = (float)(cx - Math.floor(cx));

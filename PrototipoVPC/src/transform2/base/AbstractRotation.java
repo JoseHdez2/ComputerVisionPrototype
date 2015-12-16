@@ -31,17 +31,15 @@ public abstract class AbstractRotation extends CoordinatesTransform {
         
         for (MyPoint p : parallelogramPoints){
             if (p.x < minX) minX = p.x;
-//            if (Math.abs(p.x) > maxX) maxX = Math.abs(p.x);
-            if (p.x > maxX) maxX = p.x;
+            if (Math.abs(p.x) > maxX) maxX = Math.abs(p.x);
             if (p.y < minY) minY = p.y;
-            if (p.y > maxY) maxY = p.y;
-//            if (Math.abs(p.y) > maxY) maxY = Math.abs(p.y);
+            if (Math.abs(p.y) > maxY) maxY = Math.abs(p.y);
         }
         
         traslationCoords = new MyPoint((int)minX, (int)minY);
         
         // Crear nueva imagen
-        BufferedImage bi = new BufferedImage((int)maxX+1, (int)maxY+1, img1.getType());
+        BufferedImage bi = new BufferedImage((int)(Math.abs(maxX-minX+1)), (int)(Math.abs(maxY-minY+1)), img1.getType());
         NamedImage img2 = new NamedImage(bi, img1.getFile());
         
         return img2;
