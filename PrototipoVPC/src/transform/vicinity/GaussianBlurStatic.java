@@ -2,7 +2,7 @@ package transform.vicinity;
 
 import transform.vicinity.base.AbstractLinearFilter;
 import transform.vicinity.base.Kernel;
-
+/*
 public class GaussianBlurStatic extends AbstractLinearFilter{
 
     @Override
@@ -16,3 +16,4 @@ public class GaussianBlurStatic extends AbstractLinearFilter{
     }
 
 }
+*/

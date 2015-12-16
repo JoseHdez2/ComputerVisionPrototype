@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import gui.utils.image.NamedImage;
 import transform.vicinity.base.AbstractLinearFilter;
 import transform.vicinity.base.Kernel;
-
+/*
 public class GaussianBlurOld extends AbstractLinearFilter{
     
     public GaussianBlurOld(NamedImage img){
@@ -50,3 +50,4 @@ public class GaussianBlurOld extends AbstractLinearFilter{
     }
 
 }
+*/

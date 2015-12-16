@@ -2,7 +2,7 @@ package transform.vicinity;
 
 import transform.vicinity.base.AbstractLinearFilter;
 import transform.vicinity.base.Kernel;
-
+/*
 // TODO: No he borrado la clase porque le tengo cariño <3
 public class GaussianBlurOldOld extends AbstractLinearFilter{
 
@@ -36,3 +36,4 @@ public class GaussianBlurOldOld extends AbstractLinearFilter{
     }
 
 }
+*/
