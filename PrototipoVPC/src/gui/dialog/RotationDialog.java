@@ -15,6 +15,7 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
+import transform2.Rotation;
 import transform2.Rotation90;
 import transform2.base.AbstractRotation;
 
@@ -109,6 +110,7 @@ public class RotationDialog {
         if (option == JOptionPane.OK_OPTION) {
             
             AbstractRotation transform = null;
+            int angle = (int)angleSpinner.getValue();
             
             // Encontrar angulo seleccionado
             int angleSelected = 0;
@@ -117,7 +119,7 @@ public class RotationDialog {
                     angleSelected = i;
             
             if (angleSelected == 3) {
-                // Llamar a Rotation() con Spinner
+                transform = new Rotation(image, angle);
                 System.out.println("sin implementar");
             } else {
                 if (motionButtons[0].isSelected()) {
