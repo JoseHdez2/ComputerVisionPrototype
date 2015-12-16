@@ -120,7 +120,6 @@ public class RotationDialog {
             
             if (angleSelected == 3) {
                 transform = new Rotation(image, angle);
-                System.out.println("sin implementar");
             } else {
                 if (motionButtons[0].isSelected()) {
                     transform = new Rotation90(image, 90*(angleSelected+1));

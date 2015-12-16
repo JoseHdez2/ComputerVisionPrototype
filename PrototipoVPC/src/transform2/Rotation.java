@@ -2,14 +2,18 @@ package transform2;
 
 import java.awt.Color;
 
+import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
 import transform2.base.AbstractRotation;
 import transform2.base.MyPoint;
 
 public class Rotation extends AbstractRotation {
     
+    int blanks;
+    
     public Rotation(NamedImage img, double angle) {
         super(img, Math.toRadians(angle));
+        blanks = 0;
     }
     
     private boolean validPixel(int x, int y) {
@@ -21,8 +25,10 @@ public class Rotation extends AbstractRotation {
         // Traslacion de los indices(+) <-> coordenadas(+-)
         MyPoint p = indirectTransform(x + (int)traslationCoords.x(), y + (int)traslationCoords.y());
         
-        if (!validPixel((int)p.x(), (int)p.y()))
+        if (!validPixel((int)p.x(), (int)p.y())) {
+            blanks++;
             return Color.white;
+        }
         
         Color color = null;
         try {
@@ -30,5 +36,10 @@ public class Rotation extends AbstractRotation {
         } catch(Exception e){};
         
         return color;
+    }
+    
+    protected void removeFalseBlanks(NamedImage img) {
+        ColorHistogram h = img.getPixelColorCount();
+        img.setPixelColorCount(Color.white, h.get(Color.white)-blanks);
     }
 }

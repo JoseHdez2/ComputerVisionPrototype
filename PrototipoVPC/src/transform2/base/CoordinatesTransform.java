@@ -18,6 +18,8 @@ public abstract class CoordinatesTransform {
             }
         }
         
+        removeFalseBlanks(img2);
+        
         return img2;
     }
     
@@ -34,4 +36,10 @@ public abstract class CoordinatesTransform {
      * @return corresponding color
      */
     protected abstract Color getCorrespondingPixel(int x, int y);
+    
+    /** Remove generated blanks for rotated image with angle no 90º-based
+     */
+    protected void removeFalseBlanks(NamedImage img) {
+        
+    }
 }

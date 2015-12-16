@@ -108,6 +108,14 @@ public class NamedImage extends BufferedImage {
     }
     
     /**
+     * Set new value to specific histogram color
+     */
+    public void setPixelColorCount(Color color, int value) {
+        if(validColorCount)
+            pixelColorCount.put(color, value);
+    }    
+    
+    /**
      * Count number of pixels for each color in the image.
      * Store the result in the internal pixelColorCount hash.
      * This costly operation is only called from getPixelColorCount(),

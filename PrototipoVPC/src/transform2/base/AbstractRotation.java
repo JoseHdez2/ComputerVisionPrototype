@@ -31,11 +31,11 @@ public abstract class AbstractRotation extends CoordinatesTransform {
         
         for (MyPoint p : parallelogramPoints){
             if (p.x < minX) minX = p.x;
-            if (Math.abs(p.x) > maxX) maxX = Math.abs(p.x);
+            if (p.x > maxX) maxX = p.x;
             if (p.y < minY) minY = p.y;
-            if (Math.abs(p.y) > maxY) maxY = Math.abs(p.y);
+            if (p.y > maxY) maxY = p.y;
         }
-        
+
         traslationCoords = new MyPoint((int)minX, (int)minY);
         
         // Crear nueva imagen
