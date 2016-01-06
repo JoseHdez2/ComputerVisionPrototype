@@ -20,7 +20,7 @@ public class TransformMenu extends AbstractMenu {
         GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION,
         GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION,
         GUIStr.SEPARATOR,
-        GUIStr.TRANSFORM_MENU_FILTER_MEAN_BLUR,
+        GUIStr.TRANSFORM_MENU_LINEAR_TRANSFORMATION,
         };
     
     public TransformMenu(MainWindow parentFrame){
@@ -43,8 +43,8 @@ public class TransformMenu extends AbstractMenu {
         case TRANSFORM_MENU_HISTOGRAM_SPECIFICATION:
             histogramSpecificationActionPerformed(e);
             break;            
-        case TRANSFORM_MENU_FILTER_MEAN_BLUR:
-            filterMeanBlurActionPerformed(e);
+        case TRANSFORM_MENU_LINEAR_TRANSFORMATION:
+            filterLinearTransformationActionPerformed(e);
             break;
         }
     }
@@ -73,8 +73,8 @@ public class TransformMenu extends AbstractMenu {
         SpecificationDialog d = new SpecificationDialog(parentFrame);
     }    
     
-    private void filterMeanBlurActionPerformed(ActionEvent e) {
+    private void filterLinearTransformationActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
-        transform(new MeanBlur());   
+        // transform(new MeanBlur());   
     }
 }
