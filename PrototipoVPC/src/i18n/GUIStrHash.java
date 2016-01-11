@@ -70,6 +70,7 @@ public abstract class GUIStrHash {
         hash.put(GUIStr.DIALOG_ROTATION_MOTION, "DialogRotation.Motion");
         hash.put(GUIStr.DIALOG_ROTATION_CLOCKWISE, "DialogRotation.Clockwise");
         hash.put(GUIStr.DIALOG_ROTATION_ANTICLOCKWISE, "DialogRotation.Anticlockwise");
+        hash.put(GUIStr.GEOMETRY_MENU_ROTATION_PAINT, "GeometryMenu.RotationPaint");
     }
     
     public static String get(GUIStr stringId){
