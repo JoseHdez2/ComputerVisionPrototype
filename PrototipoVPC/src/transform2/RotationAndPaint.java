@@ -18,6 +18,11 @@ public class RotationAndPaint extends AbstractRotation {
         return ((x> 0 && x<image.getWidth()-1) && (y> 0 && y<image.getHeight()-1));
     }
     
+    /*
+    private Point coordToInd(Point coord, Point offset){
+        return new Point(coord.x - dim.x, coord.y - dim.y);
+    }*/
+    
     public NamedImage getTransformedImage(NamedImage img1){
         
         NamedImage img2 = getCorrespondingImage(img1);

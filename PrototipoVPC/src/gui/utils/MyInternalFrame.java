@@ -13,6 +13,8 @@ public class MyInternalFrame extends JInternalFrame{
     NamedImage namedImg = null;
     RegionSelector regionSelector = null;
     
+    final int FRAME_SLACK = 60;
+    
     public MyInternalFrame(String title, NamedImage namedImg, StatusBar statusbar){
       super(title, true, true, true, true);
       
@@ -22,7 +24,7 @@ public class MyInternalFrame extends JInternalFrame{
       this.regionSelector = new RegionSelector(namedImg, imgLabel, statusbar);
       add(new JScrollPane(imgLabel));
       
-      setSize(namedImg.getWidth(), namedImg.getHeight());
+      setSize(namedImg.getWidth() + FRAME_SLACK, namedImg.getHeight() + FRAME_SLACK);
       setVisible(true);     
     }
     

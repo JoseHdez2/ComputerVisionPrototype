@@ -9,7 +9,6 @@ import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
-import transform.point.BrightnessAndContrast;
 import transform.point.HistogramSpecification;
 
 public class SpecificationDialog extends SelectionDialog {

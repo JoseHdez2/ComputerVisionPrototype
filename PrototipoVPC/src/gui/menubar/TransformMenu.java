@@ -2,6 +2,7 @@ package gui.menubar;
 
 import java.awt.event.ActionEvent;
 
+import gui.dialog.LinearTransformationDialog;
 import gui.dialog.SpecificationDialog;
 import i18n.GUIStr;
 import main.MainWindow;
@@ -75,6 +76,7 @@ public class TransformMenu extends AbstractMenu {
     
     private void filterLinearTransformationActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
+        LinearTransformationDialog d = new LinearTransformationDialog(GUIStr.TRANSFORM_MENU_LINEAR_TRANSFORMATION, parentFrame, parentFrame.getFocusedImage());
         // transform(new MeanBlur());   
     }
 }

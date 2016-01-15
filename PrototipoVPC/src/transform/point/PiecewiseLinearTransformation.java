@@ -18,7 +18,6 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
 
         checkArguments(points);
         
-        
         int p = 0;  // Indice de puntos.
         int min = 0, max = 0, H = 0, L = 0;
         
