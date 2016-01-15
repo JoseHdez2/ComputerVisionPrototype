@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import transform.point.base.LUT;
 import transform.point.base.ThreeChannelAIPT;
 import util.Sys;
 
@@ -12,32 +11,47 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
 
     HashMap<Integer, Integer> myLUT = new HashMap<Integer, Integer>();
     
+    int xLo, xHi, yHi, yLo, A, B;
     // TODO: hecho para imagenes en blanco y negro
     
     public PiecewiseLinearTransformation(ArrayList<Point> points) throws Exception{
 
         checkArguments(points);
         
-        int p = 0;  // Indice de puntos.
-        int min = 0, max = 0, H = 0, L = 0;
+        Point leftPoint = points.get(0);
+        Point rightPoint = points.get(1);
+        
+        recalculateTramo(leftPoint, rightPoint);
         
         // Para cada color...
         for (int i = 0; i < 255; i++){
             
-            // Nos movemos buscando el tramo que cubre a este color
-            // (Es decir, nos cambiamos a una nuevo tramo si hace falta)
-            while (i > points.get(p).x){
-                p++;
-                min = points.get(p).x;
+            // Si nos pasamos del punto a la derecha, lo colocamos como izquierda y buscamos el siguiente a la derecha.
+            // Como entramos a un nuevo tramo, recalculamos.
+            if (i > rightPoint.x) {
+                leftPoint = rightPoint;
+                rightPoint = points.get(points.indexOf(rightPoint) + 1);
+                recalculateTramo(leftPoint, rightPoint);
             }
             
-            int A = (H - L) / (max - min);
-            int B = L - A * min;
-            
             // Una vez determinado el color correspondiente para este color, guardarlo en la LUT interna.
-            // TODO: hacerlo
-            // myLUT[i] = ???
+            
+            // y = A * x + B
+            myLUT.put(i, A * i + B);
         }
+    }
+    
+    private void recalculateTramo(Point leftPoint, Point rightPoint){
+
+        xLo = Math.min(leftPoint.x, rightPoint.x);    // Should always be left point, but w/e.
+        xHi = Math.max(leftPoint.x, rightPoint.x);    // Should always be right point, but w/e.
+        yLo = Math.min(leftPoint.y, rightPoint.y);
+        yHi = Math.max(leftPoint.y, rightPoint.y);
+        
+        int valueDiff = xHi - xLo;
+        if (valueDiff == 0) valueDiff = 1;  // Avoid dividing by zero.
+        A = (yHi - yLo) / valueDiff;    // A = (H - L) / (max - min);
+        B = yLo - A * xLo;
     }
     
     protected void checkArguments(ArrayList<Point> points) throws Exception{
@@ -50,6 +64,9 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
             if (i == 0) continue;
             if (points.get(i).x < points.get(i-1).x){
                 Sys.exception("Points not in order or overlapping: p1=%s p2=%s", points.get(i-1), points.get(i));
+            }
+            else if (points.get(i).x == points.get(i-1).x){
+                Sys.exception("Points with same X value: p1=%s p2=%s", points.get(i-1), points.get(i));
             }
         }
     }
