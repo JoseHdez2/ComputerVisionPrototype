@@ -91,9 +91,7 @@ public class LinearTransformationDialog extends ImageDialog {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (points.size() <= 20){
-                ArrayList<JTextField> point = new ArrayList<JTextField>();
-                point.add(new JTextField(3)); point.add(new JTextField(3));
-                points.add(points.size()-1, point);
+                addNewPoint(points.size()-1);
             }
         }
         
