@@ -7,41 +7,40 @@ import gui.dialog.DifferencingDialog;
 import gui.utils.histogram.AbsoluteHistogram;
 import gui.utils.histogram.AccumulativeHistogram;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import main.MainWindow;
 
 @SuppressWarnings("serial")
 public class AnalyzeMenu extends AbstractMenu{
     
-    final static GUIStr[] ACTION_NAMES =
+    final static String[] ACTION_NAMES =
         {
-        GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM,
-        GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM,
-        GUIStr.SEPARATOR,
-        GUIStr.ANALYZE_MENU_DIFFERENCING,
-        GUIStr.ANALYZE_MENU_DIFFERENCE_MAP
+        "AnalyzeMenu.AbsoluteHistogram",
+        "AnalyzeMenu.AccumulativeHistogram",
+        "Separator",
+        "AnalyzeMenu.Differencing",
+        "AnalyzeMenu.DifferenceMap"
         };
     
     public AnalyzeMenu(MainWindow parentFrame) {
-        super(parentFrame, GUIStr.ANALYZE_MENU, ACTION_NAMES);
+        super(parentFrame, "AnalyzeMenu", ACTION_NAMES);
     }
     
     
     @SuppressWarnings("incomplete-switch")
     @Override
-    protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
+    protected void actionPerformedHandler(String actionName, ActionEvent e) {
 
         switch(actionName){
-        case ANALYZE_MENU_ABSOLUTE_HISTOGRAM:
+        case "AnalyzeMenu.AbsoluteHistogram":
             absoluteHistogramActionPerformed(e);
             break;
-        case ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM:
+        case "AnalyzeMenu.AccumulativeHistogram":
             accumulativeHistogramActionPerformed(e);
             break;
-        case ANALYZE_MENU_DIFFERENCING:
+        case "AnalyzeMenu.Differencing":
             differencingActionPerformed(e);
             break;
-        case ANALYZE_MENU_DIFFERENCE_MAP:
+        case "AnalyzeMenu.DifferenceMap":
             differenceMapActionPerformed(e);
             break;  
         }

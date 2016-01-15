@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import gui.dialog.RotationDialog;
 import gui.dialog.RotationPaintDialog;
 import gui.dialog.ScaleDialog;
-import i18n.GUIStr;
 import main.MainWindow;
 import transform2.MirrorHorizontal;
 import transform2.MirrorVertical;
@@ -15,41 +14,40 @@ import transform2.Transpose;
 @SuppressWarnings("serial")
 public class GeometryMenu extends AbstractMenu {
     
-    final static GUIStr[] ACTION_NAMES =
-        {
-        GUIStr.GEOMETRY_MENU_VERTICAL_MIRROR,
-        GUIStr.GEOMETRY_MENU_HORIZONTAL_MIRROR,
-        GUIStr.GEOMETRY_MENU_TRANSPOSE,
-        GUIStr.SEPARATOR,
-        GUIStr.GEOMETRY_MENU_SCALE,
-        GUIStr.GEOMETRY_MENU_ROTATION_PAINT,
-        GUIStr.GEOMETRY_MENU_ROTATION
-        };
+    final static String vMirror = "GeometryMenu.VerticalMirror";
+    final static String hMirror = "GeometryMenu.HorizontalMirror";
+    final static String transpose = "GeometryMenu.Transpose";
+    final static String scale = "GeometryMenu.Scale";
+    final static String rotationPaint = "GeometryMenu.RotationPaint";
+    final static String rotation = "GeometryMenu.Rotation";
+    
+    final static String[] ACTION_NAMES =
+        { vMirror, hMirror, transpose, __, scale, rotationPaint, rotation };
     
     public GeometryMenu(MainWindow parentFrame){
-        super(parentFrame, GUIStr.GEOMETRY_MENU, ACTION_NAMES);
+        super(parentFrame, "GeometryMenu", ACTION_NAMES);
     }
 
     @Override
-    protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
+    protected void actionPerformedHandler(String actionName, ActionEvent e) {
         
         switch(actionName){
-        case GEOMETRY_MENU_VERTICAL_MIRROR:
+        case vMirror:
             verticalMirrorActionPerformed(e);
             break;
-        case GEOMETRY_MENU_HORIZONTAL_MIRROR:
+        case hMirror:
             horizontalMirrorActionPerformed(e);
             break;
-        case GEOMETRY_MENU_TRANSPOSE:
+        case transpose:
             transposeActionPerformed(e);
             break;  
-        case GEOMETRY_MENU_SCALE:
+        case scale:
             scaleActionPerformed(e);
             break;    
-        case GEOMETRY_MENU_ROTATION_PAINT:
+        case rotationPaint:
             rotationAndPaintActionPerformed(e);
             break;                            
-        case GEOMETRY_MENU_ROTATION:
+        case rotation:
             rotationActionPerformed(e);
             break;                
         }

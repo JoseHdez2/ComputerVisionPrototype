@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import gui.dialog.base.SelectionDialog;
 import gui.utils.MyInternalFrame;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.point.math.ImageDifferencing;
@@ -21,9 +20,9 @@ public class DifferencingDialog extends SelectionDialog {
     
     private void show() {
     
-        super.show(GUIStr.ANALYZE_MENU_DIFFERENCING,
-                    I18n.getString(GUIStr.IMAGE_MENU) + " 1: ",
-                    I18n.getString(GUIStr.IMAGE_MENU) + " 2: ");
+        super.show("AnalyzeMenu.Differencing",
+                    I18n.getString("ImageMenu") + " 1: ",
+                    I18n.getString("ImageMenu") + " 2: ");
         
         
         if (option == JOptionPane.OK_OPTION) {
@@ -41,7 +40,7 @@ public class DifferencingDialog extends SelectionDialog {
             }
             
             if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
-                parent.showErrorDialog(GUIStr.DIALOG_ERROR_DIFFERENCING);
+                parent.showErrorDialog("DialogError.Differencing");
                 return;
             }
             

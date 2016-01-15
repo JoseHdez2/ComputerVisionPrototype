@@ -2,7 +2,6 @@ package gui.menubar;
 
 import javax.swing.JMenuItem;
 
-import i18n.GUIStr;
 import i18n.I18n;
 
 /**
@@ -11,9 +10,9 @@ import i18n.I18n;
  */
 @SuppressWarnings("serial")
 public class MyMenuItem extends JMenuItem {
-    GUIStr stringId;
+    String stringId;
     
-    MyMenuItem(GUIStr stringId){
+    MyMenuItem(String stringId){
         super(I18n.getString(stringId));
         this.stringId = stringId;
     }
@@ -22,7 +21,7 @@ public class MyMenuItem extends JMenuItem {
      * Getters and setters.
      */
 
-    public GUIStr getStringId() {
+    public String getStringId() {
         return stringId;
     }
 }

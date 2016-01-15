@@ -4,7 +4,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import transform.point.base.AbstractImagePointTransformation;
 
 /**
@@ -14,8 +13,8 @@ import transform.point.base.AbstractImagePointTransformation;
 @SuppressWarnings("serial")
 public class WomboPreview extends WomboCombo{
     
-    static final GUIStr[] grayscaleWomboLabels = {GUIStr.TRIVIAL_B};
-    static final GUIStr[] colorWomboLabels = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
+    static final String[] grayscaleWomboLabels = {"Trivial.B"};
+    static final String[] colorWomboLabels = {"Trivial.R", "Trivial.G", "Trivial.B"};
     
     public WomboPreview(NamedImage image, AbstractImagePointTransformation transform){
 //        super(colorWomboLabels, 1, new int[1]);

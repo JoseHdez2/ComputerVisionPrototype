@@ -2,7 +2,6 @@ package gui.dialog.base;
 
 import javax.swing.JFrame;
 
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 
@@ -18,12 +17,12 @@ public class Dialog extends JFrame{
     
     protected MainWindow parent = null;
     
-    public Dialog(GUIStr title, MainWindow parent){
+    public Dialog(String title, MainWindow parent){
         this.parent = parent;
         int width = (int) (parent.getWidth() * widthRatioToParent);
         int height = (int) (parent.getHeight() * heightRatioToParent);
         this.setSize(width, height);
-        this.setTitle(I18n.getString(GUIStr.IMAGE_MENU_BRIGHTNESS_CONTRAST));
+        this.setTitle(I18n.getString(title));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         

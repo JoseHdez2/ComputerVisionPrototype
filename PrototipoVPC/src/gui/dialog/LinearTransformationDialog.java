@@ -15,7 +15,6 @@ import javax.swing.border.TitledBorder;
 
 import gui.dialog.base.ImageDialog;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import main.MainWindow;
 import transform.base.AbstractImageTransformation;
 import transform.point.PiecewiseLinearTransformation;
@@ -26,7 +25,7 @@ public class LinearTransformationDialog extends ImageDialog {
     ArrayList<ArrayList<JTextField>> points = new ArrayList<ArrayList<JTextField>>();
     JPanel panePoints = new JPanel();
     
-    public LinearTransformationDialog(GUIStr title, MainWindow parent, NamedImage image) {
+    public LinearTransformationDialog(String title, MainWindow parent, NamedImage image) {
         super(title, parent, image);
         setTitle("Linear transformation");
         
@@ -148,7 +147,7 @@ public class LinearTransformationDialog extends ImageDialog {
     protected void transform(ArrayList<Point> points) throws Exception{
         
         if(this.parent.getFocusedImage() == null){
-            this.parent.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            this.parent.showErrorDialog("DialogError.NoSelectedImage");
             return;
         }
         

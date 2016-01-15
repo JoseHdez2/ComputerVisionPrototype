@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.base.AbstractImageTransformation;
@@ -21,15 +20,15 @@ public abstract class AbstractMenu extends JMenu{
     
     MainWindow parentFrame;
     
-    public static final String SEPARATOR_STRING = "-";
+    protected final static String __ = "Separator";
     
-    public AbstractMenu(MainWindow parentFrame, GUIStr menuName, GUIStr[] actionNames){
+    public AbstractMenu(MainWindow parentFrame, String menuName, String[] actionNames){
         super(I18n.getString(menuName));
         this.parentFrame = parentFrame;
     
         // Eventos de menú
-        for (GUIStr actName : actionNames){
-            if (actName != GUIStr.SEPARATOR){
+        for (String actName : actionNames){
+            if (actName != "Separator"){
                 MyMenuItem action = new MyMenuItem(actName);
                 action.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
@@ -47,10 +46,7 @@ public abstract class AbstractMenu extends JMenu{
     protected void transform(AbstractImageTransformation transformation){
         System.out.println(parentFrame.getFocusedImage());
         
-        if(parentFrame.getFocusedImage() == null){
-            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
-            return;
-        }
+        if (!assertImageSelected()) return;
         
         NamedImage image1 = parentFrame.getFocusedImage();
         
@@ -64,13 +60,11 @@ public abstract class AbstractMenu extends JMenu{
 //        }
     }
     
+    // TODO: merge with above function.
     protected void transform(CoordinatesTransform transformation){
         System.out.println(parentFrame.getFocusedImage());
         
-        if(parentFrame.getFocusedImage() == null){
-            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
-            return;
-        }
+        if (!assertImageSelected()) return;
         
         NamedImage image1 = parentFrame.getFocusedImage();
         
@@ -90,14 +84,14 @@ public abstract class AbstractMenu extends JMenu{
      */
     protected boolean assertImageSelected(){
         if (parentFrame.getFocusedImage() == null){
-            parentFrame.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            parentFrame.showErrorDialog("DialogError.NoSelectedImage");
             return false;
         }
         return true;
     }
    
     
-    protected abstract void actionPerformedHandler(GUIStr actionName, ActionEvent e);
+    protected abstract void actionPerformedHandler(String actionName, ActionEvent e);
     
     
 }

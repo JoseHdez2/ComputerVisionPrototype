@@ -16,7 +16,7 @@ public abstract class I18n {
             return ResourceBundle.getBundle("i18n.i18nBundle_en");
     }
     
-    public static String getString(GUIStr stringId){
-        return manage().getString(GUIStrHash.get(stringId));
+    public static String getString(String str){
+        return manage().getString(str);
     }
 }

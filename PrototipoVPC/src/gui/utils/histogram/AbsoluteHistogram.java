@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 
 public class AbsoluteHistogram extends AbstractHistogram {
 
     public AbsoluteHistogram(NamedImage image) {
-        super(I18n.getString(GUIStr.ANALYZE_MENU_ABSOLUTE_HISTOGRAM), image.getName());
+        super(I18n.getString("AnalyzeMenu.AbsoluteHistogram"), image.getName());
         
         ArrayList<Integer> pixelArray = getPixelArray(image);
         this.showHistogram(pixelArray);

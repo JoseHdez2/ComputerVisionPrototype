@@ -13,7 +13,6 @@ import javax.swing.SwingConstants;
 
 import gui.dialog.base.ImageDialog;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.point.BrightnessAndContrast;
@@ -23,7 +22,7 @@ import transform.point.BrightnessAndContrast;
 @SuppressWarnings("serial")
 public class BrightnessContrastWombo extends ImageDialog{
     
-    GUIStr[] rgb = {GUIStr.TRIVIAL_R, GUIStr.TRIVIAL_G, GUIStr.TRIVIAL_B};
+    String[] rgb = {"Trivial.R", "Trivial.G", "Trivial.B"};
     int[] initialBrightness = {(int) Math.round(image.getBrightness()), 0, 0};
     int[] initialContrast = {(int) Math.round(image.getContrast()), 0, 0};
     
@@ -31,15 +30,15 @@ public class BrightnessContrastWombo extends ImageDialog{
     WomboCombo contrastWombo = new WomboCombo(rgb, 3, initialContrast, true);
     
     public BrightnessContrastWombo(MainWindow parent, NamedImage image) {
-        super(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, parent, image);
+        super("BrightnessDialog.Brightness", parent, image);
         this.setSize(new Dimension(650,240));
         
         // Elements panel
         JPanel elementsPanel = new JPanel(new BorderLayout());
         
         JPanel titlesPanel = new JPanel(new GridLayout(1,2));
-        titlesPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS),SwingConstants.CENTER));
-        titlesPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_CONTRAST),SwingConstants.CENTER));
+        titlesPanel.add(new JLabel(I18n.getString("BrightnessDialog.Brightness"),SwingConstants.CENTER));
+        titlesPanel.add(new JLabel(I18n.getString("BrightnessDialog.Contrast"),SwingConstants.CENTER));
         
         JPanel wombosPanel = new JPanel(new GridLayout(1,2));
         wombosPanel.add(brightnessWombo);
@@ -50,7 +49,7 @@ public class BrightnessContrastWombo extends ImageDialog{
         
         // Accept panel
         JPanel acceptPanel = new JPanel();
-        JButton acceptButton = new JButton(I18n.getString(GUIStr.GENERAL_ACCEPT));
+        JButton acceptButton = new JButton(I18n.getString("General.Accept"));
         acceptButton.addActionListener(new ActionListener() { 
           public void actionPerformed(ActionEvent e) { 
             setBrightnessAndContrast();

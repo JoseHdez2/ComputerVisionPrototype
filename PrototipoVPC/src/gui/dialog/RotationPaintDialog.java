@@ -14,7 +14,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform2.RotationAndPaint;
@@ -37,7 +36,7 @@ public class RotationPaintDialog {
         
         createElements();
         
-        show(GUIStr.GEOMETRY_MENU_ROTATION_PAINT);
+        show("GeometryMenu.RotationPaint");
     }    
 
     
@@ -51,8 +50,8 @@ public class RotationPaintDialog {
         
         // Crear botones de sentidos
         motionButtons = new JRadioButton[2];
-        motionButtons[0] = new JRadioButton(I18n.getString(GUIStr.DIALOG_ROTATION_CLOCKWISE));
-        motionButtons[1] = new JRadioButton(I18n.getString(GUIStr.DIALOG_ROTATION_ANTICLOCKWISE));
+        motionButtons[0] = new JRadioButton(I18n.getString("DialogRotation.Clockwise"));
+        motionButtons[1] = new JRadioButton(I18n.getString("DialogRotation.Anticlockwise"));
         
         // Eventos de JRadioButton
         ButtonGroup angleGroup = new ButtonGroup();
@@ -93,10 +92,10 @@ public class RotationPaintDialog {
         
         // Panel de angulo
         JPanel anglePanel = new JPanel(new GridLayout(4,1));
-        anglePanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_ROTATION_ANGLE)));
+        anglePanel.setBorder(new TitledBorder(I18n.getString("DialogRotation.Angle")));
         // Panel de sentido
         JPanel motionPanel = new JPanel(new GridLayout(2,1));
-        motionPanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_ROTATION_MOTION)));
+        motionPanel.setBorder(new TitledBorder(I18n.getString("DialogRotation.Motion")));
         
         JPanel rightPanel = new JPanel(new GridLayout(2,1));
         rightPanel.add(motionPanel);
@@ -122,7 +121,7 @@ public class RotationPaintDialog {
         return panel;
     }
     
-    protected void show(GUIStr title) {
+    protected void show(String title) {
         
         JPanel panel = createPanel();
         

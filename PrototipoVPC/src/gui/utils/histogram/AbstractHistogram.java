@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import i18n.GUIStr;
 import i18n.I18n;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -98,8 +97,8 @@ public abstract class AbstractHistogram {
         // Nombres
         chart.setTitle(title);
         chart.setLegendVisible(false);
-        x.setLabel(I18n.getString(GUIStr.HISTOGRAM_LABEL_COLOR));
-        y.setLabel(I18n.getString(GUIStr.HISTOGRAM_LABEL_PIXELS));
+        x.setLabel(I18n.getString("Histogram.LabelColor"));
+        y.setLabel(I18n.getString("Histogram.LabelPixels"));
         
         // Introducir datos
         XYChart.Series<String, Number> serie = new XYChart.Series<String, Number>();

@@ -14,13 +14,11 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform2.Rotation;
 import transform2.Rotation90;
 import transform2.base.AbstractRotation;
-import transform2.base.MyPoint;
 
 public class RotationDialog {
     
@@ -40,7 +38,7 @@ public class RotationDialog {
         
         createElements();
         
-        show(GUIStr.GEOMETRY_MENU_ROTATION);
+        show("GeometryMenu.Rotation");
     }    
 
     
@@ -54,13 +52,13 @@ public class RotationDialog {
         
         // Crear botones de sentidos
         motionButtons = new JRadioButton[2];
-        motionButtons[0] = new JRadioButton(I18n.getString(GUIStr.DIALOG_ROTATION_CLOCKWISE));
-        motionButtons[1] = new JRadioButton(I18n.getString(GUIStr.DIALOG_ROTATION_ANTICLOCKWISE));
+        motionButtons[0] = new JRadioButton(I18n.getString("DialogRotation.Clockwise"));
+        motionButtons[1] = new JRadioButton(I18n.getString("DialogRotation.Anticlockwise"));
         
         // Crear botones de interpolacion
         interpolationButtons = new JRadioButton[2];
-        interpolationButtons[0] = new JRadioButton(I18n.getString(GUIStr.DIALOG_SCALE_NEAREST));        
-        interpolationButtons[1] = new JRadioButton(I18n.getString(GUIStr.DIALOG_SCALE_BILINEAR));
+        interpolationButtons[0] = new JRadioButton(I18n.getString("DialogScale.Nearest"));        
+        interpolationButtons[1] = new JRadioButton(I18n.getString("DialogScale.Bilinear"));
         
         // Eventos de JRadioButton
         ButtonGroup angleGroup = new ButtonGroup();
@@ -111,13 +109,13 @@ public class RotationDialog {
         
         // Panel de angulo
         JPanel anglePanel = new JPanel(new GridLayout(4,1));
-        anglePanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_ROTATION_ANGLE)));
+        anglePanel.setBorder(new TitledBorder(I18n.getString("DialogRotation.Angle")));
         // Panel de sentido
         JPanel motionPanel = new JPanel(new GridLayout(2,1));
-        motionPanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_ROTATION_MOTION)));
+        motionPanel.setBorder(new TitledBorder(I18n.getString("DialogRotation.Motion")));
         // Panel de selección de interpolación
         JPanel interpolationPanel = new JPanel(new GridLayout(2,1));
-        interpolationPanel.setBorder(new TitledBorder(I18n.getString(GUIStr.DIALOG_SCALE_INTERPOLATION)));
+        interpolationPanel.setBorder(new TitledBorder(I18n.getString("DialogScale.Interpolation")));
         
         JPanel rightPanel = new JPanel(new GridLayout(2,1));
         rightPanel.add(motionPanel);
@@ -148,7 +146,7 @@ public class RotationDialog {
         return panel;
     }
     
-    protected void show(GUIStr title) {
+    protected void show(String title) {
         
         JPanel panel = createPanel();
         
@@ -169,9 +167,9 @@ public class RotationDialog {
             
             if (angleSelected == 3) {
                 if (interpolationButtons[0].isSelected()) {
-                    transform = new Rotation(image, angle, GUIStr.DIALOG_SCALE_NEAREST);
+                    transform = new Rotation(image, angle, "DialogScale.Nearest");
                 } else {
-                    transform = new Rotation(image, angle, GUIStr.DIALOG_SCALE_BILINEAR);
+                    transform = new Rotation(image, angle, "DialogScale.Bilinear");
                 }
             } else {
                 if (motionButtons[0].isSelected()) {

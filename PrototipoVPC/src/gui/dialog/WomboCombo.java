@@ -8,7 +8,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import i18n.GUIStr;
 import i18n.I18n;
 
 @SuppressWarnings("serial")
@@ -24,7 +23,7 @@ public class WomboCombo extends JPanel{
     final int STEP_SIZE = 1;
     
     int subwombos;
-    GUIStr[] subWomboLabels;
+    String[] subWomboLabels;
     JSlider[] sliders = null;
     JSpinner[] spinners = null;
     
@@ -35,7 +34,7 @@ public class WomboCombo extends JPanel{
      * @param values            Initial value of each subwombo.
      * @param boundWombos       Whether subwombos will be bound to the same (first) value.
      */
-    public WomboCombo(GUIStr[] subWomboLabels, int subWombos, int[] values, boolean boundWombos){
+    public WomboCombo(String[] subWomboLabels, int subWombos, int[] values, boolean boundWombos){
         this.subwombos = subWombos;
         this.subWomboLabels = subWomboLabels;
         
@@ -57,7 +56,7 @@ public class WomboCombo extends JPanel{
     /**
      * Unless specified, wombos will be unbound.
      */
-    public WomboCombo(GUIStr[] subWomboLabels, int subWombos, int[] values){
+    public WomboCombo(String[] subWomboLabels, int subWombos, int[] values){
         this(subWomboLabels, subWombos, values, false);
     }
     

@@ -4,16 +4,15 @@ import java.awt.Color;
 
 import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import transform2.base.AbstractRotation;
 import transform2.base.MyPoint;
 
 public class Rotation extends AbstractRotation {
     
     int blanks;
-    GUIStr interpolation = null;
+    String interpolation = null;
     
-    public Rotation(NamedImage img, double angle, GUIStr interpolation) {
+    public Rotation(NamedImage img, double angle, String interpolation) {
         super(img, Math.toRadians(angle));
         blanks = 0;
         this.interpolation = interpolation;
@@ -45,7 +44,7 @@ public class Rotation extends AbstractRotation {
         
         Color color = null;
         
-        if (interpolation == GUIStr.DIALOG_SCALE_NEAREST) {
+        if (interpolation == "DialogScale.Nearest") {
             try {
                 color = image.getPixelColor((int)point.x(), (int)point.y());
             } catch(Exception e){};

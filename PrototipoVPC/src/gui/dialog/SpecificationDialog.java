@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import gui.dialog.base.SelectionDialog;
 import gui.utils.MyInternalFrame;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.point.HistogramSpecification;
@@ -21,9 +20,9 @@ public class SpecificationDialog extends SelectionDialog {
     
     private void show() {
     
-        super.show(GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION,
-                    I18n.getString(GUIStr.HISTOGRAM_SPECIFICATION_TEXT1),
-                    I18n.getString(GUIStr.HISTOGRAM_SPECIFICATION_TEXT2));
+        super.show("TransformMenu.HistogramSpecification",
+                    I18n.getString("HistogramSpecification.Text1"),
+                    I18n.getString("HistogramSpecification.Text2"));
         
         
         if (option == JOptionPane.OK_OPTION) {

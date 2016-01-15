@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class GUIStrHash { 
-    
+/*    
     private static final Map<GUIStr, String> hash;
     static
     {
@@ -76,5 +76,6 @@ public abstract class GUIStrHash {
     public static String get(GUIStr stringId){
         return hash.get(stringId);
     }
+    */
 }
 

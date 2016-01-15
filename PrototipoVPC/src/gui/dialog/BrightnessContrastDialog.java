@@ -17,7 +17,6 @@ import javax.swing.event.ChangeListener;
 
 import gui.dialog.base.ImageDialog;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.point.BrightnessAndContrast;
@@ -30,11 +29,11 @@ public class BrightnessContrastDialog extends ImageDialog{
     JSpinner[] contrastSpinner = new JSpinner[3];
     
     public BrightnessContrastDialog(MainWindow parent, NamedImage image) {
-        super(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS, parent, image);
+        super("BrightnessDialog.Brightness", parent, image);
         this.setLayout(new BorderLayout(0,1));
         JPanel elementsPanel = createElements();
         JPanel acceptPanel = new JPanel();
-        JButton acceptButton = new JButton(I18n.getString(GUIStr.GENERAL_ACCEPT));
+        JButton acceptButton = new JButton(I18n.getString("General.Accept"));
         acceptButton.addActionListener(new ActionListener() { 
           public void actionPerformed(ActionEvent e) { 
             setBrightnessAndContrast();
@@ -60,8 +59,8 @@ public class BrightnessContrastDialog extends ImageDialog{
         int brightness = (int)image.getBrightness();
         int contrast = (int)image.getContrast();
         
-        gridPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_BRIGHTNESS),SwingConstants.CENTER));
-        gridPanel.add(new JLabel(I18n.getString(GUIStr.BRIGHTNESS_DIALOG_CONTRAST),SwingConstants.CENTER));
+        gridPanel.add(new JLabel(I18n.getString("BrightnessDialog.Brightness"),SwingConstants.CENTER));
+        gridPanel.add(new JLabel(I18n.getString("BrightnessDialog.Contrast"),SwingConstants.CENTER));
         
         for (int i=0; i<=2; i++) {
             final int innerI = i;

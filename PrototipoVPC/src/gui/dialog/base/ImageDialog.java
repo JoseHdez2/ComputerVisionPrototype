@@ -1,7 +1,6 @@
 package gui.dialog.base;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import main.MainWindow;
 
 /**
@@ -14,7 +13,7 @@ public class ImageDialog extends Dialog {
 
     protected NamedImage image = null;
     
-    public ImageDialog(GUIStr title, MainWindow parent, NamedImage image){
+    public ImageDialog(String title, MainWindow parent, NamedImage image){
         super(title, parent);
         this.image = image;
     }

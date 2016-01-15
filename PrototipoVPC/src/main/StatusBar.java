@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-import i18n.GUIStr;
 import i18n.I18n;
 
 @SuppressWarnings("serial")
@@ -84,9 +83,9 @@ public class StatusBar extends JPanel{
      */
     public void setColorModeLabel(boolean isGrayscale){
         if (isGrayscale){
-            colorModeLabel.setText(I18n.getString(GUIStr.STATUSBAR_COLOR_MODE_GRAYSCALE));
+            colorModeLabel.setText(I18n.getString("StatusBar.ColorModeGrayscale"));
         } else {
-            colorModeLabel.setText(I18n.getString(GUIStr.STATUSBAR_COLOR_MODE_RGB));
+            colorModeLabel.setText(I18n.getString("StatusBar.ColorModeRGB"));
         }
     }
 }

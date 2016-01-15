@@ -7,7 +7,6 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 import transform.point.math.ImageDifferencing;
@@ -31,7 +30,7 @@ public class DifferenceMapDialog {
         JPanel panel = new JPanel();
         
         // Seleccionar umbral
-        panel.add(new JLabel(I18n.getString(GUIStr.DIFFERENCE_MAP_THRESHOLD)));
+        panel.add(new JLabel(I18n.getString("DifferenceMap.Threshold")));
         panel.add(spinner);
         
         return panel;
@@ -42,7 +41,7 @@ public class DifferenceMapDialog {
         JPanel panel = createPanel();
         
         int option = JOptionPane.showConfirmDialog(null, panel, 
-                I18n.getString(GUIStr.ANALYZE_MENU_DIFFERENCE_MAP), 
+                I18n.getString("AnalyzeMenu.DifferenceMap"), 
                 JOptionPane.OK_CANCEL_OPTION);
         
         if (option == JOptionPane.OK_OPTION) {

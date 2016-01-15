@@ -5,13 +5,12 @@ import java.util.HashMap;
 
 import gui.utils.image.ColorHistogram;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 
 public class AccumulativeHistogram extends AbstractHistogram {
 
     public AccumulativeHistogram(NamedImage image) {
-        super(I18n.getString(GUIStr.ANALYZE_MENU_ACCUMULATIVE_HISTOGRAM), image.getName());
+        super(I18n.getString("AnalyzeMenu.AccumulativeHistogram"), image.getName());
         
         ArrayList<Integer> pixelArray = getPixelArray(image);
         this.showHistogram(pixelArray);

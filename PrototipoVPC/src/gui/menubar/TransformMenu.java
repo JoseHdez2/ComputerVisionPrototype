@@ -4,47 +4,44 @@ import java.awt.event.ActionEvent;
 
 import gui.dialog.LinearTransformationDialog;
 import gui.dialog.SpecificationDialog;
-import i18n.GUIStr;
 import main.MainWindow;
 import transform.point.HistogramEqualization;
 import transform.point.Negative;
-import transform.vicinity.MeanBlur;
 
 
 @SuppressWarnings("serial")
 public class TransformMenu extends AbstractMenu {
     
-    final static GUIStr[] ACTION_NAMES =
-        {
-        GUIStr.TRANSFORM_MENU_EQUALIZE_ACTION,
-        GUIStr.TRANSFORM_MENU_NEGATIVE_ACTION,
-        GUIStr.TRANSFORM_MENU_HISTOGRAM_EQUALIZATION,
-        GUIStr.TRANSFORM_MENU_HISTOGRAM_SPECIFICATION,
-        GUIStr.SEPARATOR,
-        GUIStr.TRANSFORM_MENU_LINEAR_TRANSFORMATION,
-        };
+    final static String equalize = "TransformMenu.EqualizeAction";
+    final static String negative = "TransformMenu.NegativeAction";
+    final static String histEqualization = "TransformMenu.HistogramEqualization";
+    final static String histSpecification = "TransformMenu.HistogramSpecification";
+    final static String linearTransform = "TransformMenu.LinearTransformation";
+    
+    final static String[] ACTION_NAMES =
+        { equalize, negative, histEqualization, histSpecification, __, linearTransform };
     
     public TransformMenu(MainWindow parentFrame){
-        super(parentFrame, GUIStr.TRANSFORM_MENU, ACTION_NAMES);
+        super(parentFrame, "TransformMenu", ACTION_NAMES);
     }
 
     @Override
-    protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
+    protected void actionPerformedHandler(String actionName, ActionEvent e) {
         
         switch(actionName){
-        case TRANSFORM_MENU_EQUALIZE_ACTION:
+        case equalize:
             equalizeActionPerformed(e);
             break;
-        case TRANSFORM_MENU_NEGATIVE_ACTION:
+        case negative:
             negativeActionPerformed(e);
             break;
-        case TRANSFORM_MENU_HISTOGRAM_EQUALIZATION:
+        case histEqualization:
             histogramEqualizationActionPerformed(e);
             break;
-        case TRANSFORM_MENU_HISTOGRAM_SPECIFICATION:
+        case histSpecification:
             histogramSpecificationActionPerformed(e);
             break;            
-        case TRANSFORM_MENU_LINEAR_TRANSFORMATION:
+        case linearTransform:
             filterLinearTransformationActionPerformed(e);
             break;
         }
@@ -76,7 +73,7 @@ public class TransformMenu extends AbstractMenu {
     
     private void filterLinearTransformationActionPerformed(ActionEvent e) {
         if (!assertImageSelected()) return;
-        LinearTransformationDialog d = new LinearTransformationDialog(GUIStr.TRANSFORM_MENU_LINEAR_TRANSFORMATION, parentFrame, parentFrame.getFocusedImage());
+        LinearTransformationDialog d = new LinearTransformationDialog(linearTransform, parentFrame, parentFrame.getFocusedImage());
         // transform(new MeanBlur());   
     }
 }

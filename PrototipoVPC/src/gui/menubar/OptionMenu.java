@@ -3,27 +3,26 @@ package gui.menubar;
 import java.awt.event.ActionEvent;
 
 import gui.dialog.OptionsDialog;
-import i18n.GUIStr;
 import main.MainWindow;
 
 public class OptionMenu extends AbstractMenu{
 
-    final static GUIStr[] ACTION_NAMES =
+    final static String[] ACTION_NAMES =
         {
-        GUIStr.OPTIONS_MENU
+        "OptionsMenu"
         };
     
     // TODO: Have options be radio buttons.
     
     public OptionMenu(MainWindow parentFrame) {
-        super(parentFrame, GUIStr.OPTIONS_MENU, ACTION_NAMES);
+        super(parentFrame, "OptionsMenu", ACTION_NAMES);
         // TODO Auto-generated constructor stub
     }
 
     @Override
-    protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
+    protected void actionPerformedHandler(String actionName, ActionEvent e) {
         switch(actionName){
-        case OPTIONS_MENU:
+        case "OptionsMenu":
             optionsActionPerformed(e);
             break;
         }

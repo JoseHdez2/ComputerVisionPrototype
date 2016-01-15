@@ -14,7 +14,6 @@ import gui.menubar.TheMenuBar;
 import gui.utils.MyInternalFrame;
 import gui.utils.RegionSelector;
 import gui.utils.image.NamedImage;
-import i18n.GUIStr;
 import i18n.I18n;
 
 /**
@@ -37,7 +36,7 @@ public class MainWindow extends JFrame {
 	    
 		this.setSize(WIDTH_DEFAULT, HEIGHT_DEFAULT);
 		this.setLayout(new BorderLayout());
-		this.setTitle(I18n.getString(GUIStr.MAIN_WINDOW_TITLE));
+		this.setTitle(I18n.getString("MainWindow.Title"));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pane.setBackground(Color.LIGHT_GRAY);
 
@@ -129,9 +128,9 @@ public class MainWindow extends JFrame {
 	    }
 	}
 	
-	public void showErrorDialog(GUIStr errorStr){
+	public void showErrorDialog(String errorStr){
         JOptionPane.showMessageDialog(this, I18n.getString(errorStr), 
-                I18n.getString(GUIStr.GENERAL_ERROR), JOptionPane.ERROR_MESSAGE);
+                I18n.getString("General.Error"), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/*

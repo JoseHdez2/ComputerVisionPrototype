@@ -11,7 +11,6 @@ import javax.swing.JDesktopPane;
 
 import gui.utils.image.NamedImage;
 import gui.utils.image.NamedImageCreator;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 
@@ -19,45 +18,41 @@ import main.MainWindow;
 @SuppressWarnings("serial")
 public class FileMenu extends AbstractMenu {
     
-    final static GUIStr[] ACTION_NAMES =
-        {
-        GUIStr.FILE_MENU_OPEN_ACTION,
-        GUIStr.SEPARATOR,
-        GUIStr.FILE_MENU_SAVE_ACTION,
-        GUIStr.FILE_MENU_SAVE_AS_ACTION,
-        GUIStr.SEPARATOR,
-        GUIStr.FILE_MENU_CLOSE_ACTION,
-        GUIStr.FILE_MENU_QUIT_ACTION
-        };
+    final static String open = "FileMenu.OpenAction";
+    final static String save = "FileMenu.SaveAction";
+    final static String saveAs = "FileMenu.SaveAsAction";
+    final static String close = "FileMenu.CloseAction";
+    final static String quit = "FileMenu.QuitAction";
+    
+    final static String[] ACTION_NAMES =
+        {open, __, save, saveAs, __, close, quit};
     
     public FileMenu(MainWindow parentFrame){
-        super(parentFrame, GUIStr.FILE_MENU, ACTION_NAMES);
+        super(parentFrame, "FileMenu", ACTION_NAMES);
     }
 
     @SuppressWarnings("incomplete-switch")
     @Override
-    protected void actionPerformedHandler(GUIStr actionName, ActionEvent e) {
+    protected void actionPerformedHandler(String actionName, ActionEvent e) {
 
         switch(actionName){
-        case FILE_MENU_OPEN_ACTION:
+        case open:
             openActionPerformed(e);
             break;
-        case FILE_MENU_SAVE_ACTION:
+        case save:
             saveActionPerformed(e);
             break;
-        case FILE_MENU_SAVE_AS_ACTION:
+        case saveAs:
             saveAsActionPerformed(e);
             break;
-        case FILE_MENU_CLOSE_ACTION:
+        case close:
             closeActionPerformed(e);
             break;
-        case FILE_MENU_QUIT_ACTION:
+        case quit:
             quitActionPerformed(e);
             break;
         }
     }
-    
-   
     
     private void setEnabledActions(boolean cond) {
         // TODO: No funciona.
@@ -70,9 +65,9 @@ public class FileMenu extends AbstractMenu {
             MyMenuItem menuItem = (MyMenuItem)comp;
             
             // TODO: Seria mejor con un case?
-            if( menuItem.getStringId().equals(GUIStr.FILE_MENU_SAVE_ACTION) ||
-                menuItem.getStringId().equals(GUIStr.FILE_MENU_SAVE_AS_ACTION) ||
-                menuItem.getStringId().equals(GUIStr.FILE_MENU_CLOSE_ACTION)){
+            if( menuItem.getStringId().equals(save) ||
+                menuItem.getStringId().equals(saveAs) ||
+                menuItem.getStringId().equals(close)){
                 
                 menuItem.setEnabled(cond);
             }
@@ -85,7 +80,7 @@ public class FileMenu extends AbstractMenu {
     
     private void openActionPerformed(ActionEvent e) {
         
-        FileDialog openFiles = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_OPEN), FileDialog.LOAD);
+        FileDialog openFiles = new FileDialog(parentFrame, I18n.getString(open), FileDialog.LOAD);
         openFiles.setFilenameFilter(new FilenameFilter(){
             @Override
             public boolean accept(File dir, String name) {
@@ -126,7 +121,7 @@ public class FileMenu extends AbstractMenu {
         
         NamedImage image = parentFrame.getFocusedImage();
         
-        FileDialog saveFile = new FileDialog(parentFrame, I18n.getString(GUIStr.FILE_DIALOG_SAVE_AS), FileDialog.SAVE);
+        FileDialog saveFile = new FileDialog(parentFrame, I18n.getString(saveAs), FileDialog.SAVE);
         if (image != null) {
             saveFile.setDirectory(image.getDirectory());
         }

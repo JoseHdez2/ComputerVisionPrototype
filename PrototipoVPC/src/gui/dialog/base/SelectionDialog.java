@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import gui.utils.MyInternalFrame;
-import i18n.GUIStr;
 import i18n.I18n;
 import main.MainWindow;
 
@@ -52,7 +51,7 @@ public class SelectionDialog {
         return panel;
     }
     
-    protected void show(GUIStr title, String label1, String label2) {
+    protected void show(String title, String label1, String label2) {
         
         JPanel panel = createPanel(label1, label2);
         
