@@ -56,9 +56,11 @@ public class LinearTransformationDialog extends ImageDialog {
         paneControl.add(paneControl1, BorderLayout.NORTH);
         
         JButton btnAddPoint = new JButton("Add point");
+        btnAddPoint.addActionListener(listenerAddPoint);
         paneControl1.add(btnAddPoint);
         
         JButton btnDelPoint = new JButton("Delete point");
+        btnDelPoint.addActionListener(listenerDelPoint);
         paneControl1.add(btnDelPoint);
         
         JButton btnApply = new JButton("Apply transformation"); 
