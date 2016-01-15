@@ -26,9 +26,27 @@ public class LinearTransformationDialog extends ImageDialog {
         super(title, parent, image);
         setTitle("Linear transformation");
         
+        /*
+         * Points panel 
+         */
+        
         panePoints.setLayout(new GridLayout(0,3));
         panePoints.setBorder(new TitledBorder("Transformation points"));
         add(panePoints);
+        
+        // Add initial two points
+        for (int i = 0; i < 2; i++) addNewPoint(points.size());
+        
+        points.get(0).get(0).setText("0");
+        points.get(0).get(0).setEditable(false);
+        points.get(1).get(0).setText("255");
+        points.get(1).get(0).setEditable(false);
+        
+        repaintPointPanel();
+        
+        /*
+         * Control panel
+         */
         
         JPanel paneControl = new JPanel();
         add(paneControl, BorderLayout.SOUTH);
@@ -45,25 +63,6 @@ public class LinearTransformationDialog extends ImageDialog {
         
         JButton btnApply = new JButton("Apply transformation"); 
         paneControl.add(btnApply, BorderLayout.SOUTH);
-        
-        ArrayList<JTextField> point1 = new ArrayList<JTextField>();
-        JTextField point1x = new JTextField(3); point1x.setText("0");
-        JTextField point1y = new JTextField(3);
-        point1.add(point1x); point1.add(point1y);
-        points.add(point1);
-        
-        ArrayList<JTextField> point2 = new ArrayList<JTextField>();
-        JTextField point2x = new JTextField(3); point2x.setText("255");
-        JTextField point2y = new JTextField(3);
-        point2.add(point2x); point1.add(point2y);
-        points.add(point2);
-        
-        // Add initial two points
-        for (int i = 0; i < 2; i++) addNewPoint(points.size());
-        points.get(0).get(0).setText("0");
-        points.get(0).get(0).setEditable(false);
-        points.get(1).get(0).setText("255");
-        points.get(1).get(0).setEditable(false);
     }
     
     private void addNewPoint(Integer index){
@@ -71,8 +70,6 @@ public class LinearTransformationDialog extends ImageDialog {
         
         newPoint.add(new JTextField(3)); newPoint.add(new JTextField(3));
         points.add(index, newPoint);
-        
-        repaintPointPanel();
     }
     
     private void repaintPointPanel(){
@@ -92,6 +89,8 @@ public class LinearTransformationDialog extends ImageDialog {
         public void actionPerformed(ActionEvent e) {
             if (points.size() <= 20){
                 addNewPoint(points.size()-1);
+                
+                repaintPointPanel();
             }
         }
         
