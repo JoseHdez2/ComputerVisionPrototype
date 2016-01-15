@@ -2,6 +2,7 @@ package gui.dialog;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import gui.dialog.base.ImageDialog;
 import gui.utils.image.NamedImage;
 import i18n.GUIStr;
 import main.MainWindow;
+import transform.base.AbstractImageTransformation;
+import transform.point.PiecewiseLinearTransformation;
 
 public class LinearTransformationDialog extends ImageDialog {
 
@@ -63,7 +66,8 @@ public class LinearTransformationDialog extends ImageDialog {
         btnDelPoint.addActionListener(listenerDelPoint);
         paneControl1.add(btnDelPoint);
         
-        JButton btnApply = new JButton("Apply transformation"); 
+        JButton btnApply = new JButton("Apply transformation");
+        btnApply.addActionListener(listenerApplyTrans);
         paneControl.add(btnApply, BorderLayout.SOUTH);
     }
     
@@ -82,7 +86,8 @@ public class LinearTransformationDialog extends ImageDialog {
                 panePoints.add(points.get(i).get(j));
             }
         }
-        repaint();
+        panePoints.repaint();
+        
     }
     
     ActionListener listenerAddPoint = new ActionListener(){
@@ -111,4 +116,50 @@ public class LinearTransformationDialog extends ImageDialog {
         
     };
     
+    ActionListener listenerApplyTrans = new ActionListener(){
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                transform(getPoints());
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+        
+    };
+    
+    private ArrayList<Point> getPoints(){
+        ArrayList<Point> pointList = new ArrayList<Point>();
+        for (int i = 0; i < points.size(); i++){
+            int x = Integer.parseInt(points.get(i).get(0).getText());
+            int y = Integer.parseInt(points.get(i).get(1).getText());
+            pointList.add(new Point(x, y));
+        }
+        
+        return pointList;
+    }
+    
+ // TODO: Should this go here? rn, used by both ImageMenu and TransformMenu.
+    protected void transform(ArrayList<Point> points) throws Exception{
+        
+        if(this.parent.getFocusedImage() == null){
+            this.parent.showErrorDialog(GUIStr.DIALOG_ERROR_NO_SELECTED_IMAGE);
+            return;
+        }
+        
+        PiecewiseLinearTransformation transformation = new PiecewiseLinearTransformation(points);
+        
+        NamedImage image1 = this.parent.getFocusedImage();
+        
+        NamedImage image2 = transformation.getTransformedImage(image1);
+        
+//        if (parentFrame.getOpt().isOverwrite()){
+            // TODO: overwrite focused image.
+//            parentFrame.getFocusedImage() = image2;
+//        } else {
+            this.parent.createImageFrame(image2);
+//        }
+    }
 }
