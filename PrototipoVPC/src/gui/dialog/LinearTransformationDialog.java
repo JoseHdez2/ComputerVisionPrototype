@@ -19,6 +19,7 @@ import i18n.GUIStr;
 import main.MainWindow;
 import transform.base.AbstractImageTransformation;
 import transform.point.PiecewiseLinearTransformation;
+import util.Sys;
 
 public class LinearTransformationDialog extends ImageDialog {
 
@@ -137,6 +138,8 @@ public class LinearTransformationDialog extends ImageDialog {
             int y = Integer.parseInt(points.get(i).get(1).getText());
             pointList.add(new Point(x, y));
         }
+        
+        Sys.out(pointList);
         
         return pointList;
     }

@@ -24,7 +24,7 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
         recalculateTramo(leftPoint, rightPoint);
         
         // Para cada color...
-        for (int i = 0; i < 255; i++){
+        for (int i = 0; i <= 255; i++){
             
             // Si nos pasamos del punto a la derecha, lo colocamos como izquierda y buscamos el siguiente a la derecha.
             // Como entramos a un nuevo tramo, recalculamos.
@@ -39,6 +39,7 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
             // y = A * x + B
             myLUT.put(i, A * i + B);
         }
+        Sys.out(myLUT);
     }
     
     private void recalculateTramo(Point leftPoint, Point rightPoint){
@@ -73,6 +74,7 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
     
     @Override
     protected int getVOut(int vIn) {
+        Sys.out(String.format("offending vIn=%d", vIn));
         return myLUT.get(vIn);
     }
 
