@@ -22,7 +22,7 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
         Point leftPoint = points.get(0);
         Point rightPoint = points.get(1);
         
-        recalculateTramo(leftPoint, rightPoint);
+        recalculateForNewStretch(leftPoint, rightPoint);
         
         // Para cada color...
         for (int i = 0; i <= 255; i++){
@@ -32,25 +32,32 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
             if (i > rightPoint.x) {
                 leftPoint = rightPoint;
                 rightPoint = points.get(points.indexOf(rightPoint) + 1);
-                recalculateTramo(leftPoint, rightPoint);
+                // calcular nuevo tramo
+                recalculateForNewStretch(leftPoint, rightPoint);
             }
             
             // Una vez determinado el color correspondiente para este color, guardarlo en la LUT interna.
             
             // y = A * x + B
-            myLUT.put(i, (int)(A * i + B));
+            int out = (int)(A * i + B);
+            myLUT.put(i, out);
         }
         Sys.out(myLUT);
     }
     
-    private void recalculateTramo(Point leftPoint, Point rightPoint){
+    private void recalculateForNewStretch(Point leftPoint, Point rightPoint){
 
         Sys.fout("Para tramo %s <--> %s", leftPoint, rightPoint);
         
-        xLo = Math.min(leftPoint.x, rightPoint.x);    // Should always be left point, but w/e.
-        xHi = Math.max(leftPoint.x, rightPoint.x);    // Should always be right point, but w/e.
-        yLo = Math.min(leftPoint.y, rightPoint.y);
-        yHi = Math.max(leftPoint.y, rightPoint.y);
+//        xLo = Math.min(leftPoint.x, rightPoint.x);    // Should always be left point, but w/e.
+//        xHi = Math.max(leftPoint.x, rightPoint.x);    // Should always be right point, but w/e.
+//        yLo = Math.min(leftPoint.y, rightPoint.y);
+//        yHi = Math.max(leftPoint.y, rightPoint.y);
+        
+        xLo = leftPoint.x;
+        xHi = rightPoint.x;
+        yLo = leftPoint.y;
+        yHi = rightPoint.y;
         
         Sys.fout("xLo= %d, xHi = %d, yLo= %d, yHi = %d", xLo, xHi, yLo, yHi);
         
