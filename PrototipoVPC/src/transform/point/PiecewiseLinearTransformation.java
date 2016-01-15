@@ -11,7 +11,8 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
 
     HashMap<Integer, Integer> myLUT = new HashMap<Integer, Integer>();
     
-    int xLo, xHi, yHi, yLo, A, B;
+    int xLo, xHi, yHi, yLo; 
+    float A, B;
     // TODO: hecho para imagenes en blanco y negro
     
     public PiecewiseLinearTransformation(ArrayList<Point> points) throws Exception{
@@ -37,22 +38,27 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
             // Una vez determinado el color correspondiente para este color, guardarlo en la LUT interna.
             
             // y = A * x + B
-            myLUT.put(i, A * i + B);
+            myLUT.put(i, (int)(A * i + B));
         }
         Sys.out(myLUT);
     }
     
     private void recalculateTramo(Point leftPoint, Point rightPoint){
 
+        Sys.fout("Para tramo %s <--> %s", leftPoint, rightPoint);
+        
         xLo = Math.min(leftPoint.x, rightPoint.x);    // Should always be left point, but w/e.
         xHi = Math.max(leftPoint.x, rightPoint.x);    // Should always be right point, but w/e.
         yLo = Math.min(leftPoint.y, rightPoint.y);
         yHi = Math.max(leftPoint.y, rightPoint.y);
         
+        Sys.fout("xLo= %d, xHi = %d, yLo= %d, yHi = %d", xLo, xHi, yLo, yHi);
+        
         int valueDiff = xHi - xLo;
         if (valueDiff == 0) valueDiff = 1;  // Avoid dividing by zero.
-        A = (yHi - yLo) / valueDiff;    // A = (H - L) / (max - min);
+        A = (float)(yHi - yLo) / (float)valueDiff;    // A = (H - L) / (max - min);
         B = yLo - A * xLo;
+        Sys.fout("A= %f, B = %f", A, B);
     }
     
     protected void checkArguments(ArrayList<Point> points) throws Exception{
@@ -74,7 +80,6 @@ public class PiecewiseLinearTransformation extends ThreeChannelAIPT {
     
     @Override
     protected int getVOut(int vIn) {
-        Sys.out(String.format("offending vIn=%d", vIn));
         return myLUT.get(vIn);
     }
 
