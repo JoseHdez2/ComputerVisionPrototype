@@ -59,7 +59,7 @@ public class ScaleDialog {
         valuesSpinners[1] = new JSpinner(new SpinnerNumberModel(image.getHeight(),MIN_VAL,MAX_VAL,STEP_SIZE)); 
         
         // JRadioButtons para seleccionar
-        percentButton = new JRadioButton(I18n.getString("Dialog.ScalePercent"));
+        percentButton = new JRadioButton(I18n.getString("DialogScale.Percent"));
         percentButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 for (int i=0; i<2; i++) {
